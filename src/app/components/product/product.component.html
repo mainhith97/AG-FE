@@ -7,14 +7,14 @@
       <div class="col-lg-6 product-details pl-md-5">
         <h2>{{ data?.name }}</h2>
         <p class="provider">
-          Cung cấp bởi: <span>{{ data?.user.company_name }}</span>
+          Cung cấp bởi: <span>{{ user?.company_name }}</span>
         </p>
         <p class="price font-weight-bold">
           <span>{{ data?.price_per_unit }}.000đ/{{ data?.unit }}</span>
         </p>
         <p>{{ data?.description }}</p>
         <p class="verify">
-          Đã qua kiểm định chất lượng của<span
+          Đã qua kiểm định chất lượng của <span
             class="verify font-weight-bold"
             >{{ data?.verify }}</span
           >

@@ -35,13 +35,15 @@ export class SigninComponent implements OnInit {
       if (this.res.success && this.res.role === 'distributor') {
 
         localStorage.setItem('userToken', this.res.result);
-
+        localStorage.setItem('id', this.res.id);
+        // tslint:disable-next-line: radix
+        localStorage.setItem('giohang', this.res.cart);
         this.router.navigate(['home']);
 
       } else if (this.res.success && this.res.role === 'farmer') {
 
         localStorage.setItem('farmerToken', this.res.result);
-
+        localStorage.setItem('id', this.res.id);
         this.router.navigate(['myaccount']);
       } else {
         console.log(res);

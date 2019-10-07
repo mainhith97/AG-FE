@@ -11,6 +11,7 @@ export class ProductComponent implements OnInit {
   res: any;
   data: any;
   id: string;
+  user: any;
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute
@@ -25,9 +26,10 @@ export class ProductComponent implements OnInit {
   getDetailProduct(id) {
     this.productService.getDetailProduct(id).subscribe(res => {
         this.res = res;
-
+        console.log('done');
         if (this.res.success) {
             this.data = this.res.result;
+            this.user = this.res.user;
         }
     });
 }

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,26 +36,10 @@ import { Body2Component } from './components/body2/body2.component';
 import { Body3Component } from './components/body3/body3.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { Body4Component } from './components/body4/body4.component';
-
-import { GuestAncuComponent } from './pages/guest-ancu/guest-ancu.component';
-import { GuestAnlaComponent } from './pages/guest-anla/guest-anla.component';
-import { GuestAnthanComponent } from './pages/guest-anthan/guest-anthan.component';
-import { GuestAnquaComponent } from './pages/guest-anqua/guest-anqua.component';
 import { BackgroundImageComponent } from './components/background-image/background-image.component';
 
-import { AnquaComponent } from './components/anqua/anqua.component';
-import { AnthanComponent } from './components/anthan/anthan.component';
-import { AnlaComponent } from './components/anla/anla.component';
-import { AncuComponent } from './components/ancu/ancu.component';
-import { GuestRaucuquaComponent } from './pages/guest-raucuqua/guest-raucuqua.component';
-import { RaucuquaComponent } from './components/raucuqua/raucuqua.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import { MainAdminComponent } from './pages/main-admin/main-admin.component';
-import { UserAncuComponent } from './pages/user-ancu/user-ancu.component';
-import { UserAnlaComponent } from './pages/user-anla/user-anla.component';
-import { UserAnthanComponent } from './pages/user-anthan/user-anthan.component';
-import { UserAnquaComponent } from './pages/user-anqua/user-anqua.component';
-import { UserRaucuquaComponent } from './pages/user-raucuqua/user-raucuqua.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AdminloginComponent } from './pages/adminlogin/adminlogin.component';
 import { AboutComponent } from './components/about/about.component';
@@ -65,21 +50,9 @@ import { TokenInterceptor } from './services/token-interceptor';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { ProductComponent } from './components/product/product.component';
 import { BlobHttpInterceptor } from './services/blob-interceptor';
-import { HatgiongHoaComponent } from './components/hatgiong-hoa/hatgiong-hoa.component';
-import { HatgiongRauComponent } from './components/hatgiong-rau/hatgiong-rau.component';
-import { TraComponent } from './components/tra/tra.component';
-import { NamComponent } from './components/nam/nam.component';
-import { GuestHatgionghoaComponent } from './pages/guest-hatgionghoa/guest-hatgionghoa.component';
-import { GuestHatgiongrauComponent } from './pages/guest-hatgiongrau/guest-hatgiongrau.component';
-import { GuestTraComponent } from './pages/guest-tra/guest-tra.component';
-import { GuestNamComponent } from './pages/guest-nam/guest-nam.component';
-import { UserHatgionghoaComponent } from './pages/user-hatgionghoa/user-hatgionghoa.component';
-import { UserHatgiongrauComponent } from './pages/user-hatgiongrau/user-hatgiongrau.component';
-import { UserTraComponent } from './pages/user-tra/user-tra.component';
-import { UserNamComponent } from './pages/user-nam/user-nam.component';
+
 import { SafeHtmlPipe } from './shared/safe-html.pipe';
-import { UserContactComponent } from './pages/user-contact/user-contact.component';
-import { UserProductpageComponent } from './pages/user-productpage/user-productpage.component';
+
 import { SearchComponent } from './components/search/search.component';
 import { SearchLayoutComponent } from './pages/search-layout/search-layout.component';
 import { AdmintokenInterceptor } from './services/admintoken-interceptor.service';
@@ -87,8 +60,10 @@ import { ListUserComponent } from './pages/list-user/list-user.component';
 import { GetListuserComponent } from './components/get-listuser/get-listuser.component';
 import { ListProductComponent } from './pages/list-product/list-product.component';
 import { GetListproductComponent } from './components/get-listproduct/get-listproduct.component';
-import { MycartLayoutComponent } from './pages/mycart-layout/mycart-layout.component';
-import { MycartComponent } from './components/mycart/mycart.component';
+
+import { ProductLayoutComponent } from './pages/product-layout/product-layout.component';
+import { ProductByCategoryComponent } from './components/product-by-category/product-by-category.component';
+import { ProductService } from './services/product.service';
 
 
 @NgModule({
@@ -118,24 +93,9 @@ import { MycartComponent } from './components/mycart/mycart.component';
     Body3Component,
     FooterComponent,
     Body4Component,
-    GuestAncuComponent,
-    GuestAnlaComponent,
-    GuestAnthanComponent,
-    GuestAnquaComponent,
     BackgroundImageComponent,
-    AncuComponent,
-    AnlaComponent,
-    AnthanComponent,
-    AnquaComponent,
-    GuestRaucuquaComponent,
-    RaucuquaComponent,
     MainLayoutComponent,
     MainAdminComponent,
-    UserAncuComponent,
-    UserAnlaComponent,
-    UserAnthanComponent,
-    UserAnquaComponent,
-    UserRaucuquaComponent,
     NotFoundComponent,
     AdminloginComponent,
     AboutComponent,
@@ -144,29 +104,18 @@ import { MycartComponent } from './components/mycart/mycart.component';
     ContactComponent,
     ProductPageComponent,
     ProductComponent,
-    HatgiongHoaComponent,
-    HatgiongRauComponent,
-    TraComponent,
-    NamComponent,
-    GuestHatgionghoaComponent,
-    GuestHatgiongrauComponent,
-    GuestTraComponent,
-    GuestNamComponent,
-    UserHatgionghoaComponent,
-    UserHatgiongrauComponent,
-    UserTraComponent,
-    UserNamComponent,
+
     SafeHtmlPipe,
-    UserContactComponent,
-    UserProductpageComponent,
+
     SearchComponent,
     SearchLayoutComponent,
     ListUserComponent,
     GetListuserComponent,
     ListProductComponent,
     GetListproductComponent,
-    MycartLayoutComponent,
-    MycartComponent
+
+    ProductLayoutComponent,
+    ProductByCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -175,13 +124,14 @@ import { MycartComponent } from './components/mycart/mycart.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    OwlModule
+    OwlModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AdmintokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: BlobHttpInterceptor, multi: true },
-      DataService, AuthService, AdminService],
+      DataService, ProductService, AuthService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

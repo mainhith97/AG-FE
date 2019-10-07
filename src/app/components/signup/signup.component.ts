@@ -38,10 +38,9 @@ export class SignupComponent implements OnInit {
     return this.registerService.postRegister(value).subscribe(res => {
       this.res = res;
       if (this.res.success) {
-        console.log(res);
-        console.log(value);
         localStorage.setItem('userToken', this.res.result);
-        this.router.navigate(['user']);
+        localStorage.setItem('id', this.res.id);
+        this.router.navigate(['home']);
 
       } else {
         console.log(res);

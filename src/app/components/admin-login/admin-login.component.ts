@@ -29,12 +29,15 @@ export class AdminLoginComponent implements OnInit {
     });
   }
   submit({ value }: { value: ILogin }) {
-    return this.loginService.postLogin(value).subscribe(res => {
+    return this.loginService.postLogin2(value).subscribe(res => {
       this.res = res;
       if (this.res.success) {
+        if (this.res.role === 'mod') {
+          localStorage.setItem('adminToken', this.res.result);
+          localStorage.setItem('id', this.res.id);
+          this.router.navigate(['main']);
+        }
 
-        localStorage.setItem('adminToken', this.res.result);
-        this.router.navigate(['main']);
       } else {
         console.log(res);
       }

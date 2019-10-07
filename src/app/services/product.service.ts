@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { map, catchError } from 'rxjs/operators';
 import { environment as config } from '../../environments/environment';
 import { throwError, Observable } from 'rxjs';
-import {ISearch} from '../shared/interface';
+import { ISearch, Product } from '../shared/interface';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,136 +21,84 @@ export class ProductService {
   apiUrl = config.apiUrl;
   productPrefix = 'product';
 
-  // lấy danh sách sản phẩm cây ăn củ
-  getListProduct1(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-list-product1`)
-    .pipe(
+  // get list type
+  getListType(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/type/`)
+      .pipe(
         map(response => {
           return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
-  // lấy danh sách sản phẩm cây ăn lá
-  getListProduct2(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-list-product2`)
-    .pipe(
+  // get list product by category
+  getListProductByType(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/type/${id}/`)
+      .pipe(
         map(response => {
           return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
-  // lấy danh sách sản phẩm cây ăn thân
-  getListProduct3(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-list-product3`)
-    .pipe(
-        map(response => {
-          return response;
-        }),
-        catchError(this.handleError)
-    );
-  }
-  // lấy danh sách sản phẩm hoa quả
-  getListProduct4(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-list-product4`)
-    .pipe(
-        map(response => {
-          return response;
-        }),
-        catchError(this.handleError)
-    );
-  }
-  // lấy danh sách sản phẩm hạt giống rau sạch
-  getListProduct5(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-list-product5`)
-    .pipe(
-        map(response => {
-          return response;
-        }),
-        catchError(this.handleError)
-    );
-  }
-  // lấy danh sách sản phẩm hạt giống hoa
-  getListProduct6(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-list-product6`)
-    .pipe(
-        map(response => {
-          return response;
-        }),
-        catchError(this.handleError)
-    );
-  }
-  // lấy danh sách sản phẩm trà các loại
-  getListProduct7(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-list-product7`)
-    .pipe(
-        map(response => {
-          return response;
-        }),
-        catchError(this.handleError)
-    );
-  }
-  // lấy danh sách sản phẩm nấm các loại
-  getListProduct8(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-list-product8`)
-    .pipe(
-        map(response => {
-          return response;
-        }),
-        catchError(this.handleError)
-    );
-  }
-// lấy chi tiết sản phẩm
+
+  // lấy chi tiết sản phẩm
   getDetailProduct(id: number): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/product/${id}`)
-    .pipe(
+    return this.http.get<boolean>(`${this.apiUrl}/product/${id}/`)
+      .pipe(
         map(response => {
-            return response;
+          return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
   // nhận từ khoá tìm kiếm
   search(searchItem: ISearch): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/search`, searchItem )
-    .pipe(
+    return this.http.post<any>(`${this.apiUrl}/action/search/`, searchItem)
+      .pipe(
         map(response => {
           return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
   // lấy dữ liệu tìm kiếm đc
   getSearchResult(keyword: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/search?keyword=${keyword}`)
-    .pipe(
+    return this.http.get<boolean>(`${this.apiUrl}/action/get_search_result/?keyword=${keyword}`)
+      .pipe(
         map(response => {
           return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
 
   // lấy sản phâm mới nhất
   getListNewest(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get-list-newest`)
-    .pipe(
+    return this.http.get<any>(`${this.apiUrl}/product/get_list_newest/`)
+      .pipe(
         map(response => {
           return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
   // thêm vào giỏ hàng
-  addProductToCart(products: any) {
-    localStorage.setItem('product', JSON.stringify(products));
-  }
-  getProductFromCart() {
-    return JSON.parse(localStorage.getItem('product'));
-  }
-  removeAllProductFromCart() {
-    return localStorage.removeItem('product');
+  Cart(product: Product) {
+
+    const option = {
+      // tslint:disable-next-line: radix
+      user: parseInt(localStorage.getItem('id')),
+      product: product.id
+    };
+    console.log(option);
+    return this.http.post<any>(`${this.apiUrl}/cart/`, option)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
   }
   handleError(error: HttpErrorResponse) {
     return throwError(error.error);

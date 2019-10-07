@@ -10,7 +10,6 @@ export interface IRegister {
   email: string;
   address: string;
   telephone: number;
-  description: string;
 }
 export class User {
   id: number;
@@ -28,4 +27,25 @@ export class User {
 export interface ISearch {
   keyword: string;
 }
-
+export interface Product {
+    id: number;
+    name: string;
+    provider_id: number;
+    unit: string;
+    price_per_unit: number;
+    in_stock: number;
+    type: number;
+    description: string;
+    verify: string;
+    detail: string;
+    image: string;
+    quantity: number;
+}
+export interface ProductDisplay {
+    Products: Product[];
+}
+export interface IAlert {
+  id: number;
+  type: string;
+  message: string;
+}

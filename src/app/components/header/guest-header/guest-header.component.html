@@ -1,5 +1,5 @@
 <header class="header-section" style="height: 100%;">
-  <div *ngIf="data1 == false" class="py-1 bg-primary">
+  <div *ngIf="!readLocalStorageValue('userToken')" class="py-1 bg-primary">
     <div class="container">
       <div
         class="row no-gutters d-flex align-items-start align-items-center px-md-0"
@@ -52,7 +52,7 @@
           </form>
         </div>
 
-        <div *ngIf="data1 == false" class="col-xl-4 col-lg-5">
+        <div *ngIf="!readLocalStorageValue('userToken')" class="col-xl-4 col-lg-5">
           <div class="user-panel">
             <div class="up-item">
               <i class="fa fa-user"></i>
@@ -66,14 +66,14 @@
           </div>
         </div>
 
-        <div *ngIf="data1 == true" class ="col-xl-4 col-lg-5">
+        <div *ngIf="readLocalStorageValue('userToken')" class ="col-xl-4 col-lg-5">
           <div class="user-panel">
             <div class="up-item">
               <div class="shopping-card">
-                <span>{{cartItemCount}}</span>
+                <span>{{readLocalStorageValue('giohang')}}</span>
                 <i class="fa fa-shopping-cart"></i>
               </div>
-              <a href="#">Giỏ hàng</a>
+              <a href="" [routerLink]="['/my-cart']">Giỏ hàng</a>
             </div>
             <div class="up-item">
               <i class="fa fa-user"></i>
@@ -109,23 +109,13 @@
       <!-- menu -->
       <ul class="main-menu">
         <li><a href="" [routerLink]="['/home']">Trang chủ</a></li>
-        <li><a class="disabled">Rau củ quả</a>
+        <li><a href="#" [routerLink]="['/about']">Giới thiệu</a>
+        </li>
+        <li><a class="disabled">Sản phẩm</a>
           <ul class="sub-menu">
-            <li><a href="" [routerLink]="['/cay_rau_an_cu']">Cây ăn củ</a></li>
-            <li><a href="" [routerLink]="['/cay_rau_an_la']">Cây rau ăn lá</a></li>
-            <li><a href="" [routerLink]="['/cay_rau_an_than']">Cây rau ăn thân</a></li>
-            <li><a href="" [routerLink]="['/hoa_qua']">Hoa quả</a></li>
+            <li *ngFor="let data of data3"><a href="" routerLink='/type/{{data.id}}'>{{data.product_type}}</a></li>
           </ul>
         </li>
-        <li><a class="disabled">Nông sản khác</a>
-        <ul class="sub-menu">
-          <li><a href="" [routerLink]="['/hat-giong-rau-sach']">Hạt giống rau sạch</a></li>
-          <li><a href="" [routerLink]="['/hat-giong-hoa']">Hạt giống hoa</a></li>
-          <li><a href="" [routerLink]="['/tra-cac-loai']">Trà các loại</a></li>
-          <li><a href="" [routerLink]="['/nam-cac-loai']">Nấm các loại</a></li>
-        </ul>
-        </li>
-        <!-- <li><a href="" [routerLink]="['']">Hợp tác</a></li> -->
         <li><a href="#" [routerLink]="['/contact']">Liên hệ</a></li>
       </ul>
     </div>

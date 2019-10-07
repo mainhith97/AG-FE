@@ -30,7 +30,7 @@ export class DataService {
   adminPrefix = 'admin';
   userPrefix = 'user';
   farmerPrefix = 'farmer';
-// user login
+// admin login
   postLogin(adminLogin: ILogin): Observable<boolean> {
     return this.http.post<boolean>(`${this.apiUrl}/${this.adminPrefix}/login`, adminLogin)
       .pipe(
@@ -40,9 +40,9 @@ export class DataService {
         catchError(this.handleError)
       );
   }
-// admin login
+// user login
   postLogin2(userLogin: ILogin): Observable<boolean> {
-    return this.http.post<boolean>(`${this.apiUrl}/${this.userPrefix}/login`, userLogin)
+    return this.http.post<boolean>(`${this.apiUrl}/action/login/`, userLogin)
       .pipe(
         map(response => {
           return response;
@@ -52,7 +52,7 @@ export class DataService {
   }
 // user đăng ký
   postRegister(userRegister: IRegister): Observable<boolean> {
-    return this.http.post<boolean>(`${this.apiUrl}/${this.userPrefix}/register`, userRegister)
+    return this.http.post<boolean>(`${this.apiUrl}/${this.userPrefix}/`, userRegister)
       .pipe(
         map(response => {
           return response;
@@ -72,7 +72,7 @@ export class DataService {
   }
 // lấy hồ sơ user
   getProfile(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${this.userPrefix}/getProfile`)
+    return this.http.get<any>(`${this.apiUrl}/${this.userPrefix}/${localStorage.getItem('id')}/`)
       .pipe(
         map(response => {
           return response;
