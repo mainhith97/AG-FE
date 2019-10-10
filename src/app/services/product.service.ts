@@ -100,6 +100,28 @@ export class ProductService {
         catchError(this.handleError)
       );
   }
+  // danh sach gio hang
+  getListCart(): Observable<any> {
+    const user = localStorage.getItem('id');
+    return this.http.get<any>(`${this.apiUrl}/cart/${user}`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // xoa gio hang
+  remove(id, quantity): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.apiUrl}/cart/${id}/`)
+    .pipe(
+        map(response => {
+            return response;
+        }),
+        catchError(this.handleError)
+    );
+  }
+
   handleError(error: HttpErrorResponse) {
     return throwError(error.error);
   }

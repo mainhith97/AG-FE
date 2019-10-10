@@ -19,10 +19,8 @@ import { AdminDashboardComponent } from './components/dashboard/admin-dashboard/
 import { FarmerLayoutComponent } from './pages/farmer-layout/farmer-layout.component';
 import { FarmerHeaderComponent } from './components/header/farmer-header/farmer-header.component';
 import { GuestHeaderComponent } from './components/header/guest-header/guest-header.component';
-import { DistributorHeaderComponent } from './components/header/distributor-header/distributor-header.component';
 import { FarmerDashboardComponent } from './components/dashboard/farmer-dashboard/farmer-dashboard.component';
 import { FarmerSidebarComponent } from './components/sidebar/farmer-sidebar/farmer-sidebar.component';
-import { DistributorLayoutComponent } from './pages/distributor-layout/distributor-layout.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { FarmerRegisterComponent } from './pages/farmer-register/farmer-register.component';
@@ -64,6 +62,12 @@ import { GetListproductComponent } from './components/get-listproduct/get-listpr
 import { ProductLayoutComponent } from './pages/product-layout/product-layout.component';
 import { ProductByCategoryComponent } from './components/product-by-category/product-by-category.component';
 import { ProductService } from './services/product.service';
+import { MyCartComponent } from './components/my-cart/my-cart.component';
+import { MyCartPageComponent } from './pages/my-cart-page/my-cart-page.component';
+import { IntroducePageComponent } from './pages/introduce-page/introduce-page.component';
+import { IntroduceComponent } from './components/introduce/introduce.component';
+import { RequestPageComponent } from './pages/request-page/request-page.component';
+import { RequestComponent } from './components/request/request.component';
 
 
 @NgModule({
@@ -80,10 +84,8 @@ import { ProductService } from './services/product.service';
     FarmerLayoutComponent,
     FarmerHeaderComponent,
     GuestHeaderComponent,
-    DistributorHeaderComponent,
     FarmerDashboardComponent,
     FarmerSidebarComponent,
-    DistributorLayoutComponent,
     RegisterComponent,
     SignupComponent,
     FarmerRegisterComponent,
@@ -115,7 +117,13 @@ import { ProductService } from './services/product.service';
     GetListproductComponent,
 
     ProductLayoutComponent,
-    ProductByCategoryComponent
+    ProductByCategoryComponent,
+    MyCartComponent,
+    MyCartPageComponent,
+    IntroducePageComponent,
+    IntroduceComponent,
+    RequestPageComponent,
+    RequestComponent
   ],
   imports: [
     BrowserModule,

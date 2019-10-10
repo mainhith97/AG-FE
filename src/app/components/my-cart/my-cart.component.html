@@ -1,0 +1,87 @@
+<div class="content container mt-5">
+  <div *ngIf="cart === '0'">
+    <h4 style="text-align: center" class="title">
+      <strong>CHƯA CÓ SẢN PHẨM</strong>
+    </h4>
+
+    <div class="row">
+        <div class="col align-self-start"></div>
+        <div class="col align-self-center">
+            <img style="width:75%" src="../../../assets/images/cart.jpg">
+        </div>
+        <div class="col align-self-end"></div>
+    </div>
+    <div class="row confirm mb-5">
+        <div class="col align-self-start"></div>
+        <div class="col align-self-center">
+          <a class="btn" [routerLink]="['/home']"><b>Tiếp tục mua sắm</b></a>
+        </div>
+        <div class="col align-self-end"></div>
+    </div>
+  </div>
+  <div *ngIf="cart !== '0'">
+    <div class="cart-table">
+      <table class="table table-bordered table-hover">
+        <thead class="thead">
+          <tr>
+            <th>STT</th>
+            <th style="width: 40%">Tên sản phẩm</th>
+            <th style="width: 30%">Hình ảnh</th>
+            <th>Giá</th>
+            <th style="width: 10%">Số lượng</th>
+            <th>Tổng giá</th>
+            <th>Xoá</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of data; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ prod.product_value.name }}</td>
+            <td>
+              <img src="{{ prod.product_value.image }}" class="img-fluid" />
+            </td>
+            <td>
+              {{ prod.product_value.price_per_unit }}đ/{{
+                prod.product_value.unit
+              }}
+            </td>
+            <td class="quy-col">
+              <div class="quantity">
+                <div class="pro-qty">
+                  <input
+                    type="number"
+                    value="{{ prod.quantity }}"
+                    min="1"
+                    max="10"
+                  />
+                </div>
+              </div>
+            </td>
+            <td>{{ prod.total }}đ</td>
+            <td>
+              <a
+                (click)="remove(prod.id, prod.quantity)"
+                class="btn-action btn-del"
+                ><span class="fa fa-trash" aria-hidden="true"></span>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="total-cost mb-5">
+      <h6>
+        Thành tiền <span>{{ totals }}đ</span>
+      </h6>
+    </div>
+
+    <div class="row confirm mb-5">
+      <div class="col align-self-start"></div>
+      <div class="col align-self-center">
+        <button type="submit" class="btn"><b>Xác nhận đặt hàng</b></button>
+      </div>
+      <div class="col align-self-end"></div>
+    </div>
+  </div>
+</div>

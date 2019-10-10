@@ -4,29 +4,23 @@
       <h2>SẢN PHẨM MỚI NHẤT</h2>
     </div>
     <div class="row">
-      <div *ngFor="let data of data" class="col-lg-3 col-sm-6">
+      <div *ngFor="let prod of data" class="col-lg-3 col-sm-6">
         <div class="product-item">
           <div class="pi-pic">
-            <!-- <a class="img-prod" routerLink='/product/{{data.id}}'
-                  ><img
-                    src="./../../../assets/images/product-1.jpg"
-                    class="img-fluid"
-                    alt=""
-                /></a> -->
 
-            <a class="img-prod" routerLink="/product/{{ data.id }}"
-              ><img src="{{ data.image }}" class="img-fluid" alt=""></a>
+            <a class="img-prod" routerLink="/product/{{ prod.id }}"
+              ><img src="{{ prod?.image }}" class="img-fluid" alt=""></a>
 
-            <!-- <img [src]=" data.image.data "> -->
+
             <div class="pi-links">
-              <a href="#" class="add-card"
-                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
+              <button type= "button" class="add-card" (click)="Cart(prod)"
+                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></button
               >
             </div>
           </div>
           <div class="pi-text">
-            <h6>{{ data.price_per_unit }}.000đ/{{ data.unit }}</h6>
-            <p>{{ data.name }}</p>
+            <h6>{{ prod?.price_per_unit }}đ/{{ prod?.unit }}</h6>
+            <a routerLink="/product/{{ prod.id }}">{{prod?.name}}</a>
           </div>
         </div>
       </div>

@@ -46,10 +46,8 @@ export class GuestHeaderComponent implements OnInit {
   submit({ value }: { value: ISearch }) {
     this.productService.search(value).subscribe(res => {
       this.res = res;
-      console.log('true');
       if (this.res.success) {
         this.data = this.res.result;
-        console.log(this.data);
         this.router.navigate(['search'], { queryParams: { keyword: this.data } });
       }
     });

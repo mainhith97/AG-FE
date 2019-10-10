@@ -1,7 +1,7 @@
 import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit, Query } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { ISearch } from 'src/app/shared/interface';
+import { ISearch, Product } from 'src/app/shared/interface';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -15,6 +15,9 @@ export class SearchComponent implements OnInit {
   data: any;
   keyword: string;
   value: ISearch;
+  res1: any;
+  data1: any;
+
   constructor( private productService: ProductService,
                private formBuilder: FormBuilder,
                private route: ActivatedRoute
@@ -36,22 +39,24 @@ export class SearchComponent implements OnInit {
   getSearchResult(keyword: string) {
     this.productService.getSearchResult(keyword).subscribe(res => {
       this.res = res;
-      console.log('done');
-      if (this.res.success) {
+      if (this.res.success === true) {
+        this.data = this.res.result;
+      } else if (this.res.success === false) {
+        console.log('vô');
         this.data = this.res.result;
         console.log(this.data);
       }
     });
   }
-
-  // submit({ value }: { value: ISearch }) {
-  //   return this.productService.search(value).subscribe(res => {
-  //     this.res = res;
-  //     if (this.res.success) {
-  //       this.data = this.res.result;
-  //     } else {
-  //       console.log(res);
-  //     }
-  //   });
-  // }
+  Cart(product: Product) {
+    this.productService.Cart(product).subscribe(res1 => {
+        this.res1 = res1;
+        if (this.res1.success) {
+            this.data1 = this.res1.response;
+            // tslint:disable-next-line: radix
+            const newCart = parseInt(localStorage.getItem('giohang')) + 1;
+            localStorage.setItem('giohang', newCart.toString());
+        }
+    });
+  }
 }

@@ -10,7 +10,7 @@
           Cung cấp bởi: <span>{{ user?.company_name }}</span>
         </p>
         <p class="price font-weight-bold">
-          <span>{{ data?.price_per_unit }}.000đ/{{ data?.unit }}</span>
+          <span>{{ data?.price_per_unit }}đ/{{ data?.unit }}</span>
         </p>
         <p>{{ data?.description }}</p>
         <p class="verify">
@@ -21,10 +21,10 @@
         </p>
         <div class="row">
           <div class="mr-2 ml-2">
-            <p><a href="" class="btn btn-black py-3 px-5">Mua lẻ</a></p>
+            <p><button (click)="Cart(data)" class="btn btn-black py-3 px-5">Mua lẻ</button></p>
           </div>
           <div class="">
-            <p><a href="" class="btn btn-black py-3 px-5">Mua sỉ</a></p>
+            <p><button href="" class="btn btn-black py-3 px-5">Mua sỉ</button></p>
           </div>
         </div>
       </div>

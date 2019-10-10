@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/shared/interface';
 
 @Component({
   selector: 'app-body3',
@@ -10,11 +11,11 @@ export class Body3Component implements OnInit {
 
   res: any;
   data: any;
+  res1: any;
+  data1: any;
   // tslint:disable-next-line: variable-name
-  // product_image: SafeResourceUrl;
   constructor(
-    private productService: ProductService,
-    // private sanitizer: DomSanitizer
+    private productService: ProductService
   ) { }
 
   ngOnInit() {
@@ -28,6 +29,18 @@ export class Body3Component implements OnInit {
       if (this.res.success) {
                 this.data = this.res.result;
       }
+    });
+  }
+
+  Cart(product: Product) {
+    this.productService.Cart(product).subscribe(res1 => {
+        this.res1 = res1;
+        if (this.res1.success) {
+            this.data1 = this.res1.response;
+            // tslint:disable-next-line: radix
+            const newCart = parseInt(localStorage.getItem('giohang')) + 1;
+            localStorage.setItem('giohang', newCart.toString());
+        }
     });
   }
 

@@ -80,16 +80,7 @@ export class DataService {
         catchError(this.handleError)
       );
   }
-// kiểm tra user có đăng nhập ko
-  isLoggedIn(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${this.userPrefix}/isLoggedIn`)
-      .pipe(
-        map(response => {
-          return response;
-        }),
-        catchError(this.handleError)
-      );
-  }
+
   // lấy danh sách user
   getListUser(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${this.adminPrefix}/get-list-user`)

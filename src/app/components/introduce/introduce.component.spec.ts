@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DistributorLayoutComponent } from './distributor-layout.component';
+import { IntroduceComponent } from './introduce.component';
 
-describe('DistributorLayoutComponent', () => {
-  let component: DistributorLayoutComponent;
-  let fixture: ComponentFixture<DistributorLayoutComponent>;
+describe('IntroduceComponent', () => {
+  let component: IntroduceComponent;
+  let fixture: ComponentFixture<IntroduceComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DistributorLayoutComponent ]
+      declarations: [ IntroduceComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DistributorLayoutComponent);
+    fixture = TestBed.createComponent(IntroduceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
