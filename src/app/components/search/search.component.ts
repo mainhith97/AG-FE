@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   keyword: string;
   value: ISearch;
   res1: any;
+  check: boolean;
   data1: any;
 
   constructor( private productService: ProductService,
@@ -39,12 +40,12 @@ export class SearchComponent implements OnInit {
   getSearchResult(keyword: string) {
     this.productService.getSearchResult(keyword).subscribe(res => {
       this.res = res;
+      this.check = false;
       if (this.res.success === true) {
+        if (this.res.result.length !== 0) {
+          this.check = true;
+        }
         this.data = this.res.result;
-      } else if (this.res.success === false) {
-        console.log('vô');
-        this.data = this.res.result;
-        console.log(this.data);
       }
     });
   }

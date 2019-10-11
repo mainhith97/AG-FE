@@ -1,3 +1,4 @@
+import { AuthGuard } from './services/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -24,10 +25,11 @@ import { ListProductComponent } from './pages/list-product/list-product.componen
 import { ProductLayoutComponent } from './pages/product-layout/product-layout.component';
 import { MyCartPageComponent } from './pages/my-cart-page/my-cart-page.component';
 import { IntroducePageComponent } from './pages/introduce-page/introduce-page.component';
+import { RequestPageComponent } from './pages/request-page/request-page.component';
 
 const routes: Routes = [
 
-  { path: '', component: HomeComponent},
+  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'contact', component: ContactLayoutComponent },
   { path: 'introduce', component: IntroducePageComponent },
@@ -41,6 +43,7 @@ const routes: Routes = [
     children: [
 
       { path: 'my-cart', component: MyCartPageComponent },
+      { path: 'order', component: RequestPageComponent }
 
     ]
   },
@@ -66,9 +69,21 @@ const routes: Routes = [
 
     ]
   },
-  { path: 'login', component: LoginComponent },
-  { path: 'register',  component: RegisterComponent },
-  { path: 'farmer_register',  component: FarmerRegisterComponent },
+  {
+    path: '',
+    component: MainLayoutComponent,
+    canActivate: [AuthGuard],
+    children: [
+
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'farmer_register', component: FarmerRegisterComponent },
+
+    ]
+  },
+  // { path: 'login', component: LoginComponent },
+  // { path: 'register',  component: RegisterComponent },
+  // { path: 'farmer_register',  component: FarmerRegisterComponent },
   { path: 'admin', component: AdminloginComponent },
   { path: '**', component: NotFoundComponent }
 ];

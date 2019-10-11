@@ -40,6 +40,7 @@ export class SignupComponent implements OnInit {
       if (this.res.success) {
         localStorage.setItem('userToken', this.res.result);
         localStorage.setItem('id', this.res.id);
+        localStorage.setItem('giohang', '0');
         this.router.navigate(['home']);
 
       } else {

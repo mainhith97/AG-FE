@@ -1,5 +1,4 @@
 <div class="content">
-    <!-- <div *ngIf="data == null"> <h4 style="text-align: center" class="title"><strong>KHÔNG CÓ NGƯỜI DÙNG</strong></h4></div> -->
     <div *ngIf="data != null" class="table-responsive-sm">
     <table class="table table-striped table-bordered">
         <thead>
@@ -19,10 +18,10 @@
             <tr *ngFor="let data of data ; let i = index">
                 <td>{{ i + 1 }}</td>
                 <td>{{ data.name }}</td>
-                <td>{{ data.user.company_name }}</td>
-                <td>{{ data.product_type.type }}</td>
+                <td>{{ data.provider.company_name }}</td>
+                <td>{{ data.typetype.product_type }}</td>
                 <td>{{ data.unit }}</td>
-                <td>{{ data.price_per_unit }}.000đ</td>
+                <td>{{ data.price_per_unit }}đ</td>
                 <td>{{ data.in_stock }}</td>
                 <td>{{ data.verify }}</td>
                 <td>{{ data.description }}</td>

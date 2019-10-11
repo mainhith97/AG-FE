@@ -121,6 +121,24 @@ export class ProductService {
         catchError(this.handleError)
     );
   }
+  // tang giam so luong
+  putQuantity(id, quantity, key): Observable<any> {
+    let data = null;
+    if (key === 'plus') {
+      // tslint:disable-next-line: object-literal-key-quotes
+      data = {'quantity': quantity + 1};
+    } else if (key === 'minus') {
+      // tslint:disable-next-line: object-literal-key-quotes
+      data = {'quantity': quantity - 1};
+    }
+    return this.http.put<any>(`${this.apiUrl}/cart/${id}/`, data)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
 
   handleError(error: HttpErrorResponse) {
     return throwError(error.error);

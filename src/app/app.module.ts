@@ -5,7 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { NgDatepickerModule } from 'ng2-datepicker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -133,7 +135,11 @@ import { RequestComponent } from './components/request/request.component';
     HttpClientModule,
     BrowserAnimationsModule,
     OwlModule,
-    NgbModule
+    NgbModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    NgDatepickerModule,
+    MatDatepickerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

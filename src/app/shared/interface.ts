@@ -10,6 +10,7 @@ export interface IRegister {
   email: string;
   address: string;
   telephone: number;
+  role: string;
 }
 export class User {
   id: number;
@@ -40,6 +41,8 @@ export interface Product {
     detail: string;
     image: string;
     quantity: number;
+    total: number;
+    product_value: any;
 }
 export interface ProductDisplay {
     Products: Product[];

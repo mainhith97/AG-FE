@@ -8,7 +8,7 @@ export class AuthService implements CanActivate {
     ) {}
     canActivate(): boolean {
         if (localStorage.getItem('userToken') != null) {
-        return true;
+          return true;
         }
         this.router.navigate(['login']);
         return false;

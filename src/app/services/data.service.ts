@@ -52,6 +52,7 @@ export class DataService {
   }
 // user đăng ký
   postRegister(userRegister: IRegister): Observable<boolean> {
+    userRegister.role = 'distributor';
     return this.http.post<boolean>(`${this.apiUrl}/${this.userPrefix}/`, userRegister)
       .pipe(
         map(response => {
@@ -62,7 +63,8 @@ export class DataService {
   }
   // farmer đăng ký
   postRegister2(farmerRegister: IRegister): Observable<boolean> {
-    return this.http.post<boolean>(`${this.apiUrl}/${this.farmerPrefix}/register`, farmerRegister)
+    farmerRegister.role = 'farmer';
+    return this.http.post<boolean>(`${this.apiUrl}/${this.userPrefix}/`, farmerRegister)
       .pipe(
         map(response => {
           return response;
@@ -83,7 +85,7 @@ export class DataService {
 
   // lấy danh sách user
   getListUser(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${this.adminPrefix}/get-list-user`)
+    return this.http.get<any>(`${this.apiUrl}/user/`)
       .pipe(
         map(response => {
           return response;
@@ -93,7 +95,7 @@ export class DataService {
   }
   // lấy danh sách sản phẩm
   getListProduct(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${this.adminPrefix}/get-list-product`)
+    return this.http.get<any>(`${this.apiUrl}/product/`)
       .pipe(
         map(response => {
           return response;

@@ -1,1 +1,72 @@
-<p>request works!</p>
+<section class="cart-section spad">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="cart-table">
+          <h3>Your Order</h3>
+          <div class="cart-table-warp">
+            <table>
+              <thead>
+                <tr>
+                  <th class="product-th">Product</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="product-col">
+                    <img src="../../../assets/images/ot_chuong.jpg" alt="" />
+                    <div class="pc-title">
+                      <h4>Ớt chuông Đà Lạt</h4>
+                      <p>55000đ</p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container d-flex justify-content-center">
+  <form [formGroup]="">
+    <h2 class="form-title">THÔNG TIN ĐƠN ĐẶT HÀNG</h2>
+    <div class="form-group">
+      <label class="pt-3">Số lượng mong muốn</label><br>
+      <input
+        type="text"
+        class="form-input"
+        name="quantity"
+        placeholder="Số lượng"
+        formControlName="quantity"
+      />
+    </div>
+    <div class="form-group">
+      <label>Giá cả mong muốn</label><br>
+      <input
+        type="text"
+        class="form-input"
+        name="price"
+        placeholder="Giá"
+        formControlName="price"
+      />
+    </div>
+    <div class="form-group">
+      <label>Bạn muốn nhận hàng vào ngày nào?</label><br>
+      <input [owlDateTime]="dt" [owlDateTimeTrigger]="dt" class="form-input" placeholder="Ngày nhận hàng" formControlName="date">
+      <owl-date-time #dt></owl-date-time>
+    </div>
+
+    <div class="form-group">
+      <input
+        type="submit"
+        name="submit"
+        id="submit"
+        class="form-submit"
+        value="GỬI YÊU CẦU"
+      />
+    </div>
+  </form>
+</div>

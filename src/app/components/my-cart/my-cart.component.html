@@ -1,31 +1,32 @@
 <div class="content container mt-5">
-  <div *ngIf="cart === '0'">
+  <div *ngIf="!check">
     <h4 style="text-align: center" class="title">
       <strong>CHƯA CÓ SẢN PHẨM</strong>
     </h4>
 
     <div class="row">
-        <div class="col align-self-start"></div>
-        <div class="col align-self-center">
-            <img style="width:75%" src="../../../assets/images/cart.jpg">
-        </div>
-        <div class="col align-self-end"></div>
+      <div class="col align-self-start"></div>
+      <div class="col align-self-center">
+        <img style="width:75%" src="../../../assets/images/cart.jpg" />
+      </div>
+      <div class="col align-self-end"></div>
     </div>
     <div class="row confirm mb-5">
-        <div class="col align-self-start"></div>
-        <div class="col align-self-center">
-          <a class="btn" [routerLink]="['/home']"><b>Tiếp tục mua sắm</b></a>
-        </div>
-        <div class="col align-self-end"></div>
+      <div class="col align-self-start"></div>
+      <div class="col align-self-center">
+        <a class="btn" [routerLink]="['/home']"><b>Tiếp tục mua sắm</b></a>
+      </div>
+      <div class="col align-self-end"></div>
     </div>
   </div>
-  <div *ngIf="cart !== '0'">
+
+  <div *ngIf="check">
     <div class="cart-table">
       <table class="table table-bordered table-hover">
         <thead class="thead">
           <tr>
             <th>STT</th>
-            <th style="width: 40%">Tên sản phẩm</th>
+            <th style="width: 30%">Tên sản phẩm</th>
             <th style="width: 30%">Hình ảnh</th>
             <th>Giá</th>
             <th style="width: 10%">Số lượng</th>
@@ -34,10 +35,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let prod of data; let i = index">
+          <tr *ngFor="let prod of data; let i = index" >
             <td>{{ i + 1 }}</td>
-            <td>{{ prod.product_value.name }}</td>
-            <td>
+            <td >{{ prod.product_value.name }}</td>
+            <td class="d-flex justify-content-center align-content-center">
               <img src="{{ prod.product_value.image }}" class="img-fluid" />
             </td>
             <td>
@@ -48,12 +49,30 @@
             <td class="quy-col">
               <div class="quantity">
                 <div class="pro-qty">
-                  <input
+                  <!-- <input
                     type="number"
                     value="{{ prod.quantity }}"
                     min="1"
                     max="10"
+                  /> -->
+                  <span
+                    (click)="onRemoveQuantity(prod)"
+                    class="qtybtn"
+                  >
+                    -
+                  </span>
+                  <input
+                    type="text"
+                    value="{{prod.quantity}}"
+                    min="1"
+                    max="10"
                   />
+                  <span
+                    (click)="onAddQuantity(prod)"
+                    class="qtybtn"
+                  >
+                    +
+                </span>
                 </div>
               </div>
             </td>
