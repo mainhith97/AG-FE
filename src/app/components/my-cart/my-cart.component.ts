@@ -18,16 +18,15 @@ export class MyCartComponent implements OnInit {
 
   ngOnInit() {
     this.getListCart();
-    // this.cart = this.readLocalStorageValue('giohang');
-    console.log(this.cart);
   }
 
   // check localstorage
   readLocalStorageValue(key: string) {
     return localStorage.getItem(key);
   }
-  getListCart() {
 
+  // lấy danh sách giỏ hàng và tổng tiền
+  getListCart() {
     this.productService.getListCart().subscribe(res => {
       this.res = res;
       this.check = false;
@@ -41,6 +40,7 @@ export class MyCartComponent implements OnInit {
     });
   }
 
+  // nút tăng số lượng
   onAddQuantity(product: Product) {
     this.productService.putQuantity(product.id, product.quantity, 'plus').subscribe(res => {
       this.res = res;
@@ -55,6 +55,8 @@ export class MyCartComponent implements OnInit {
       }
     });
   }
+
+  // nút giảm số lượng
   onRemoveQuantity(product: Product) {
     this.productService.putQuantity(product.id, product.quantity, 'minus').subscribe(res => {
       this.res = res;
@@ -69,6 +71,8 @@ export class MyCartComponent implements OnInit {
       }
     });
   }
+
+  // xoá sp trong giỏ hàng
   remove(id: any, quantity: any) {
     if (confirm('Bạn muốn xoá sản phẩm này?')) {
       this.productService.remove(id, quantity).subscribe(res => {

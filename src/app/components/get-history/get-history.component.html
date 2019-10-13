@@ -1,0 +1,34 @@
+<div class="content">
+  <div class="table-responsive-sm">
+  <table class="table table-striped table-bordered">
+      <thead>
+          <tr>
+              <th>STT</th>
+              <th>Tên người mua</th>
+              <th>Tên sản phẩm</th>
+              <th>Tổng tiền</th>
+              <th>Trạng thái</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let sale of data ; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ sale.name }}</td>
+              <td style="white-space: pre-line;">{{ sale.products }}</td>
+              <td>{{ sale.totals }}đ</td>
+              <td>{{ sale.status }}</td>
+              <td *ngIf="sale.status === 'Đang chờ'"><a
+                (click)="changeStatus(sale.id)"
+                class="btn-action text-primary" style="cursor: pointer;"
+                ><span class="fa fa-truck" aria-hidden="true"></span>
+              </a></td>
+              <td *ngIf="sale.status === 'Giao hàng thành công'">
+              <span class="fa fa-check text-success"></span>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+</div>
+

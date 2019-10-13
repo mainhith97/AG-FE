@@ -7,7 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { NgDatepickerModule } from 'ng2-datepicker';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+// import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -70,6 +70,12 @@ import { IntroducePageComponent } from './pages/introduce-page/introduce-page.co
 import { IntroduceComponent } from './components/introduce/introduce.component';
 import { RequestPageComponent } from './pages/request-page/request-page.component';
 import { RequestComponent } from './components/request/request.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { HistoryPageComponent } from './pages/history-page/history-page.component';
+import { HistoryComponent } from './components/history/history.component';
+import { ListHistoryComponent } from './pages/list-history/list-history.component';
+import { GetHistoryComponent } from './components/get-history/get-history.component';
 
 
 @NgModule({
@@ -125,7 +131,13 @@ import { RequestComponent } from './components/request/request.component';
     IntroducePageComponent,
     IntroduceComponent,
     RequestPageComponent,
-    RequestComponent
+    RequestComponent,
+    CheckoutPageComponent,
+    CheckoutComponent,
+    HistoryPageComponent,
+    HistoryComponent,
+    ListHistoryComponent,
+    GetHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -139,7 +151,7 @@ import { RequestComponent } from './components/request/request.component';
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     NgDatepickerModule,
-    MatDatepickerModule
+    // MatDatepickerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

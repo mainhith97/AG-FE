@@ -4,6 +4,7 @@ import { map, catchError } from 'rxjs/operators';
 import { environment as config } from '../../environments/environment';
 import { throwError, Observable } from 'rxjs';
 import { ISearch, Product } from '../shared/interface';
+import { identifierModuleUrl } from '@angular/compiler';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,6 +21,7 @@ export class ProductService {
 
   apiUrl = config.apiUrl;
   productPrefix = 'product';
+  userPrefix = 'user';
 
   // get list type
   getListType(): Observable<any> {
@@ -139,7 +141,34 @@ export class ProductService {
         catchError(this.handleError)
       );
   }
-
+  // dat hang
+  addToHistory(id, username, totals, product): Observable<boolean> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const data = {'user_id': id,
+                  // tslint:disable-next-line: object-literal-key-quotes
+                  'name': username,
+                  // tslint:disable-next-line: object-literal-key-quotes
+                  'totals': totals,
+                  // tslint:disable-next-line: object-literal-key-quotes
+                  'products': product};
+    return this.http.post<boolean>(`${this.apiUrl}/history/`, data)
+    .pipe(
+        map(response => {
+            return response;
+        }),
+        catchError(this.handleError)
+    );
+  }
+  // lich su dat hang
+  getHistory(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/history/${id}`)
+    .pipe(
+        map(response => {
+            return response;
+        }),
+        catchError(this.handleError)
+    );
+  }
   handleError(error: HttpErrorResponse) {
     return throwError(error.error);
   }

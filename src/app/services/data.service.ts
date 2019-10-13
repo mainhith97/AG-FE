@@ -103,6 +103,29 @@ export class DataService {
         catchError(this.handleError)
       );
   }
+  // lấy lịch sử mua hàng
+  getHistory(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/history/`)
+    .pipe(
+        map(response => {
+            return response;
+        }),
+        catchError(this.handleError)
+    );
+  }
+
+  // change status
+  changeStatus(id: number): Observable<boolean> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const data = {'status': 'Giao hàng thành công'};
+    return this.http.put<boolean>(`${this.apiUrl}/history/${id}/`, data)
+    .pipe(
+        map(response => {
+            return response;
+        }),
+        catchError(this.handleError)
+    );
+  }
   handleError(error: HttpErrorResponse) {
     return throwError(error.error);
   }

@@ -26,6 +26,9 @@ import { ProductLayoutComponent } from './pages/product-layout/product-layout.co
 import { MyCartPageComponent } from './pages/my-cart-page/my-cart-page.component';
 import { IntroducePageComponent } from './pages/introduce-page/introduce-page.component';
 import { RequestPageComponent } from './pages/request-page/request-page.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { HistoryPageComponent } from './pages/history-page/history-page.component';
+import { ListHistoryComponent } from './pages/list-history/list-history.component';
 
 const routes: Routes = [
 
@@ -43,6 +46,8 @@ const routes: Routes = [
     children: [
 
       { path: 'my-cart', component: MyCartPageComponent },
+      { path: 'checkout', component: CheckoutPageComponent },
+      { path: 'history', component: HistoryPageComponent },
       { path: 'order', component: RequestPageComponent }
 
     ]
@@ -56,6 +61,7 @@ const routes: Routes = [
       { path: 'main', component: AdminlayoutComponent },
       { path: 'get-list-user', component: ListUserComponent },
       { path: 'get-list-product', component: ListProductComponent },
+      { path: 'get-history', component: ListHistoryComponent }
 
     ]
   },

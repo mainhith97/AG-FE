@@ -1,0 +1,82 @@
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-7 ftco-animate">
+          <h3 class="mb-4 billing-heading">Địa chỉ giao hàng</h3>
+          <p><b>Tên</b>: {{data?.name}}</p>
+          <p><b>Địa chỉ</b>: {{data?.address}}</p>
+          <p><b>Điện thoại</b>: {{data?.telephone}}</p>
+          <h3 class="mb-4 pt-5 billing-heading">Hình thức thanh toán</h3>
+          <div class="form-group">
+            <div class="col-md-12">
+              <div class="radio">
+                <label
+                  ><input type="radio" name="optradio" class="mr-2" />
+                  Thanh toán trực tiếp khi nhận hàng</label
+                >
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <div class="radio">
+                <label
+                  ><input type="radio" name="optradio" class="mr-2" /> Thanh toán bằng thẻ quốc tế</label
+                >
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <div class="radio">
+                <label
+                  ><input type="radio" name="optradio" class="mr-2" />
+                  Thanh toán bằng thẻ ATM nội địa</label
+                >
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <div class="checkbox">
+                <label
+                  ><input type="checkbox" value="" class="mr-2" /> <b>Tôi đã đọc và chấp nhận các điều khoản và điều kiện </b></label
+                >
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-xl-5">
+        <div class="row mt-5 pt-3">
+          <div class="col-md-12 d-flex mb-5">
+            <div class="cart-detail cart-total p-3 p-md-4">
+                  <h3 class="billing-heading mb-4">Đơn hàng</h3>
+              <p class="d-flex">
+                <span>Tạm tính</span>
+                <span>{{totals}}đ</span>
+              </p>
+              <p class="d-flex">
+                <span>Phí vận chuyển</span>
+                <span>0đ</span>
+              </p>
+              <hr />
+              <p class="d-flex total-price">
+                <span>Thành tiền</span>
+                <span>{{totals}}đ</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- .col-md-8 -->
+    </div>
+    <div class="row confirm mb-5">
+      <div class="col align-self-start"></div>
+      <div class="col align-self-center">
+        <button class="btn" (click)="addToHistory()"><b>ĐẶT HÀNG</b></button>
+      </div>
+      <div class="col align-self-end"></div>
+    </div>
+  </div>
+</section>
+<!-- .section -->

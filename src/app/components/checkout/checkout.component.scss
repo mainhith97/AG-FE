@@ -1,0 +1,66 @@
+.ftco-section {
+	padding-top: 6em;
+	position: relative;
+}
+.billing-heading{
+	font-size: 24px;
+}
+.form-group{
+  position: relative;
+}
+.cart-detail{
+	width:100%;
+	display:block;
+	border: 1px solid #82ae46;
+	&.cart-total{
+		border: 1px solid #82ae46;
+	}
+	.btn-primary{
+		display: block;
+		width: 100%;
+	}
+}
+.cart-total{
+	width: 100%;
+	display: block;
+	border: 1px solid #82ae46;
+	padding: 20px;
+	h3{
+		font-size: 16px;
+		margin-bottom: 20px;
+	}
+	p{
+		width: 100%;
+		display: block;
+		span{
+			display: block;
+			width: 50%;
+		}
+		&.total-price{
+			span{
+				text-transform: uppercase;
+				&:last-child{
+					color: black;
+					font-weight: 600;
+				}
+			}
+		}
+	}
+	hr{
+		background: rgba(255,255,255,.1);
+	}
+}
+.confirm .btn {
+  padding: 18px 47px 14px;
+  width: 100%;
+  border-radius: 50px;
+  background: #82ae46;
+  cursor: pointer;
+  text-align: center;
+}
+.confirm b{
+  color: #fff;
+}
+.cart-detail button{
+  background: black;
+}

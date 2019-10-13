@@ -1,0 +1,25 @@
+<div class="content container mt-5">
+  <div>
+    <div class="cart-table">
+      <table class="table table-bordered table-hover">
+        <thead class="thead">
+          <tr>
+            <th>STT</th>
+            <th style="width: 30%">Tên sản phẩm</th>
+            <th>Tổng tiền</th>
+            <th>Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of data; let i=index">
+            <td>{{i+1}}</td>
+            <td style="white-space: pre-line">{{prod.products}}</td>
+            <td>{{prod.totals}}đ</td>
+            <td>{{prod.status}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
