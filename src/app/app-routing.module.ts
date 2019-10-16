@@ -1,34 +1,38 @@
 import { AuthGuard } from './services/auth.guard';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './pages/utils/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { AdminlayoutComponent } from './pages/adminlayout/adminlayout.component';
-import { FarmerLayoutComponent } from './pages/farmer-layout/farmer-layout.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { FarmerRegisterComponent } from './pages/farmer-register/farmer-register.component';
+import { HomeComponent } from './pages/utils/home/home.component';
+import { AdminlayoutComponent } from './pages/admin/adminlayout/adminlayout.component';
+import { FarmerLayoutComponent } from './pages/farmer/farmer-layout/farmer-layout.component';
+import { RegisterComponent } from './pages/distributor/register/register.component';
+import { FarmerRegisterComponent } from './pages/farmer/farmer-register/farmer-register.component';
 import { AdminService } from './services/admin.service';
 
 import { AuthService } from './services/auth.service';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
-import { MainAdminComponent } from './pages/main-admin/main-admin.component';
+import { MainAdminComponent } from './pages/admin/main-admin/main-admin.component';
 
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { AdminloginComponent } from './pages/adminlogin/adminlogin.component';
+import { NotFoundComponent } from './components/utils/not-found/not-found.component';
+import { AdminloginComponent } from './pages/admin/adminlogin/adminlogin.component';
 import { FarmerService } from './services/farmer.service';
-import { AboutLayoutComponent } from './pages/about-layout/about-layout.component';
-import { ContactLayoutComponent } from './pages/contact-layout/contact-layout.component';
+import { ContactLayoutComponent } from './pages/utils/contact-layout/contact-layout.component';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
-import { SearchLayoutComponent } from './pages/search-layout/search-layout.component';
-import { ListUserComponent } from './pages/list-user/list-user.component';
-import { ListProductComponent } from './pages/list-product/list-product.component';
-import { ProductLayoutComponent } from './pages/product-layout/product-layout.component';
-import { MyCartPageComponent } from './pages/my-cart-page/my-cart-page.component';
-import { IntroducePageComponent } from './pages/introduce-page/introduce-page.component';
-import { RequestPageComponent } from './pages/request-page/request-page.component';
-import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
-import { HistoryPageComponent } from './pages/history-page/history-page.component';
-import { ListHistoryComponent } from './pages/list-history/list-history.component';
+import { SearchLayoutComponent } from './pages/utils/search-layout/search-layout.component';
+import { ListUserComponent } from './pages/admin/list-user/list-user.component';
+import { ListProductComponent } from './pages/admin/list-product/list-product.component';
+import { ProductLayoutComponent } from './pages/utils/product-layout/product-layout.component';
+import { MyCartPageComponent } from './pages/distributor/my-cart-page/my-cart-page.component';
+import { IntroducePageComponent } from './pages/utils/introduce-page/introduce-page.component';
+import { RequestPageComponent } from './pages/distributor/request-page/request-page.component';
+import { CheckoutPageComponent } from './pages/distributor/checkout-page/checkout-page.component';
+import { HistoryPageComponent } from './pages/distributor/history-page/history-page.component';
+import { ListHistoryComponent } from './pages/admin/list-history/list-history.component';
+import { OrderPageComponent } from './pages/distributor/order-page/order-page.component';
+import { ListOrderComponent } from './pages/farmer/list-order/list-order.component';
+import { AdminListorderComponent } from './pages/admin/admin-listorder/admin-listorder.component';
+import { FarmerListproductComponent } from './pages/farmer/farmer-listproduct/farmer-listproduct.component';
+import { FarmerListhistoryComponent } from './pages/farmer/farmer-listhistory/farmer-listhistory.component';
 
 const routes: Routes = [
 
@@ -48,7 +52,8 @@ const routes: Routes = [
       { path: 'my-cart', component: MyCartPageComponent },
       { path: 'checkout', component: CheckoutPageComponent },
       { path: 'history', component: HistoryPageComponent },
-      { path: 'order', component: RequestPageComponent }
+      { path: 'order/:id', component: RequestPageComponent },
+      { path: 'list-order', component: OrderPageComponent },
 
     ]
   },
@@ -61,7 +66,8 @@ const routes: Routes = [
       { path: 'main', component: AdminlayoutComponent },
       { path: 'get-list-user', component: ListUserComponent },
       { path: 'get-list-product', component: ListProductComponent },
-      { path: 'get-history', component: ListHistoryComponent }
+      { path: 'get-history', component: ListHistoryComponent },
+      { path: 'get-list-order', component: AdminListorderComponent }
 
     ]
   },
@@ -72,6 +78,9 @@ const routes: Routes = [
 
     children: [
       { path: 'myaccount', component: FarmerLayoutComponent },
+      { path: 'get-listorder', component: ListOrderComponent },
+      { path: 'get-listproduct', component: FarmerListproductComponent },
+      { path: 'get-listhistory', component: FarmerListhistoryComponent }
 
     ]
   },

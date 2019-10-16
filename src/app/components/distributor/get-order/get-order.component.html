@@ -1,0 +1,32 @@
+<div class="content container mt-5">
+  <div>
+    <div class="cart-table">
+      <table class="table table-bordered table-hover">
+        <thead class="thead">
+          <tr>
+            <th>STT</th>
+            <th style="width: 30%">Tên sản phẩm</th>
+            <!-- <th>Nhà cung cấp</th> -->
+            <th>Số lượng</th>
+            <th>Giá mong muốn</th>
+            <th>Ngày nhận hàng</th>
+            <th>Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of data; let i=index">
+            <td>{{i+1}}</td>
+            <td style="white-space: pre-line">{{prod.product_order.name}}</td>
+            <!-- <td>{{prod.totals}}</td> -->
+            <td>{{prod.quantity}}</td>
+            <td>{{prod.proposed_price}}đ</td>
+            <td>{{prod.datetime}}</td>
+            <td>{{prod.status}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

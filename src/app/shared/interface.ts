@@ -52,3 +52,8 @@ export interface IAlert {
   type: string;
   message: string;
 }
+export interface Request {
+  quantity: number;
+  price: number;
+  date: any;
+}

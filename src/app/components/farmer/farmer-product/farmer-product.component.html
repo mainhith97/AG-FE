@@ -1,0 +1,33 @@
+<div class="content">
+  <div class="table-responsive-sm">
+  <table class="table table-striped table-bordered">
+      <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Loại</th>
+            <th>Đơn vị</th>
+            <th>Giá/đơn vị</th>
+            <th>Trong kho</th>
+            <th>Kiểm định</th>
+            <th>Mô tả</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let prod of data ; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ prod.user_order.name }}</td>
+              <td >{{ prod.product_order.name }}</td>
+              <td>{{ prod.quantity }}</td>
+              <td>{{ prod.proposed_price }}đ</td>
+              <td>{{ prod.datetime }}</td>
+              <td>{{ prod.status }}</td>
+              <td>{{ prod.status }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+</div>
+
+
+

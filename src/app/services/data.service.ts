@@ -27,20 +27,9 @@ export class DataService {
   ) { }
 
   apiUrl = config.apiUrl;
-  adminPrefix = 'admin';
   userPrefix = 'user';
   farmerPrefix = 'farmer';
-// admin login
-  postLogin(adminLogin: ILogin): Observable<boolean> {
-    return this.http.post<boolean>(`${this.apiUrl}/${this.adminPrefix}/login`, adminLogin)
-      .pipe(
-        map(response => {
-          return response;
-        }),
-        catchError(this.handleError)
-      );
-  }
-// user login
+  // login
   postLogin2(userLogin: ILogin): Observable<boolean> {
     return this.http.post<boolean>(`${this.apiUrl}/action/login/`, userLogin)
       .pipe(
@@ -50,7 +39,7 @@ export class DataService {
         catchError(this.handleError)
       );
   }
-// user đăng ký
+  // user đăng ký
   postRegister(userRegister: IRegister): Observable<boolean> {
     userRegister.role = 'distributor';
     return this.http.post<boolean>(`${this.apiUrl}/${this.userPrefix}/`, userRegister)
@@ -72,7 +61,7 @@ export class DataService {
         catchError(this.handleError)
       );
   }
-// lấy hồ sơ user
+  // lấy hồ sơ user
   getProfile(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${this.userPrefix}/${localStorage.getItem('id')}/`)
       .pipe(
@@ -83,7 +72,7 @@ export class DataService {
       );
   }
 
-  // lấy danh sách user
+  // admin lấy danh sách user
   getListUser(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/user/`)
       .pipe(
@@ -93,7 +82,7 @@ export class DataService {
         catchError(this.handleError)
       );
   }
-  // lấy danh sách sản phẩm
+  // admin lấy danh sách sản phẩm
   getListProduct(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/product/`)
       .pipe(
@@ -103,29 +92,82 @@ export class DataService {
         catchError(this.handleError)
       );
   }
-  // lấy lịch sử mua hàng
+  // admin lấy lịch sử mua hàng
   getHistory(): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/history/`)
-    .pipe(
+      .pipe(
         map(response => {
-            return response;
+          return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
 
-  // change status
+  // admin change status giao hàng
   changeStatus(id: number): Observable<boolean> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const data = {'status': 'Giao hàng thành công'};
+    const data = { 'status': 'Giao hàng thành công' };
     return this.http.put<boolean>(`${this.apiUrl}/history/${id}/`, data)
-    .pipe(
+      .pipe(
         map(response => {
-            return response;
+          return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
+  // farmer lấy danh sách order
+  getListOrder(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/order/${id}/retrieve_by_farmer/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  // farmer accept order
+  acceptOrder(id: number): Observable<boolean> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const data = { 'status': 'Chấp nhận' };
+    return this.http.put<boolean>(`${this.apiUrl}/order/${id}/`, data)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // farmer decline order
+  declineOrder(id: number): Observable<boolean> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const data = { 'status': 'Từ chối' };
+    return this.http.put<boolean>(`${this.apiUrl}/order/${id}/`, data)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // farmer dem so don hang chua xem
+  getUnseenOrder(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/order/${id}/get_unseen_orders/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // admin lấy danh sách order
+
+
+  // farmer lấy danh sách sp
+
+
+  // farmer lấy lịch sử đặt hàng
+
   handleError(error: HttpErrorResponse) {
     return throwError(error.error);
   }

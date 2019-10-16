@@ -1,3 +1,4 @@
+import { DataService } from './../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FarmerSidebarComponent implements OnInit {
 
-  constructor() { }
+  res: any;
+  id: number;
+  count: any;
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.getUnseenOrder(this.id);
+    this.readLocalStorageValue('count');
   }
-
+  getUnseenOrder(id) {
+    id = localStorage.getItem('id');
+    this.dataService.getUnseenOrder(id).subscribe(res => {
+      this.res = res;
+      if (this.res.success) {
+        localStorage.setItem('count', this.res.result);
+      }
+    });
+  }
+    // check localstorage
+    readLocalStorageValue(key) {
+      this.count = localStorage.getItem(key);
+      console.log(this.count);
+    }
 }

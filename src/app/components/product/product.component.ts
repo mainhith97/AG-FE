@@ -26,6 +26,7 @@ export class ProductComponent implements OnInit {
       this.getDetailProduct(this.id);
     });
   }
+  // lấy chi tiết sản phẩm
   getDetailProduct(id) {
     this.productService.getDetailProduct(id).subscribe(res => {
       this.res = res;
@@ -36,6 +37,7 @@ export class ProductComponent implements OnInit {
       }
     });
   }
+  // mua lẻ
   Cart(product: Product) {
     this.productService.Cart(product).subscribe(res1 => {
       this.res1 = res1;
@@ -47,4 +49,6 @@ export class ProductComponent implements OnInit {
       }
     });
   }
+
+  // mua sỉ
 }
