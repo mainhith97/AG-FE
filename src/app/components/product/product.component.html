@@ -24,7 +24,7 @@
             <p><button (click)="Cart(data)" class="btn btn-black py-3 px-5">Mua lẻ</button></p>
           </div>
           <div class="">
-            <p><button href="" class="btn btn-black py-3 px-5" routerLink="/order/{{ data.id }}">Mua sỉ</button></p>
+            <p><button href="" class="btn btn-black py-3 px-5" routerLink="/order/{{ data?.id }}">Mua sỉ</button></p>
           </div>
         </div>
       </div>
@@ -61,6 +61,9 @@
         />
       </div>
     </form>
+    <div *ngFor= "let cmt of data2">
+      <p>{{cmt.comment}}</p>
+    </div>
   </div>
 </section>
 

@@ -6,6 +6,7 @@
               <th>STT</th>
               <th>Tên người mua</th>
               <th>Tên sản phẩm</th>
+              <th>Nhà cung cấp</th>
               <th>Tổng tiền</th>
               <th>Trạng thái</th>
               <th>Action</th>
@@ -15,7 +16,8 @@
           <tr *ngFor="let sale of data ; let i = index">
               <td>{{ i + 1 }}</td>
               <td>{{ sale.name }}</td>
-              <td style="white-space: pre-line;">{{ sale.products }}</td>
+              <td><div *ngFor="let prod of sale.products">{{ prod.quantity }} {{prod.name}}</div></td>
+              <td><div *ngFor="let prod of sale.products">{{ prod.provider }}</div></td>
               <td>{{ sale.totals }}đ</td>
               <td>{{ sale.status }}</td>
               <td *ngIf="sale.status === 'Đang chờ'"><a

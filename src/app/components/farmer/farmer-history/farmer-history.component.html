@@ -13,14 +13,19 @@
       <tbody>
           <tr *ngFor="let sale of data ; let i = index">
               <td>{{ i + 1 }}</td>
-              <td>{{ sale.name }}</td>
-              <td style="white-space: pre-line;">{{ sale.products }}</td>
-              <td>{{ sale.totals }}đ</td>
+              <td>{{ sale.buyer }}</td>
+              <td>{{sale.quantity}} {{ sale.product_name }} </td>
+              <td>{{ sale.total }}đ</td>
               <td>{{ sale.status }}</td>
           </tr>
       </tbody>
   </table>
 </div>
-</div>
 
+<div class="total-cost">
+  <h6>
+    Tổng thu <span>{{ sumTotal }}đ</span>
+  </h6>
+</div>
+</div>
 

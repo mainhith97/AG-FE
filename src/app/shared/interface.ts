@@ -57,3 +57,13 @@ export interface Request {
   price: number;
   date: any;
 }
+export interface Profile {
+  username: string;
+  name: string;
+  // tslint:disable-next-line: variable-name
+  company_name: string;
+  email: string;
+  address: string;
+  telephone: number;
+  description: string;
+}

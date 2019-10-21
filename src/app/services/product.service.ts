@@ -141,7 +141,7 @@ export class ProductService {
       );
   }
   // dat hang
-  addToHistory(id, username, totals, product): Observable<boolean> {
+  addToHistory(id, username, totals, product, address): Observable<boolean> {
     // tslint:disable-next-line: object-literal-key-quotes
     const data = {'user_id': id,
                   // tslint:disable-next-line: object-literal-key-quotes
@@ -149,7 +149,9 @@ export class ProductService {
                   // tslint:disable-next-line: object-literal-key-quotes
                   'totals': totals,
                   // tslint:disable-next-line: object-literal-key-quotes
-                  'products': product};
+                  'products': product,
+                  // tslint:disable-next-line: object-literal-key-quotes
+                  'address' : address};
     return this.http.post<boolean>(`${this.apiUrl}/history/`, data)
     .pipe(
         map(response => {
@@ -193,6 +195,16 @@ export class ProductService {
   // get list order by distributor
   getOrder(id: number): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/order/${id}/retrieve_by_distributor/`)
+    .pipe(
+        map(response => {
+            return response;
+        }),
+        catchError(this.handleError)
+    );
+  }
+  // get list comment by product
+  getComment(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/comment/${id}/`)
     .pipe(
         map(response => {
             return response;

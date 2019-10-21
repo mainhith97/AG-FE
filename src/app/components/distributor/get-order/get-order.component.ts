@@ -11,6 +11,7 @@ export class GetOrderComponent implements OnInit {
   res: any;
   data: any;
   id: number;
+  check: boolean;
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
@@ -18,9 +19,13 @@ export class GetOrderComponent implements OnInit {
   }
   getOrder(id) {
     id = localStorage.getItem('id');
+    this.check = false;
     this.productService.getOrder(id).subscribe(res => {
       this.res = res;
       if (this.res.success) {
+        if (this.res.result.length !== 0) {
+          this.check = true;
+        }
         this.data = this.res.result;
       }
     });

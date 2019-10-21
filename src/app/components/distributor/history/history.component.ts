@@ -11,6 +11,7 @@ export class HistoryComponent implements OnInit {
   res: any;
   data: any;
   id: any;
+  check: boolean;
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
@@ -20,9 +21,13 @@ export class HistoryComponent implements OnInit {
   // lấy lịch sử theo user
   getHistory(id) {
     id = localStorage.getItem('id');
+    this.check = false;
     this.productService.getHistory(id).subscribe(res => {
       this.res = res;
       if (this.res.success) {
+        if (this.res.result.length !== 0) {
+          this.check = true;
+        }
         this.data = this.res.result;
       }
     });

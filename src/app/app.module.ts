@@ -89,6 +89,8 @@ import { FarmerListhistoryComponent } from './pages/farmer/farmer-listhistory/fa
 import { AdminOrderComponent } from './components/admin/admin-order/admin-order.component';
 import { FarmerProductComponent } from './components/farmer/farmer-product/farmer-product.component';
 import { FarmerHistoryComponent } from './components/farmer/farmer-history/farmer-history.component';
+import { ProfileComponent } from './components/distributor/profile/profile.component';
+import { ProfilePageComponent } from './pages/distributor/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -159,7 +161,9 @@ import { FarmerHistoryComponent } from './components/farmer/farmer-history/farme
     FarmerListhistoryComponent,
     AdminOrderComponent,
     FarmerProductComponent,
-    FarmerHistoryComponent
+    FarmerHistoryComponent,
+    ProfileComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

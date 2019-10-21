@@ -13,11 +13,11 @@ export class AdminOrderComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.getListProduct();
+    this.getOrder();
   }
-  getListProduct() {
+  getOrder() {
 
-    this.dataService.getListProduct().subscribe(res => {
+    this.dataService.getOrder().subscribe(res => {
       this.res = res;
       if (this.res.success) {
                 this.data = this.res.result;

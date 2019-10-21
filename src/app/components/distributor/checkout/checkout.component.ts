@@ -17,8 +17,8 @@ export class CheckoutComponent implements OnInit {
   totals: any;
   res3: any;
   username: any;
-
-  checkForm: FormGroup;
+  unit: any;
+  profileForm: FormGroup;
   constructor(private dataService: DataService,
               private productService: ProductService,
               private formBuilder: FormBuilder,
@@ -31,8 +31,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   buildForm() {
-    this.checkForm = this.formBuilder.group({
-      checkbox: ['', Validators.required]
+    this.profileForm = this.formBuilder.group({
+      name: [''],
+      address: [''],
+      telephone: ['']
     });
   }
 
@@ -44,9 +46,13 @@ export class CheckoutComponent implements OnInit {
       if (this.res.success) {
         this.data = this.res.result;
         this.username = this.data.name;
+        this.profileForm.controls.name.setValue(this.data.name);
+        this.profileForm.controls.address.setValue(this.data.address);
+        this.profileForm.controls.telephone.setValue(this.data.telephone);
       }
     });
   }
+  // danh sách giỏ hàng
   getListCart() {
 
     this.productService.getListCart().subscribe(res2 => {
@@ -57,15 +63,19 @@ export class CheckoutComponent implements OnInit {
       }
     });
   }
-  addToHistory(id, username, totals, product) {
+
+  // thêm vào lịch sử mua hàng
+  submit(id, username, totals, product, address) {
     id = localStorage.getItem('id');
     username = this.username;
     totals = this.totals;
+    // tslint:disable-next-line: no-string-literal
+    address = this.profileForm.controls['address'].value;
     product = '';
     for (const i of this.data2) {
-      product += i.quantity + ' ' + i.product_value.name + '\n';
+      product += i.quantity + ' ' + i.product_value.unit + ' ' + i.product_value.name + '\n';
     }
-    this.productService.addToHistory(id, username, totals, product).subscribe(res3 => {
+    this.productService.addToHistory(id, username, totals, product, address).subscribe(res3 => {
       this.res3 = res3;
       if (this.res3.success) {
         this.router.navigate(['history']);

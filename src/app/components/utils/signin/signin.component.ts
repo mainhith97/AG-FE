@@ -36,6 +36,7 @@ export class SigninComponent implements OnInit {
 
         localStorage.setItem('userToken', this.res.result);
         localStorage.setItem('id', this.res.id);
+        localStorage.setItem('username', this.res.username);
         // tslint:disable-next-line: radix
         localStorage.setItem('giohang', this.res.cart);
         this.router.navigate(['home']);

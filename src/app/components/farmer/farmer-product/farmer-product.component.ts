@@ -10,14 +10,15 @@ export class FarmerProductComponent implements OnInit {
 
   res: any;
   data: any;
+  id: number;
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.getListProduct();
+    this.getListProductbyFarmer(this.id);
   }
-  getListProduct() {
-
-    this.dataService.getListProduct().subscribe(res => {
+  getListProductbyFarmer(id) {
+    id = localStorage.getItem('id');
+    this.dataService.getListProductbyFarmer(id).subscribe(res => {
       this.res = res;
       if (this.res.success) {
                 this.data = this.res.result;

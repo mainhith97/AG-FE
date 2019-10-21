@@ -90,6 +90,7 @@ export class GuestHeaderComponent implements OnInit {
     localStorage.removeItem('userToken');
     localStorage.removeItem('id');
     localStorage.removeItem('giohang');
+    localStorage.removeItem('username');
     this.router.navigate(['home']);
   }
 

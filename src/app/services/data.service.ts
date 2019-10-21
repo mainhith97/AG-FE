@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ILogin, IRegister, User } from '../shared/interface';
+import { ILogin, IRegister, User, Profile } from '../shared/interface';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { environment as config } from '../../environments/environment';
+import { ProductService } from './product.service';
+import { AriaDescriber } from '@angular/cdk/a11y';
 
 const adminToken = localStorage.getItem('adminToken');
 console.log(adminToken);
@@ -71,7 +73,16 @@ export class DataService {
         catchError(this.handleError)
       );
   }
-
+  // edit Profile
+  updateProfile(value: Profile): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${this.userPrefix}/${localStorage.getItem('id')}/`, value)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
   // admin lấy danh sách user
   getListUser(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/user/`)
@@ -161,13 +172,37 @@ export class DataService {
       );
   }
   // admin lấy danh sách order
-
+  getOrder(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/order/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
 
   // farmer lấy danh sách sp
-
+  getListProductbyFarmer(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/product/${id}/list_by_farmer/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
 
   // farmer lấy lịch sử đặt hàng
-
+  getListHistorybyFarmer(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/history/${id}/list_by_farmer/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
   handleError(error: HttpErrorResponse) {
     return throwError(error.error);
   }

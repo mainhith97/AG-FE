@@ -15,6 +15,8 @@ export class ProductComponent implements OnInit {
   user: any;
   res1: any;
   data1: any;
+  res2: any;
+  data2: any;
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute
@@ -24,13 +26,13 @@ export class ProductComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = params.id;
       this.getDetailProduct(this.id);
+      this.getComment(this.id);
     });
   }
   // lấy chi tiết sản phẩm
   getDetailProduct(id) {
     this.productService.getDetailProduct(id).subscribe(res => {
       this.res = res;
-      console.log('done');
       if (this.res.success) {
         this.data = this.res.result;
         this.user = this.res.user;
@@ -50,5 +52,14 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  // mua sỉ
+  // list comment
+  getComment(id) {
+    this.productService.getComment(id).subscribe(res2 => {
+      this.res2 = res2;
+      if (this.res2.success) {
+        this.data2 = this.res2.result;
+        console.log(this.data2);
+      }
+    });
+  }
 }

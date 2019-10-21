@@ -1,12 +1,17 @@
 <div class="content container mt-5">
-  <div>
+    <div *ngIf="!check">
+        <h4 style="text-align: center" class="title">
+          <strong>BẠN CHƯA ĐẶT ĐƠN HÀNG NÀO THEO YÊU CẦU!</strong>
+        </h4>
+      </div>
+  <div *ngIf="check">
     <div class="cart-table">
       <table class="table table-bordered table-hover">
         <thead class="thead">
           <tr>
             <th>STT</th>
             <th style="width: 30%">Tên sản phẩm</th>
-            <!-- <th>Nhà cung cấp</th> -->
+            <th>Nhà cung cấp</th>
             <th>Số lượng</th>
             <th>Giá mong muốn</th>
             <th>Ngày nhận hàng</th>
@@ -17,7 +22,7 @@
           <tr *ngFor="let prod of data; let i=index">
             <td>{{i+1}}</td>
             <td style="white-space: pre-line">{{prod.product_order.name}}</td>
-            <!-- <td>{{prod.totals}}</td> -->
+            <td>{{prod.provider}}</td>
             <td>{{prod.quantity}}</td>
             <td>{{prod.proposed_price}}đ</td>
             <td>{{prod.datetime}}</td>

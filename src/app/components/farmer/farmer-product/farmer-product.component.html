@@ -16,13 +16,13 @@
       <tbody>
           <tr *ngFor="let prod of data ; let i = index">
               <td>{{ i + 1 }}</td>
-              <td>{{ prod.user_order.name }}</td>
-              <td >{{ prod.product_order.name }}</td>
-              <td>{{ prod.quantity }}</td>
-              <td>{{ prod.proposed_price }}đ</td>
-              <td>{{ prod.datetime }}</td>
-              <td>{{ prod.status }}</td>
-              <td>{{ prod.status }}</td>
+              <td>{{ prod.name }}</td>
+              <td >{{ prod.typetype.product_type }}</td>
+              <td>{{ prod.unit }}</td>
+              <td>{{ prod.price_per_unit }}đ</td>
+              <td>{{ prod.in_stock }}</td>
+              <td>{{ prod.verify }}</td>
+              <td>{{ prod.description }}</td>
           </tr>
       </tbody>
   </table>

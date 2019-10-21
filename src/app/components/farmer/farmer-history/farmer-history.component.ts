@@ -10,17 +10,21 @@ export class FarmerHistoryComponent implements OnInit {
 
   res: any;
   data: any;
+  sumTotal: any;
+  id: number;
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.getHistory();
+    this.getHistorybyFarmer(this.id);
   }
   // lấy tất cả lịch sử mua hàng
-  getHistory() {
-    this.dataService.getHistory().subscribe(res => {
+  getHistorybyFarmer(id) {
+    id = localStorage.getItem('id');
+    this.dataService.getListHistorybyFarmer(id).subscribe(res => {
       this.res = res;
       if (this.res.success) {
                 this.data = this.res.result;
+                this.sumTotal = this.res.sum_total;
       }
     });
   }

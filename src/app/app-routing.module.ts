@@ -33,6 +33,7 @@ import { ListOrderComponent } from './pages/farmer/list-order/list-order.compone
 import { AdminListorderComponent } from './pages/admin/admin-listorder/admin-listorder.component';
 import { FarmerListproductComponent } from './pages/farmer/farmer-listproduct/farmer-listproduct.component';
 import { FarmerListhistoryComponent } from './pages/farmer/farmer-listhistory/farmer-listhistory.component';
+import { ProfilePageComponent } from './pages/distributor/profile-page/profile-page.component';
 
 const routes: Routes = [
 
@@ -54,7 +55,7 @@ const routes: Routes = [
       { path: 'history', component: HistoryPageComponent },
       { path: 'order/:id', component: RequestPageComponent },
       { path: 'list-order', component: OrderPageComponent },
-
+      { path: 'profile', component: ProfilePageComponent }
     ]
   },
   {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/shared/interface';
+import { ConfirmationDialogService } from 'src/app/confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'app-my-cart',
@@ -14,7 +15,9 @@ export class MyCartComponent implements OnInit {
   totals: any;
   cart: any;
   check: boolean;
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService,
+              private router: Router,
+              private confirmationDialogService: ConfirmationDialogService) { }
 
   ngOnInit() {
     this.getListCart();
@@ -74,7 +77,8 @@ export class MyCartComponent implements OnInit {
 
   // xoá sp trong giỏ hàng
   remove(id: any, quantity: any) {
-    if (confirm('Bạn muốn xoá sản phẩm này?')) {
+    this.confirmationDialogService.confirm('Vui lòng xác nhận', 'Bạn muốn xoá sản phẩm này ?')
+    .then(() =>
       this.productService.remove(id, quantity).subscribe(res => {
         this.res = res;
         if (this.res.success) {
@@ -83,7 +87,7 @@ export class MyCartComponent implements OnInit {
           const newCart = (parseInt(localStorage.getItem('giohang')) - quantity).toString();
           localStorage.setItem('giohang', newCart);
         }
-      });
+      }));
     }
   }
-}
+

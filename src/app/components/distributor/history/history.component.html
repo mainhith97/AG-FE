@@ -1,5 +1,10 @@
 <div class="content container mt-5">
-  <div>
+    <div *ngIf="!check">
+        <h4 style="text-align: center" class="title">
+          <strong>BẠN CHƯA MUA SẢN PHẨM NÀO!</strong>
+        </h4>
+    </div>
+  <div *ngIf="check">
     <div class="cart-table">
       <table class="table table-bordered table-hover">
         <thead class="thead">
@@ -7,6 +12,7 @@
             <th>STT</th>
             <th style="width: 30%">Tên sản phẩm</th>
             <th>Tổng tiền</th>
+            <th>Địa chỉ giao hàng</th>
             <th>Trạng thái</th>
           </tr>
         </thead>
@@ -15,6 +21,7 @@
             <td>{{i+1}}</td>
             <td style="white-space: pre-line">{{prod.products}}</td>
             <td>{{prod.totals}}đ</td>
+            <td>{{prod.address}}</td>
             <td>{{prod.status}}</td>
           </tr>
         </tbody>
