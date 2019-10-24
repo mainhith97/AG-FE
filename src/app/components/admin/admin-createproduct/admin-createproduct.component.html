@@ -1,0 +1,160 @@
+<div
+  class="modal fade modal-common"
+  id="CreateProductModal"
+  tabindex="-1"
+  role="dialog"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Product</h5>
+      </div>
+      <div class="modal-body">
+        <form
+          [formGroup]="productForm"
+          (ngSubmit)="submit(productForm)"
+          novalidate
+        >
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Tên</label>
+                <input
+                  type="text"
+                  formControlName="name"
+                  class="form-control border-input"
+                  placeholder=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Loại</label><br>
+                <select class="form-control border-input" formControlName="type">
+                  <option *ngFor="let type of data3" :value="{{type.id}}">{{type.product_type}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Nhà cung cấp</label>
+                <select class="form-control border-input" formControlName="provider_id">
+                  <option *ngFor="let data of data2" :value="{{data.id}}">{{data.company_name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Đơn vị</label>
+                <input
+                  type="text"
+                  formControlName="unit"
+                  class="form-control border-input"
+                  placeholder=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Giá 1 đơn vị</label>
+                <input
+                  type="text"
+                  formControlName="price_per_unit"
+                  class="form-control border-input"
+                  placeholder=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Trong kho</label>
+                <input
+                  type="text"
+                  formControlName="in_stock"
+                  class="form-control border-input"
+                  placeholder=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Kiểm định</label>
+                <input
+                  type="text"
+                  formControlName="verify"
+                  class="form-control border-input"
+                  placeholder=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Mô tả</label>
+                <input
+                  type="text"
+                  formControlName="description"
+                  class="form-control border-input"
+                  placeholder=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Chi tiết</label>
+                <input
+                  type="text"
+                  formControlName="detail"
+                  class="form-control border-input"
+                  placeholder=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Hình ảnh</label>
+                <input
+                  id="image"
+                  type="file"
+                  formControlName="image"
+                  accept="images/*"
+                  class="form-control border-input"
+                  (change)="fileChange($event)"
+                />
+
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal">
+              Close
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary btn-fill btn-wd"
+            >
+              CREATE
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,19 +12,30 @@
                 <th>Trong kho</th>
                 <th>Kiểm định</th>
                 <th>Mô tả</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of data ; let i = index">
                 <td>{{ i + 1 }}</td>
                 <td>{{ data.name }}</td>
-                <td>{{ data.provider.company_name }}</td>
-                <td>{{ data.typetype.product_type }}</td>
+                <td>{{ data.provider?.company_name }}</td>
+                <td>{{ data.typetype?.product_type }}</td>
                 <td>{{ data.unit }}</td>
                 <td>{{ data.price_per_unit }}đ</td>
                 <td>{{ data.in_stock }}</td>
                 <td>{{ data.verify }}</td>
                 <td>{{ data.description }}</td>
+                <td><a
+                  routerLink='/edit-product/{{data.id}}'
+                  class="btn-action text-primary" style="cursor: pointer;"
+                  ><span class="fa fa-edit" ></span>
+                </a>  |
+                <a
+                (click)="remove(data.id)"
+                  class="btn-action text-danger" style="cursor: pointer;"
+                  ><span class="fa fa-trash" ></span>
+                </a></td>
             </tr>
         </tbody>
     </table>

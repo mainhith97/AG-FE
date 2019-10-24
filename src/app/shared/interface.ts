@@ -31,15 +31,15 @@ export interface ISearch {
 export interface Product {
     id: number;
     name: string;
-    provider_id: number;
+    provider_id: any;
     unit: string;
     price_per_unit: number;
     in_stock: number;
-    type: number;
+    type: any;
     description: string;
     verify: string;
     detail: string;
-    image: string;
+    image: any;
     quantity: number;
     total: number;
     product_value: any;

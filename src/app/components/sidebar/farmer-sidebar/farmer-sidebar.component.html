@@ -19,30 +19,24 @@
   <!-- Divider -->
   <hr class="sidebar-divider my-0" />
 
-  <!-- Nav Item - Dashboard -->
   <li class="nav-item active">
     <a class="nav-link" href="" [routerLink]="['/myaccount']"> <span>Dashboard</span></a>
   </li>
 
-  <!-- Nav Item - Charts -->
   <li class="nav-item">
     <a class="nav-link" href="" [routerLink]="['/get-listproduct']"><span>Product</span></a>
   </li>
 
-  <!-- Nav Item - Tables -->
   <li class="nav-item">
     <a class="nav-link" href="" [routerLink]="['/get-listorder']"> <span>Request</span>
       <span *ngIf="count !== '0'" class="count">{{count}}</span></a>
   </li>
-
-  <!-- Nav Item - Charts -->
   <li class="nav-item">
     <a class="nav-link" href="" [routerLink]="['/get-listhistory']" > <span>Sales</span></a>
   </li>
 
-  <!-- Nav Item - Tables -->
   <li class="nav-item">
-    <a class="nav-link" href=""> <span>Contact</span></a>
+    <a class="nav-link" href="" [routerLink]="['/get-listcomment']"> <span>Comment</span></a>
   </li>
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block" />

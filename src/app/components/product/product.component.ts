@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/shared/interface';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-product',
@@ -17,7 +18,11 @@ export class ProductComponent implements OnInit {
   data1: any;
   res2: any;
   data2: any;
+  res3: any;
+  data3: any;
+  commentForm: FormGroup;
   constructor(
+    private formBuilder: FormBuilder,
     private productService: ProductService,
     private route: ActivatedRoute
   ) { }
@@ -27,6 +32,12 @@ export class ProductComponent implements OnInit {
       this.id = params.id;
       this.getDetailProduct(this.id);
       this.getComment(this.id);
+    });
+    this.buildForm();
+  }
+  buildForm() {
+    this.commentForm = this.formBuilder.group({
+      comment: [''],
     });
   }
   // lấy chi tiết sản phẩm
@@ -58,7 +69,18 @@ export class ProductComponent implements OnInit {
       this.res2 = res2;
       if (this.res2.success) {
         this.data2 = this.res2.result;
-        console.log(this.data2);
+      }
+    });
+  }
+  // post comment
+  submit(user, product, comment) {
+    user = localStorage.getItem('id');
+    product = this.data.id;
+    comment = this.commentForm.get('comment').value;
+    this.productService.postComment(user, product, comment).subscribe(res3 => {
+      this.res3 = res3;
+      if (this.res3.success) {
+        this.getComment(this.id);
       }
     });
   }

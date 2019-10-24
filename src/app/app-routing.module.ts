@@ -34,6 +34,9 @@ import { AdminListorderComponent } from './pages/admin/admin-listorder/admin-lis
 import { FarmerListproductComponent } from './pages/farmer/farmer-listproduct/farmer-listproduct.component';
 import { FarmerListhistoryComponent } from './pages/farmer/farmer-listhistory/farmer-listhistory.component';
 import { ProfilePageComponent } from './pages/distributor/profile-page/profile-page.component';
+import { AdminListcommentComponent } from './pages/admin/admin-listcomment/admin-listcomment.component';
+import { FarmerListcommentComponent } from './pages/farmer/farmer-listcomment/farmer-listcomment.component';
+import { AdminEditProductComponent } from './pages/admin/admin-edit-product/admin-edit-product.component';
 
 const routes: Routes = [
 
@@ -68,7 +71,9 @@ const routes: Routes = [
       { path: 'get-list-user', component: ListUserComponent },
       { path: 'get-list-product', component: ListProductComponent },
       { path: 'get-history', component: ListHistoryComponent },
-      { path: 'get-list-order', component: AdminListorderComponent }
+      { path: 'get-list-order', component: AdminListorderComponent },
+      { path: 'get-list-comment', component: AdminListcommentComponent },
+      { path: 'edit-product/:id', component: AdminEditProductComponent }
 
     ]
   },
@@ -81,7 +86,8 @@ const routes: Routes = [
       { path: 'myaccount', component: FarmerLayoutComponent },
       { path: 'get-listorder', component: ListOrderComponent },
       { path: 'get-listproduct', component: FarmerListproductComponent },
-      { path: 'get-listhistory', component: FarmerListhistoryComponent }
+      { path: 'get-listhistory', component: FarmerListhistoryComponent },
+      { path: 'get-listcomment', component: FarmerListcommentComponent }
 
     ]
   },

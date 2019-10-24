@@ -1,14 +1,24 @@
 <div id="wrapper">
-    <app-admin-sidebar></app-admin-sidebar>
-    <div id="content-wrapper" class="d-flex flex-column">
-      <div id="content">
-        <app-admin-header></app-admin-header>
-        <div class="container-fluid">
-            <div class="header">
-                <h4 class="title">Danh sách nông sản</h4>
-            </div>
-            <app-get-listproduct></app-get-listproduct>
+  <app-admin-sidebar></app-admin-sidebar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <app-admin-header></app-admin-header>
+      <div class="container-fluid">
+        <div class="header row justify-content-between mb-3">
+          <h4 class="title">Danh sách nông sản</h4>
+          <button
+            data-backdrop="static"
+            data-toggle="modal"
+            data-target="#CreateProductModal"
+            class="btn btn-primary"
+            style="margin-right: 14px;"
+          >
+            Create Product
+          </button>
         </div>
+        <app-get-listproduct></app-get-listproduct>
       </div>
     </div>
   </div>
+</div>
+<app-admin-createproduct></app-admin-createproduct>

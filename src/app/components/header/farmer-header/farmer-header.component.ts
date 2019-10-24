@@ -5,7 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-farmer-header',
   templateUrl: './farmer-header.component.html',
-  styleUrls: ['./farmer-header.component.scss']
+  styleUrls: ['./farmer-header.component.scss', '../../utils/admin.min.css']
 })
 export class FarmerHeaderComponent implements OnInit {
 

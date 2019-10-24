@@ -91,6 +91,14 @@ import { FarmerProductComponent } from './components/farmer/farmer-product/farme
 import { FarmerHistoryComponent } from './components/farmer/farmer-history/farmer-history.component';
 import { ProfileComponent } from './components/distributor/profile/profile.component';
 import { ProfilePageComponent } from './pages/distributor/profile-page/profile-page.component';
+import { AdminListcommentComponent } from './pages/admin/admin-listcomment/admin-listcomment.component';
+import { AdminCommentComponent } from './components/admin/admin-comment/admin-comment.component';
+import { FarmerListcommentComponent } from './pages/farmer/farmer-listcomment/farmer-listcomment.component';
+import { FarmerCommentComponent } from './components/farmer/farmer-comment/farmer-comment.component';
+import { AdminCreateproductComponent } from './components/admin/admin-createproduct/admin-createproduct.component';
+import { AdminEditproductComponent } from './components/admin/admin-editproduct/admin-editproduct.component';
+import { AdminEditProductComponent } from './pages/admin/admin-edit-product/admin-edit-product.component';
+
 
 @NgModule({
   declarations: [
@@ -163,7 +171,14 @@ import { ProfilePageComponent } from './pages/distributor/profile-page/profile-p
     FarmerProductComponent,
     FarmerHistoryComponent,
     ProfileComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    AdminListcommentComponent,
+    AdminCommentComponent,
+    FarmerListcommentComponent,
+    FarmerCommentComponent,
+    AdminCreateproductComponent,
+    AdminEditproductComponent,
+    AdminEditProductComponent
   ],
   imports: [
     BrowserModule,

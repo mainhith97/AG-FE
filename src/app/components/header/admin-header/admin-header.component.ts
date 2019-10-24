@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-header',
   templateUrl: './admin-header.component.html',
-  styleUrls: ['./admin-header.component.scss']
+  styleUrls: ['./admin-header.component.scss', '../../utils/admin.min.css']
 })
 export class AdminHeaderComponent implements OnInit {
 

@@ -1,9 +1,51 @@
 <section class="ftco-section">
   <div class="container">
     <div class="row justify-content-center">
-      <form [formGroup]="profileForm" (ngSubmit)="submit(profileForm)">
-        <div class="col-xl-7 ftco-animate">
-          <h3 class="mb-4 billing-heading">Địa chỉ giao hàng</h3>
+      <div class="col-xl-7 ftco-animate">
+        <h3 class="mb-4 billing-heading">Hình thức thanh toán</h3>
+        <div class="form-group">
+          <div class="col-md-12">
+            <div class="radio">
+              <label
+                ><input type="radio" name="optradio" class="mr-2" checked />
+                Thanh toán trực tiếp khi nhận hàng</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <div class="radio">
+              <label
+                ><input type="radio" name="optradio" class="mr-2" /> Thanh toán
+                bằng thẻ quốc tế Visa, Master, JCB</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <div class="radio">
+              <label
+                ><input type="radio" name="optradio" class="mr-2" /> Thanh toán
+                bằng thẻ ATM nội địa/Internet Banking (Miễn phí thanh
+                toán)</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <div class="radio">
+              <label
+                ><input type="radio" name="optradio" class="mr-2" /> Thanh toán
+                bằng ví MoMo</label
+              >
+            </div>
+          </div>
+        </div>
+        <form [formGroup]="profileForm" (ngSubmit)="submit(profileForm)">
+          <h3 class="mb-4 pt-5 billing-heading">Địa chỉ giao hàng</h3>
           <div class="form-group">
             <label class="pt-3">Tên</label><br />
             <input
@@ -35,62 +77,20 @@
             />
           </div>
 
-          <h3 class="mb-4 pt-5 billing-heading">Hình thức thanh toán</h3>
           <div class="form-group">
-            <div class="col-md-12">
-              <div class="radio">
-                <label
-                  ><input type="radio" name="optradio" class="mr-2" checked />
-                  Thanh toán trực tiếp khi nhận hàng</label
-                >
-              </div>
-            </div>
+            <input
+              type="submit"
+              name="submit"
+              id="submit"
+              class="form-submit"
+              value="Đặt hàng"
+            />
           </div>
-          <div class="form-group">
-            <div class="col-md-12">
-              <div class="radio">
-                <label
-                  ><input type="radio" name="optradio" class="mr-2" /> Thanh
-                  toán bằng thẻ quốc tế Visa, Master, JCB</label
-                >
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-12">
-              <div class="radio">
-                <label
-                  ><input type="radio" name="optradio" class="mr-2" /> Thanh
-                  toán bằng thẻ ATM nội địa/Internet Banking (Miễn phí thanh
-                  toán)</label
-                >
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-md-12">
-              <div class="radio">
-                <label
-                  ><input type="radio" name="optradio" class="mr-2" /> Thanh
-                  toán bằng ví MoMo</label
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <input
-            type="submit"
-            name="submit"
-            id="submit"
-            class="form-submit"
-            value="Đặt hàng"
-          />
-        </div>
-      </form>
+        </form>
+      </div>
       <div class="col-xl-5">
-        <div class="row mt-5 pt-3">
-          <div class="col-md-12 d-flex mb-5">
+        <div class="row pt-3">
+          <div class="col-md-12 d-flex mb-3">
             <div class="cart-detail cart-total p-3 p-md-4">
               <h3 class="billing-heading mb-4">Đơn hàng</h3>
               <p class="d-flex">
@@ -109,6 +109,7 @@
             </div>
           </div>
         </div>
+        <p><i>Đơn hàng của bạn sẽ được giao trong vòng từ 5 - 7 ngày</i></p>
       </div>
     </div>
   </div>

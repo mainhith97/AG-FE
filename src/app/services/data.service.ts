@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ILogin, IRegister, User, Profile } from '../shared/interface';
+import { ILogin, IRegister, User, Profile, Product } from '../shared/interface';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { environment as config } from '../../environments/environment';
-import { ProductService } from './product.service';
-import { AriaDescriber } from '@angular/cdk/a11y';
 
 const adminToken = localStorage.getItem('adminToken');
 console.log(adminToken);
@@ -196,6 +194,86 @@ export class DataService {
   // farmer lấy lịch sử đặt hàng
   getListHistorybyFarmer(id: number): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/history/${id}/list_by_farmer/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // admin lấy danh sách comment
+  getComment(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/comment/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // admin xoa cmt
+  remove(id): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.apiUrl}/comment/${id}/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // farmer lấy danh sách comment
+  getListComment(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/comment/${id}/retrieve_by_farmer/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // list farmer
+  getListFarmer(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/user/list_farmer/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // admin create product
+    createProduct(product: Product): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/product/`, product)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // admin create product
+  editProduct(product: Product): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/edit-product/`, product)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // xoa gio hang
+  removeProduct(id): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.apiUrl}/product/${id}/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // upload image
+  uploadImage(dataForm, name): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/product/upload-image?name=${name}`, dataForm)
       .pipe(
         map(response => {
           return response;

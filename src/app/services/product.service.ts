@@ -204,7 +204,24 @@ export class ProductService {
   }
   // get list comment by product
   getComment(id: number): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/comment/${id}/`)
+    return this.http.get<boolean>(`${this.apiUrl}/comment/${id}/retrieve_by_product/`)
+    .pipe(
+        map(response => {
+            return response;
+        }),
+        catchError(this.handleError)
+    );
+  }
+  // post comment
+  postComment(user, product, comment): Observable<boolean> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const data = {'user_id' : user,
+                  // tslint:disable-next-line: object-literal-key-quotes
+                  'product_id': product,
+                  // tslint:disable-next-line: object-literal-key-quotes
+                  'comment' : comment
+    };
+    return this.http.post<boolean>(`${this.apiUrl}/comment/`, data)
     .pipe(
         map(response => {
             return response;
