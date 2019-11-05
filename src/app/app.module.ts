@@ -46,16 +46,16 @@ import { AboutComponent } from './components/utils/about/about.component';
 import { AboutLayoutComponent } from './pages/utils/about-layout/about-layout.component';
 import { ContactLayoutComponent } from './pages/utils/contact-layout/contact-layout.component';
 import { ContactComponent } from './components/utils/contact/contact.component';
-import { TokenInterceptor } from './services/token-interceptor';
+
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { ProductComponent } from './components/product/product.component';
-import { BlobHttpInterceptor } from './services/blob-interceptor';
+
 
 import { SafeHtmlPipe } from './shared/safe-html.pipe';
 
 import { SearchComponent } from './components/utils/search/search.component';
 import { SearchLayoutComponent } from './pages/utils/search-layout/search-layout.component';
-import { AdmintokenInterceptor } from './services/admintoken-interceptor.service';
+
 import { ListUserComponent } from './pages/admin/list-user/list-user.component';
 import { GetListuserComponent } from './components/admin/get-listuser/get-listuser.component';
 import { ListProductComponent } from './pages/admin/list-product/list-product.component';
@@ -98,6 +98,23 @@ import { FarmerCommentComponent } from './components/farmer/farmer-comment/farme
 import { AdminCreateproductComponent } from './components/admin/admin-createproduct/admin-createproduct.component';
 import { AdminEditproductComponent } from './components/admin/admin-editproduct/admin-editproduct.component';
 import { AdminEditProductComponent } from './pages/admin/admin-edit-product/admin-edit-product.component';
+import { AdminCreateProductComponent } from './pages/admin/admin-create-product/admin-create-product.component';
+import { FarmerCreateproductComponent } from './components/farmer/farmer-createproduct/farmer-createproduct.component';
+import { FarmerEditproductComponent } from './components/farmer/farmer-editproduct/farmer-editproduct.component';
+import { FarmerCreateProductComponent } from './pages/farmer/farmer-create-product/farmer-create-product.component';
+import { FarmerEditProductComponent } from './pages/farmer/farmer-edit-product/farmer-edit-product.component';
+import { AdminSearchPageComponent } from './pages/admin/admin-search-page/admin-search-page.component';
+import { AdminSearchComponent } from './components/admin/admin-search/admin-search.component';
+import { EnterEmailComponent } from './components/utils/enter-email/enter-email.component';
+import { NewPasswordComponent } from './components/utils/new-password/new-password.component';
+import { EnterEmailPageComponent } from './pages/utils/enter-email-page/enter-email-page.component';
+import { NewPasswordPageComponent } from './pages/utils/new-password-page/new-password-page.component';
+import { ByTypelastestComponent } from './components/utils/by-typelastest/by-typelastest.component';
+import { ByTypeLastestComponent } from './pages/utils/by-type-lastest/by-type-lastest.component';
+import { ByTypePricelowComponent } from './components/utils/by-type-pricelow/by-type-pricelow.component';
+import { ByTypePricehighComponent } from './components/utils/by-type-pricehigh/by-type-pricehigh.component';
+import { ByTypePriceLowComponent } from './pages/utils/by-type-price-low/by-type-price-low.component';
+import { ByTypePriceHighComponent } from './pages/utils/by-type-price-high/by-type-price-high.component';
 
 
 @NgModule({
@@ -178,7 +195,24 @@ import { AdminEditProductComponent } from './pages/admin/admin-edit-product/admi
     FarmerCommentComponent,
     AdminCreateproductComponent,
     AdminEditproductComponent,
-    AdminEditProductComponent
+    AdminEditProductComponent,
+    AdminCreateProductComponent,
+    FarmerCreateproductComponent,
+    FarmerEditproductComponent,
+    FarmerCreateProductComponent,
+    FarmerEditProductComponent,
+    AdminSearchPageComponent,
+    AdminSearchComponent,
+    EnterEmailComponent,
+    NewPasswordComponent,
+    EnterEmailPageComponent,
+    NewPasswordPageComponent,
+    ByTypelastestComponent,
+    ByTypeLastestComponent,
+    ByTypePricelowComponent,
+    ByTypePricehighComponent,
+    ByTypePriceLowComponent,
+    ByTypePriceHighComponent
   ],
   imports: [
     BrowserModule,
@@ -195,9 +229,9 @@ import { AdminEditProductComponent } from './pages/admin/admin-edit-product/admi
 
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: AdmintokenInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: BlobHttpInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: AdmintokenInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: BlobHttpInterceptor, multi: true },
       DataService, ProductService, AuthService, AdminService, ConfirmationDialogService],
   entryComponents: [ ConfirmationDialogComponent ],
   bootstrap: [AppComponent]

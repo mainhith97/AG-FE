@@ -3,6 +3,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/shared/interface';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ConfirmationDialogService } from 'src/app/confirmation-dialog/confirmation-dialog.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-product',
@@ -20,11 +22,14 @@ export class ProductComponent implements OnInit {
   data2: any;
   res3: any;
   data3: any;
+  res4: any;
   commentForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private confirmationDialogService: ConfirmationDialogService,
+    private dataService: DataService
   ) { }
 
   ngOnInit() {
@@ -39,6 +44,10 @@ export class ProductComponent implements OnInit {
     this.commentForm = this.formBuilder.group({
       comment: [''],
     });
+  }
+  // check localstorage
+  readLocalStorageValue(key: string) {
+    return localStorage.getItem(key);
   }
   // lấy chi tiết sản phẩm
   getDetailProduct(id) {
@@ -84,4 +93,15 @@ export class ProductComponent implements OnInit {
       }
     });
   }
+  // xoá cmt
+  remove(id: any) {
+    this.confirmationDialogService.confirm('Vui lòng xác nhận', 'Bạn muốn xoá bình luận này ?')
+    .then(() =>
+      this.dataService.remove(id).subscribe(res4 => {
+        this.res4 = res4;
+        if (this.res4.success) {
+          this.getComment(this.id);
+        }
+      }));
+    }
 }

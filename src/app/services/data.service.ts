@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { ILogin, IRegister, User, Profile, Product } from '../shared/interface';
 import { Observable, throwError } from 'rxjs';
@@ -14,8 +15,7 @@ console.log(farmerToken);
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${userToken}`
+    'Content-Type': 'application/json'
   })
 };
 
@@ -241,9 +241,33 @@ export class DataService {
         catchError(this.handleError)
       );
   }
-  // admin create product
-    createProduct(product: Product): Observable<boolean> {
-    return this.http.post<boolean>(`${this.apiUrl}/product/`, product)
+  // create product
+  createProduct(value): Observable<boolean> {
+
+    const formdt = new FormData();
+    formdt.append('image', value.image);
+    formdt.append('name', value.name);
+    formdt.append('type', value.type);
+    formdt.append('provider_id', value.provider_id);
+    formdt.append('in_stock', value.in_stock);
+    formdt.append('unit', value.unit);
+    formdt.append('price_per_unit', value.price_per_unit);
+    formdt.append('verify', value.verify);
+    formdt.append('description', value.description);
+    formdt.append('detail', value.detail);
+
+    return this.http.post<boolean>(`${this.apiUrl}/product/`, formdt
+      );
+      // .pipe(
+      //   map(response => {
+      //     return response;
+      //   }),
+      //   catchError(this.handleError)
+      // );
+  }
+  // edit product
+  editProduct(id, product: Product): Observable<boolean> {
+    return this.http.put<boolean>(`${this.apiUrl}/product/${id}/`, product)
       .pipe(
         map(response => {
           return response;
@@ -251,17 +275,7 @@ export class DataService {
         catchError(this.handleError)
       );
   }
-  // admin create product
-  editProduct(product: Product): Observable<boolean> {
-    return this.http.post<boolean>(`${this.apiUrl}/edit-product/`, product)
-      .pipe(
-        map(response => {
-          return response;
-        }),
-        catchError(this.handleError)
-      );
-  }
-  // xoa gio hang
+  // xoa sp
   removeProduct(id): Observable<boolean> {
     return this.http.delete<boolean>(`${this.apiUrl}/product/${id}/`)
       .pipe(
@@ -271,9 +285,37 @@ export class DataService {
         catchError(this.handleError)
       );
   }
-  // upload image
-  uploadImage(dataForm, name): Observable<boolean> {
-    return this.http.post<boolean>(`${this.apiUrl}/product/upload-image?name=${name}`, dataForm)
+
+  // farmer create product
+  postProduct(value): Observable<boolean> {
+    const formdt = new FormData();
+    formdt.append('image', value.image);
+    formdt.append('name', value.name);
+    formdt.append('type', value.type);
+    formdt.append('provider_id', value.provider_id);
+    formdt.append('in_stock', value.in_stock);
+    formdt.append('unit', value.unit);
+    formdt.append('price_per_unit', value.price_per_unit);
+    formdt.append('verify', value.verify);
+    formdt.append('description', value.description);
+    formdt.append('detail', value.detail);
+
+    return this.http.post<boolean>(`${this.apiUrl}/product/`, formdt
+      );
+  }
+  // thong ke cua admin
+  getStatistic(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/action/get_statistic/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // thong ke cua farmer
+  getStatisticbyFarmer(id): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/action/${id}/get_statistic_by_farmer/`)
       .pipe(
         map(response => {
           return response;

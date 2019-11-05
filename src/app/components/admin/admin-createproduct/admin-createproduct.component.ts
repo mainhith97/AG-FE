@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/shared/interface';
 import { ProductService } from 'src/app/services/product.service';
-import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 
 @Component({
   selector: 'app-admin-createproduct',
@@ -49,9 +48,10 @@ export class AdminCreateproductComponent implements OnInit {
       verify: [''],
       description: [''],
       detail: [''],
-      image: ['']
+      image: []
     });
   }
+
   // get list category
   getListType() {
     this.productService.getListType().subscribe(res3 => {
@@ -71,7 +71,6 @@ export class AdminCreateproductComponent implements OnInit {
     });
   }
   getListProduct() {
-
     this.dataService.getListProduct().subscribe(res5 => {
       this.res5 = res5;
       if (this.res5.success) {
@@ -79,18 +78,20 @@ export class AdminCreateproductComponent implements OnInit {
       }
     });
   }
-  fileChange(imageInput: any) {
-    this.image = imageInput.target.files[0];
-    console.log(this.image);
+
+  fileChange(event) {
+    this.image = event.target.files[0];
   }
-  submit({ value }: { value: Product }) {
+
+
+  submit({value }: {value: Product}) {
     value.image = this.image;
     this.dataService.createProduct(value).subscribe(res => {
       this.res = res;
       if (this.res.success) {
         this.router.navigate(['get-list-product']);
-        // this.getListProduct();
       }
     });
   }
 }
+

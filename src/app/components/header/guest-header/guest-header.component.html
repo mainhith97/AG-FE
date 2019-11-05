@@ -26,7 +26,7 @@
               class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right"
             >
               <a href="#" [routerLink]="['/farmer_register']"
-                >Dành cho nhà cung cấp nông sản</a
+                >For Agricultural Suppliers</a
               >
             </div>
           </div>
@@ -47,7 +47,7 @@
 
         <div class="col-xl-6 col-lg-5">
           <form [formGroup]="searchForm" (ngSubmit) = "submit(searchForm)" class="header-search-form">
-            <input type="text" formControlName="keyword" placeholder="Tìm kiếm" />
+            <input type="text" formControlName="keyword" placeholder="Search for..." />
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
@@ -56,12 +56,12 @@
           <div class="user-panel">
             <div class="up-item">
               <i class="fa fa-user"></i>
-              <a href="#" [routerLink]="['/login']">Đăng nhập</a>
+              <a href="#" [routerLink]="['/login']">Sign in</a>
 
             </div>
             <div class="up-item">
               <i class="fa fa-user-circle"></i>
-              <a href="#" [routerLink]="['/register']">Đăng ký</a>
+              <a href="#" [routerLink]="['/register']">Sign up</a>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@
                 <span>{{readLocalStorageValue('giohang')}}</span>
                 <i class="fa fa-shopping-cart"></i>
               </div>
-              <a href="" [routerLink]="['/my-cart']">Giỏ hàng</a>
+              <a href="" [routerLink]="['/my-cart']">Cart</a>
             </div>
             <div class="up-item">
               <i class="fa fa-user"></i>
@@ -91,9 +91,9 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuUser">
                   <ul class="list-unstyled">
-                    <li><a class="c-orange" [routerLink]="['/profile']">Thông tin cá nhân</a></li>
-                    <li><a class="c-orange" [routerLink]="['/history']">Lịch sử đặt hàng</a></li>
-                    <li><a class="c-orange" [routerLink]="['/list-order']">Các đơn đặt hàng</a></li>
+                    <li><a class="c-orange" [routerLink]="['/profile']">Profile</a></li>
+                    <li><a class="c-orange" [routerLink]="['/history']">Purchase history</a></li>
+                    <li><a class="c-orange" [routerLink]="['/list-order']">Orders</a></li>
                     <li><a class="c-orange" (click) = "logout()">Log out</a></li>
                   </ul>
                 </div>
@@ -109,15 +109,15 @@
     <div class="container">
       <!-- menu -->
       <ul class="main-menu">
-        <li><a href="" [routerLink]="['/home']">Trang chủ</a></li>
-        <li><a href="#" [routerLink]="['/introduce']">Giới thiệu</a>
+        <li><a href="" [routerLink]="['/home']">Home</a></li>
+        <li><a href="#" [routerLink]="['/introduce']">Introduction</a>
         </li>
-        <li><a class="disabled">Sản phẩm</a>
+        <li><a class="disabled">Products</a>
           <ul class="sub-menu">
             <li *ngFor="let data of data3"><a href="" routerLink='/type/{{data.id}}'>{{data.product_type}}</a></li>
           </ul>
         </li>
-        <li><a href="#" [routerLink]="['/contact']">Liên hệ</a></li>
+        <li><a href="#" [routerLink]="['/contact']">Contact</a></li>
       </ul>
     </div>
   </nav>

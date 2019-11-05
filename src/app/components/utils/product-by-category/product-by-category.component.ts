@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Product } from 'src/app/shared/interface';
 
 
@@ -17,7 +17,7 @@ export class ProductByCategoryComponent implements OnInit {
   data1: any;
   id: number;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -27,22 +27,29 @@ export class ProductByCategoryComponent implements OnInit {
   }
   getListProductByType(id: number) {
     this.productService.getListProductByType(id).subscribe(res => {
-        this.res = res;
-        if (this.res.success) {
-            this.data = this.res.result;
-        }
+      this.res = res;
+      if (this.res.success) {
+        this.data = this.res.result;
+      }
     });
-}
-Cart(product: Product) {
-  this.productService.Cart(product).subscribe(res1 => {
+  }
+  Cart(product: Product) {
+    this.productService.Cart(product).subscribe(res1 => {
       this.res1 = res1;
       if (this.res1.success) {
-          this.data1 = this.res1.response;
-          // tslint:disable-next-line: radix
-          const newCart = parseInt(localStorage.getItem('giohang')) + 1;
-          localStorage.setItem('giohang', newCart.toString());
+        this.data1 = this.res1.response;
+        // tslint:disable-next-line: radix
+        const newCart = parseInt(localStorage.getItem('giohang')) + 1;
+        localStorage.setItem('giohang', newCart.toString());
       }
-  });
-}
+    });
+  }
+
+  navigateTo(value) {
+    if (value) {
+      this.router.navigate([value]);
+    }
+    return false;
+  }
 
 }

@@ -32,7 +32,7 @@ export class ProductService {
         catchError(this.handleError)
       );
   }
-  // get list product by category
+  // get list product by category_oldest
   getListProductByType(id: number): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/type/${id}/`)
       .pipe(
@@ -42,6 +42,40 @@ export class ProductService {
         catchError(this.handleError)
       );
   }
+
+  // get list product by category_lastest
+  getListProductByTypeLastest(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/type/${id}/retrieve_lastest/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  // get list product by category_price low to high
+  getListProductPriceLow(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/type/${id}/retrieve_pricelow/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  // get list product by category_price high to low
+  getListProductPriceHigh(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/type/${id}/retrieve_pricehigh/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
 
   // lấy chi tiết sản phẩm
   getDetailProduct(id: number): Observable<boolean> {
@@ -115,22 +149,22 @@ export class ProductService {
   // xoa gio hang
   remove(id, quantity): Observable<boolean> {
     return this.http.delete<boolean>(`${this.apiUrl}/cart/${id}/`)
-    .pipe(
+      .pipe(
         map(response => {
-            return response;
+          return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
   // tang giam so luong
   putQuantity(id, quantity, key): Observable<any> {
     let data = null;
     if (key === 'plus') {
       // tslint:disable-next-line: object-literal-key-quotes
-      data = {'quantity': quantity + 1};
+      data = { 'quantity': quantity + 1 };
     } else if (key === 'minus') {
       // tslint:disable-next-line: object-literal-key-quotes
-      data = {'quantity': quantity - 1};
+      data = { 'quantity': quantity - 1 };
     }
     return this.http.put<any>(`${this.apiUrl}/cart/${id}/`, data)
       .pipe(
@@ -143,45 +177,50 @@ export class ProductService {
   // dat hang
   addToHistory(id, username, totals, product, address): Observable<boolean> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const data = {'user_id': id,
-                  // tslint:disable-next-line: object-literal-key-quotes
-                  'name': username,
-                  // tslint:disable-next-line: object-literal-key-quotes
-                  'totals': totals,
-                  // tslint:disable-next-line: object-literal-key-quotes
-                  'products': product,
-                  // tslint:disable-next-line: object-literal-key-quotes
-                  'address' : address};
+    const data = {
+      // tslint:disable-next-line: object-literal-key-quotes
+      'user_id': id,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'name': username,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'totals': totals,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'products': product,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'address': address
+    };
     return this.http.post<boolean>(`${this.apiUrl}/history/`, data)
-    .pipe(
+      .pipe(
         map(response => {
-            return response;
+          return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
   // lich su dat hang
   getHistory(id: number): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/history/${id}`)
-    .pipe(
+      .pipe(
         map(response => {
-            return response;
+          return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
   // post request
   postRequest(user, product, quantity, price, datetime): Observable<any> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const data = {'user_id': user,
-                  // tslint:disable-next-line: object-literal-key-quotes
-                  'product_id': product,
-                  // tslint:disable-next-line: object-literal-key-quotes
-                  'quantity' : quantity,
-                  // tslint:disable-next-line: object-literal-key-quotes
-                  'proposed_price': price,
-                  // tslint:disable-next-line: object-literal-key-quotes
-                  'datetime': datetime
+    const data = {
+      // tslint:disable-next-line: object-literal-key-quotes
+      'user_id': user,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'product_id': product,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'quantity': quantity,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'proposed_price': price,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'datetime': datetime
     };
     return this.http.post<any>(`${this.apiUrl}/order/`, data)
       .pipe(
@@ -195,39 +234,41 @@ export class ProductService {
   // get list order by distributor
   getOrder(id: number): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/order/${id}/retrieve_by_distributor/`)
-    .pipe(
+      .pipe(
         map(response => {
-            return response;
+          return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
   // get list comment by product
   getComment(id: number): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/comment/${id}/retrieve_by_product/`)
-    .pipe(
+      .pipe(
         map(response => {
-            return response;
+          return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
   // post comment
   postComment(user, product, comment): Observable<boolean> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const data = {'user_id' : user,
-                  // tslint:disable-next-line: object-literal-key-quotes
-                  'product_id': product,
-                  // tslint:disable-next-line: object-literal-key-quotes
-                  'comment' : comment
+    const data = {
+      // tslint:disable-next-line: object-literal-key-quotes
+      'user_id': user,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'product_id': product,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'comment': comment
     };
     return this.http.post<boolean>(`${this.apiUrl}/comment/`, data)
-    .pipe(
+      .pipe(
         map(response => {
-            return response;
+          return response;
         }),
         catchError(this.handleError)
-    );
+      );
   }
   handleError(error: HttpErrorResponse) {
     return throwError(error.error);

@@ -11,6 +11,7 @@
             <th>Trong kho</th>
             <th>Kiểm định</th>
             <th>Mô tả</th>
+            <th>Action</th>
           </tr>
       </thead>
       <tbody>
@@ -23,6 +24,16 @@
               <td>{{ prod.in_stock }}</td>
               <td>{{ prod.verify }}</td>
               <td>{{ prod.description }}</td>
+              <td><a
+                routerLink='/update-product/{{prod.id}}'
+                class="btn-action text-primary" style="cursor: pointer;"
+                ><span class="fa fa-edit" ></span>
+              </a>  |
+              <a
+              (click)="remove(prod.id)"
+                class="btn-action text-danger" style="cursor: pointer;"
+                ><span class="fa fa-trash" ></span>
+              </a></td>
           </tr>
       </tbody>
   </table>

@@ -1,7 +1,7 @@
 <div class="content container mt-5">
     <div *ngIf="!check">
         <h4 style="text-align: center" class="title">
-          <strong>BẠN CHƯA ĐẶT ĐƠN HÀNG NÀO THEO YÊU CẦU!</strong>
+          <strong>You have not requested any orders yet!</strong>
         </h4>
       </div>
   <div *ngIf="check">
@@ -10,12 +10,12 @@
         <thead class="thead">
           <tr>
             <th>STT</th>
-            <th style="width: 30%">Tên sản phẩm</th>
-            <th>Nhà cung cấp</th>
-            <th>Số lượng</th>
-            <th>Giá mong muốn</th>
-            <th>Ngày nhận hàng</th>
-            <th>Trạng thái</th>
+            <th style="width: 30%">Name</th>
+            <th>Provider</th>
+            <th>Quantity</th>
+            <th>Proposed price</th>
+            <th>Date of receipt</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>

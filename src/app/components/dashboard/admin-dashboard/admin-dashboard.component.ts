@@ -1,3 +1,4 @@
+import { DataService } from './../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  constructor() { }
+  res: any;
+  users: any;
+  products: any;
+  sales: any;
+  requests: any;
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.getStatistic();
   }
+  getStatistic() {
 
+    this.dataService.getStatistic().subscribe(res => {
+      this.res = res;
+      if (this.res.success) {
+        this.users = this.res.users;
+        this.products = this.res.products;
+        this.sales = this.res.sales;
+        this.requests = this.res.requests;
+      }
+    });
+  }
 }

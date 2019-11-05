@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-7 ftco-animate">
-        <h3 class="mb-4 billing-heading">Hình thức thanh toán</h3>
+        <h3 class="mb-4 billing-heading">Payments</h3>
         <div class="form-group">
           <div class="col-md-12">
             <div class="radio">
               <label
                 ><input type="radio" name="optradio" class="mr-2" checked />
-                Thanh toán trực tiếp khi nhận hàng</label
+                Direct payment on delivery</label
               >
             </div>
           </div>
@@ -17,8 +17,7 @@
           <div class="col-md-12">
             <div class="radio">
               <label
-                ><input type="radio" name="optradio" class="mr-2" /> Thanh toán
-                bằng thẻ quốc tế Visa, Master, JCB</label
+                ><input type="radio" name="optradio" class="mr-2" /> Pay by international cards Visa, Master, JCB</label
               >
             </div>
           </div>
@@ -27,9 +26,7 @@
           <div class="col-md-12">
             <div class="radio">
               <label
-                ><input type="radio" name="optradio" class="mr-2" /> Thanh toán
-                bằng thẻ ATM nội địa/Internet Banking (Miễn phí thanh
-                toán)</label
+                ><input type="radio" name="optradio" class="mr-2" /> Payment by domestic ATM card / Internet Banking (Free payment)</label
               >
             </div>
           </div>
@@ -38,16 +35,15 @@
           <div class="col-md-12">
             <div class="radio">
               <label
-                ><input type="radio" name="optradio" class="mr-2" /> Thanh toán
-                bằng ví MoMo</label
+                ><input type="radio" name="optradio" class="mr-2" /> Pay by Momo</label
               >
             </div>
           </div>
         </div>
         <form [formGroup]="profileForm" (ngSubmit)="submit(profileForm)">
-          <h3 class="mb-4 pt-5 billing-heading">Địa chỉ giao hàng</h3>
+          <h3 class="mb-4 pt-5 billing-heading">Delivery address</h3>
           <div class="form-group">
-            <label class="pt-3">Tên</label><br />
+            <label class="pt-3">Name</label><br />
             <input
               type="text"
               class="form-input"
@@ -57,7 +53,7 @@
             />
           </div>
           <div class="form-group">
-            <label>Địa chỉ</label><br />
+            <label>Address</label><br />
             <input
               type="text"
               class="form-input"
@@ -67,7 +63,7 @@
             />
           </div>
           <div class="form-group">
-            <label class="pt-3">Số điện thoại</label><br />
+            <label class="pt-3">Telephone number</label><br />
             <input
               type="text"
               class="form-input"
@@ -83,7 +79,7 @@
               name="submit"
               id="submit"
               class="form-submit"
-              value="Đặt hàng"
+              value="Order confirmation"
             />
           </div>
         </form>
@@ -92,24 +88,24 @@
         <div class="row pt-3">
           <div class="col-md-12 d-flex mb-3">
             <div class="cart-detail cart-total p-3 p-md-4">
-              <h3 class="billing-heading mb-4">Đơn hàng</h3>
+              <h3 class="billing-heading mb-4">Order</h3>
               <p class="d-flex">
-                <span>Tạm tính</span>
+                <span>Temporary price</span>
                 <span>{{ totals }}đ</span>
               </p>
               <p class="d-flex">
-                <span>Phí vận chuyển</span>
+                <span>Shipping fee</span>
                 <span>0đ</span>
               </p>
               <hr />
               <p class="d-flex total-price">
-                <span>Thành tiền</span>
+                <span>Total</span>
                 <span>{{ totals }}đ</span>
               </p>
             </div>
           </div>
         </div>
-        <p><i>Đơn hàng của bạn sẽ được giao trong vòng từ 5 - 7 ngày</i></p>
+        <p><i>Your order will be delivered within 5-7 days</i></p>
       </div>
     </div>
   </div>

@@ -30,6 +30,7 @@ export class FarmerHeaderComponent implements OnInit {
 
   logout() {
     localStorage.removeItem('farmerToken');
+    localStorage.removeItem('id');
     this.router.navigate(['home']);
   }
 }

@@ -1,0 +1,120 @@
+<div class="content">
+  <form
+    [formGroup]="editproductForm"
+    (ngSubmit)="submit(editproductForm)"
+    novalidate
+  >
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Tên</label>
+          <input
+            type="text"
+            formControlName="name"
+            value="{{data?.name}}"
+            class="form-control border-input"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Loại</label>
+          <input
+            type="text"
+            formControlName="type"
+            value="{{type?.product_type}}"
+            class="form-control border-input"
+          />
+          <!-- <select class="form-control border-input" formControlName="type">
+            <option *ngFor="let type of data3" value="{{type?.product_type}}">{{type.product_type}}</option>
+          </select> -->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Đơn vị</label>
+          <input
+            type="text"
+            formControlName="unit"
+            value="{{data?.unit}}"
+            class="form-control border-input"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Giá 1 đơn vị</label>
+          <input
+            type="text"
+            formControlName="price_per_unit"
+            value="{{data?.price_per_unit}}"
+            class="form-control border-input"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Trong kho</label>
+          <input
+            type="text"
+            formControlName="in_stock"
+            value="{{data?.in_stock}}"
+            class="form-control border-input"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Kiểm định</label>
+          <input
+            type="text"
+            formControlName="verify"
+            value="{{data?.verify}}"
+            class="form-control border-input"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Mô tả</label>
+          <input
+            type="text"
+            formControlName="description"
+            value="{{data?.description}}"
+            class="form-control border-input"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Chi tiết</label>
+          <input
+            type="text"
+            formControlName="detail"
+            value="{{data?.detail}}"
+            class="form-control border-input"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary btn-fill btn-wd">SAVE</button>
+    </div>
+    <div class="clearfix"></div>
+  </form>
+</div>
+

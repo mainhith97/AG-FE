@@ -39,7 +39,7 @@ export interface Product {
     description: string;
     verify: string;
     detail: string;
-    image: any;
+    image: File;
     quantity: number;
     total: number;
     product_value: any;

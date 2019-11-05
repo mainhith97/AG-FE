@@ -2,3 +2,144 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
   <h1 class="h3 mb-0 text-gray-800">WELCOME BACK, ADMIN!</h1>
 </div>
+
+<div class="row">
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <a>
+      <div class="card card-stats bg-primary" [routerLink]="['/get-list-user']">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center icon-warning">
+                <i class="fa fa-user"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers text-white">
+                <p class="card-title">Users</p>
+                <div class="result font-weight-bold">{{users?.users}}</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <a>
+      <div class="card card-stats bg-warning" [routerLink]="['/get-list-product']">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center icon-warning">
+                <i class="fa fa-list"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers text-white">
+                <p class="card-title">Products</p>
+                <div class="result font-weight-bold">{{products}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <a>
+      <div class="card card-stats bg-success" [routerLink]="['/get-history']">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center icon-warning">
+                <i class="fa fa-industry"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers text-white">
+                <p class="card-title">Sales</p>
+                <div class="result font-weight-bold">{{sales}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <a>
+      <div class="card card-stats bg-info" [routerLink]="['/get-list-order']">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center icon-warning">
+                <i class="fa fa-envelope-square"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers text-white">
+                <p class="card-title">Requests</p>
+                <div class="result font-weight-bold">{{requests}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <a>
+      <div class="card-member card-stats bg-primary">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-7 col-md-8">
+              <div class="icon-big text-white icon-warning">
+                <p class="card-title">Suppliers</p>
+              </div>
+            </div>
+            <div class="col-5 col-md-4">
+              <div class="numbers text-white">
+                <div class="font-weight-bold">{{users?.farmers}}</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<div class="row mt-3">
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <a>
+      <div class="card-member card-stats bg-primary">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-7 col-md-8">
+              <div class="icon-big text-white icon-warning">
+                <p class="card-title">Distributors</p>
+              </div>
+            </div>
+            <div class="col-5 col-md-4">
+              <div class="numbers text-white">
+                <div class="font-weight-bold">{{users?.distributors}}</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

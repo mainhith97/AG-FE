@@ -37,6 +37,14 @@ import { ProfilePageComponent } from './pages/distributor/profile-page/profile-p
 import { AdminListcommentComponent } from './pages/admin/admin-listcomment/admin-listcomment.component';
 import { FarmerListcommentComponent } from './pages/farmer/farmer-listcomment/farmer-listcomment.component';
 import { AdminEditProductComponent } from './pages/admin/admin-edit-product/admin-edit-product.component';
+import { AdminCreateProductComponent } from './pages/admin/admin-create-product/admin-create-product.component';
+import { FarmerCreateProductComponent } from './pages/farmer/farmer-create-product/farmer-create-product.component';
+import { FarmerEditProductComponent } from './pages/farmer/farmer-edit-product/farmer-edit-product.component';
+import { AdminSearchPageComponent } from './pages/admin/admin-search-page/admin-search-page.component';
+import { EnterEmailPageComponent } from './pages/utils/enter-email-page/enter-email-page.component';
+import { ByTypeLastestComponent } from './pages/utils/by-type-lastest/by-type-lastest.component';
+import { ByTypePriceHighComponent } from './pages/utils/by-type-price-high/by-type-price-high.component';
+import { ByTypePriceLowComponent } from './pages/utils/by-type-price-low/by-type-price-low.component';
 
 const routes: Routes = [
 
@@ -46,7 +54,11 @@ const routes: Routes = [
   { path: 'introduce', component: IntroducePageComponent },
   { path: 'product/:id', component: ProductPageComponent },
   { path: 'type/:id', component: ProductLayoutComponent },
+  { path: 'type/:id/lastest', component: ByTypeLastestComponent },
+  { path: 'type/:id/price_low', component: ByTypePriceLowComponent },
+  { path: 'type/:id/price_high', component: ByTypePriceHighComponent },
   { path: 'search', component: SearchLayoutComponent },
+  { path: 'forgot-password', component: EnterEmailPageComponent },
   {
     path: '',
     component: MainLayoutComponent,
@@ -73,7 +85,9 @@ const routes: Routes = [
       { path: 'get-history', component: ListHistoryComponent },
       { path: 'get-list-order', component: AdminListorderComponent },
       { path: 'get-list-comment', component: AdminListcommentComponent },
-      { path: 'edit-product/:id', component: AdminEditProductComponent }
+      { path: 'edit-product/:id', component: AdminEditProductComponent },
+      { path: 'create-product', component: AdminCreateProductComponent },
+      { path: 'searchpage', component: AdminSearchPageComponent }
 
     ]
   },
@@ -87,7 +101,9 @@ const routes: Routes = [
       { path: 'get-listorder', component: ListOrderComponent },
       { path: 'get-listproduct', component: FarmerListproductComponent },
       { path: 'get-listhistory', component: FarmerListhistoryComponent },
-      { path: 'get-listcomment', component: FarmerListcommentComponent }
+      { path: 'get-listcomment', component: FarmerListcommentComponent },
+      { path: 'post-product', component: FarmerCreateProductComponent },
+      { path: 'update-product/:id', component: FarmerEditProductComponent },
 
     ]
   },

@@ -1,5 +1,6 @@
 import { DataService } from './../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
+import { ConfirmationDialogService } from 'src/app/confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'app-farmer-product',
@@ -10,8 +11,9 @@ export class FarmerProductComponent implements OnInit {
 
   res: any;
   data: any;
+  res2: any;
   id: number;
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private confirmationDialogService: ConfirmationDialogService) { }
 
   ngOnInit() {
     this.getListProductbyFarmer(this.id);
@@ -25,4 +27,15 @@ export class FarmerProductComponent implements OnInit {
       }
     });
   }
+    // xoá sp
+    remove(id: any) {
+      this.confirmationDialogService.confirm('Vui lòng xác nhận', 'Bạn muốn xoá sản phẩm này ?')
+        .then(() =>
+          this.dataService.removeProduct(id).subscribe(res2 => {
+            this.res2 = res2;
+            if (this.res2.success) {
+              this.getListProductbyFarmer(id);
+            }
+          }));
+    }
 }

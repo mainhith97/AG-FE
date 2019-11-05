@@ -85,7 +85,8 @@ export class AdminEditproductComponent implements OnInit {
   }
 
   submit({ value }: { value: Product }) {
-      this.dataService.editProduct(value).subscribe(res2 => {
+      const id = this.id;
+      this.dataService.editProduct(id, value).subscribe(res2 => {
           this.res2 = res2;
           if (this.res2.success) {
               this.router.navigate(['get-list-product']);

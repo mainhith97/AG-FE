@@ -1,0 +1,46 @@
+<section class="product-filter-section">
+  <div class="container">
+    <div class="section-title">
+      <div class="row">
+        <div class="col-md-6">
+          <p>Home</p>
+          /
+          <p>Product</p>
+        </div>
+        <div class="col-md-6">
+          <p class="pr-3">Sort by</p>
+          <select class="pl-3" (change)="navigateTo($event.target.value)">
+            <option value="type/{{this.id}}">Oldest</option>
+            <option value="type/{{this.id}}/lastest">Lastest</option>
+            <option value="type/{{this.id}}/price_low">Price: low to high</option>
+            <option value="" [selected]="true">Price: high to low</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngFor="let prod of data" class="col-lg-3 col-sm-6">
+        <div class="product-item">
+          <div class="pi-pic">
+            <a class="img-prod" routerLink="/product/{{ prod.id }}"
+              ><img src="{{ prod?.image }}" class="img-fluid" alt=""
+            /></a>
+
+            <div class="pi-links">
+              <button type="button" class="add-card" (click)="Cart(prod)">
+                <i class="fa fa-shopping-bag"></i><span>ADD TO CART</span>
+              </button>
+            </div>
+          </div>
+          <div class="pi-text">
+            <h6>{{ prod?.price_per_unit }}đ/{{ prod?.unit }}</h6>
+            <a routerLink="/product/{{ prod.id }}">{{ prod?.name }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

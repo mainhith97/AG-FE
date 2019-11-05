@@ -34,7 +34,7 @@ export class AdminLoginComponent implements OnInit {
       if (this.res.success) {
         if (this.res.role === 'mod') {
           localStorage.setItem('adminToken', this.res.result);
-          localStorage.setItem('id', this.res.id);
+          // localStorage.setItem('id', this.res.id);
           this.router.navigate(['main']);
         }
 
