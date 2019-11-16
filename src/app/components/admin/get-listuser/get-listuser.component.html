@@ -5,11 +5,12 @@
       <thead>
           <tr>
               <th>ID</th>
-              <th>Tên</th>
-              <th>Nơi làm việc</th>
+              <th>Supplier</th>
+              <th>Workplace</th>
               <th>Email</th>
-              <th>Địa chỉ</th>
-              <th>Vai trò</th>
+              <th>Address</th>
+              <th>Role</th>
+              <th>Action</th>
           </tr>
       </thead>
       <tbody>
@@ -20,8 +21,15 @@
               <td>{{ data.email }}</td>
               <td>{{ data.address }}</td>
               <td>
-                  <span *ngIf="data.role == 'farmer'" class="text-success">Nhà cung cấp</span>
-                  <span *ngIf="data.role == 'distributor'" class="text-primary" >Người dùng</span>
+                  <span *ngIf="data.role == 'farmer'" class="text-success">Supplier</span>
+                  <span *ngIf="data.role == 'distributor'" class="text-primary" >Distributor</span>
+              </td>
+              <td>
+                <a
+                (click)="remove(data.id)"
+                  class="btn-action text-danger" style="cursor: pointer;"
+                  ><span class="fa fa-trash" ></span>
+                </a>
               </td>
           </tr>
       </tbody>

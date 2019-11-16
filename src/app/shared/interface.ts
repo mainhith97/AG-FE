@@ -67,3 +67,13 @@ export interface Profile {
   telephone: number;
   description: string;
 }
+export interface Category {
+  product_type: string;
+}
+export interface Email {
+  email: string;
+}
+export interface Password {
+  password: string;
+  token: string;
+}

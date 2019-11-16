@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
@@ -39,11 +39,11 @@ export class FarmerCreateproductComponent implements OnInit {
 
   buildForm() {
     this.productForm = this.formBuilder.group({
-      name: [''],
-      type: [''],
-      unit: [''],
-      price_per_unit: [''],
-      in_stock: [''],
+      name: ['', Validators.required],
+      type: ['', Validators.required],
+      unit: ['', Validators.required],
+      price_per_unit: ['', Validators.required],
+      in_stock: ['', Validators.required],
       verify: [''],
       description: [''],
       detail: [''],

@@ -1,0 +1,28 @@
+<div class="content">
+  <form
+    [formGroup]="categoryForm"
+    (ngSubmit)="submit(categoryForm)"
+    novalidate
+  >
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Name of category</label>
+        <input
+          type="text"
+          formControlName="product_type"
+          class="form-control border-input"
+          placeholder=""
+        />
+      </div>
+    </div>
+  </div>
+
+    <div class="mb-5">
+      <button type="submit" class="btn btn-primary btn-fill btn-wd" [disabled]="categoryForm.invalid">CREATE</button>
+    </div>
+    <div class="clearfix"></div>
+  </form>
+</div>
+
+

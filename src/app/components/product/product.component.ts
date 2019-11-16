@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/shared/interface';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from 'src/app/confirmation-dialog/confirmation-dialog.service';
 import { DataService } from 'src/app/services/data.service';
 
@@ -23,13 +23,17 @@ export class ProductComponent implements OnInit {
   res3: any;
   data3: any;
   res4: any;
+  res5: any;
+  data5: any;
+  count: any;
   commentForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
     private route: ActivatedRoute,
     private confirmationDialogService: ConfirmationDialogService,
-    private dataService: DataService
+    private dataService: DataService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -42,7 +46,7 @@ export class ProductComponent implements OnInit {
   }
   buildForm() {
     this.commentForm = this.formBuilder.group({
-      comment: [''],
+      comment: ['', Validators.required],
     });
   }
   // check localstorage
@@ -61,15 +65,19 @@ export class ProductComponent implements OnInit {
   }
   // mua lẻ
   Cart(product: Product) {
-    this.productService.Cart(product).subscribe(res1 => {
-      this.res1 = res1;
-      if (this.res1.success) {
-        this.data1 = this.res1.response;
-        // tslint:disable-next-line: radix
-        const newCart = parseInt(localStorage.getItem('giohang')) + 1;
-        localStorage.setItem('giohang', newCart.toString());
-      }
-    });
+    if (this.readLocalStorageValue('id')) {
+      this.productService.Cart(product).subscribe(res1 => {
+        this.res1 = res1;
+        if (this.res1.success) {
+          this.data1 = this.res1.response;
+          // tslint:disable-next-line: radix
+          const newCart = parseInt(localStorage.getItem('giohang')) + 1;
+          localStorage.setItem('giohang', newCart.toString());
+        }
+      });
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
   // list comment
@@ -83,25 +91,39 @@ export class ProductComponent implements OnInit {
   }
   // post comment
   submit(user, product, comment) {
-    user = localStorage.getItem('id');
-    product = this.data.id;
-    comment = this.commentForm.get('comment').value;
-    this.productService.postComment(user, product, comment).subscribe(res3 => {
-      this.res3 = res3;
-      if (this.res3.success) {
-        this.getComment(this.id);
-      }
-    });
+    if (this.readLocalStorageValue('id')) {
+      user = localStorage.getItem('id');
+      product = this.data.id;
+      comment = this.commentForm.get('comment').value;
+      this.productService.postComment(user, product, comment).subscribe(res3 => {
+        this.res3 = res3;
+        if (this.res3.success) {
+          this.getComment(this.id);
+        }
+      });
+    } else {
+      this.router.navigate(['login']);
+    }
   }
   // xoá cmt
   remove(id: any) {
-    this.confirmationDialogService.confirm('Vui lòng xác nhận', 'Bạn muốn xoá bình luận này ?')
-    .then(() =>
-      this.dataService.remove(id).subscribe(res4 => {
-        this.res4 = res4;
-        if (this.res4.success) {
-          this.getComment(this.id);
-        }
-      }));
-    }
+    this.confirmationDialogService.confirm('Please confirm', 'Do you want to delete this comment?')
+      .then(() =>
+        this.dataService.removeCmt(id).subscribe(res4 => {
+          this.res4 = res4;
+          if (this.res4.success) {
+            this.getComment(this.id);
+          }
+        }));
+  }
+
+  // list reply
+  getReply(id) {
+    this.productService.getReply(id).subscribe(res5 => {
+      this.res5 = res5;
+      if (this.res5.success) {
+        this.data5 = this.res5.result;
+      }
+    });
+  }
 }

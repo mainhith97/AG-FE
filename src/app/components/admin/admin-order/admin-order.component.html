@@ -4,13 +4,13 @@
       <thead>
           <tr>
               <th>STT</th>
-              <th>Người đặt hàng</th>
-              <th>Tên sản phẩm</th>
-              <th>Nhà cung cấp</th>
-              <th>Số lượng</th>
-              <th>Giá mong muốn</th>
-              <th>Ngày nhận hàng mong muốn</th>
-              <th>Trạng thái</th>
+              <th>Customer</th>
+              <th>Product</th>
+              <th>Supplier</th>
+              <th>Quantity</th>
+              <th>Proposed price</th>
+              <th>Received date</th>
+              <th>Status</th>
           </tr>
       </thead>
       <tbody>
@@ -22,7 +22,11 @@
               <td>{{ order.quantity }}</td>
               <td>{{ order.proposed_price }}đ</td>
               <td>{{ order.datetime }}</td>
-              <td>{{ order.status }}</td>
+              <td>
+                <span *ngIf="order.status == 'Accept'" class="text-success">Accept</span>
+                <span *ngIf="order.status == 'Decline'" class="text-danger" >Decline</span>
+                <span *ngIf="order.status == 'Seen'" class="text-primary">Seen</span>
+              </td>
           </tr>
       </tbody>
   </table>

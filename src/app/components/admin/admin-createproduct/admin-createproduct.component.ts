@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/shared/interface';
@@ -39,12 +39,12 @@ export class AdminCreateproductComponent implements OnInit {
 
   buildForm() {
     this.productForm = this.formBuilder.group({
-      name: [''],
-      type: [''],
-      provider_id: [''],
-      unit: [''],
-      price_per_unit: [''],
-      in_stock: [''],
+      name: ['', Validators.required],
+      type: ['', Validators.required],
+      provider_id: ['', Validators.required],
+      unit: ['', Validators.required],
+      price_per_unit: ['', Validators.required],
+      in_stock: ['', Validators.required],
       verify: [''],
       description: [''],
       detail: [''],
@@ -94,4 +94,3 @@ export class AdminCreateproductComponent implements OnInit {
     });
   }
 }
-

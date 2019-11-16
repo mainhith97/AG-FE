@@ -77,7 +77,7 @@ export class MyCartComponent implements OnInit {
 
   // xoá sp trong giỏ hàng
   remove(id: any, quantity: any) {
-    this.confirmationDialogService.confirm('Vui lòng xác nhận', 'Bạn muốn xoá sản phẩm này ?')
+    this.confirmationDialogService.confirm('Please confirm', 'Do you want to delete this product?')
     .then(() =>
       this.productService.remove(id, quantity).subscribe(res => {
         this.res = res;

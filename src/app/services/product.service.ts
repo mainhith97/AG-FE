@@ -97,7 +97,7 @@ export class ProductService {
         catchError(this.handleError)
       );
   }
-  // lấy dữ liệu tìm kiếm đc
+  // lấy dữ liệu tìm kiếm sp
   getSearchResult(keyword: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/action/get_search_result/?keyword=${keyword}`)
       .pipe(
@@ -208,7 +208,7 @@ export class ProductService {
       );
   }
   // post request
-  postRequest(user, product, quantity, price, datetime): Observable<any> {
+  postRequest(user, product, quantity, price, datetime, address, telephone): Observable<any> {
     // tslint:disable-next-line: object-literal-key-quotes
     const data = {
       // tslint:disable-next-line: object-literal-key-quotes
@@ -220,7 +220,11 @@ export class ProductService {
       // tslint:disable-next-line: object-literal-key-quotes
       'proposed_price': price,
       // tslint:disable-next-line: object-literal-key-quotes
-      'datetime': datetime
+      'datetime': datetime,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'address': address,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'telephone': telephone
     };
     return this.http.post<any>(`${this.apiUrl}/order/`, data)
       .pipe(
@@ -263,6 +267,16 @@ export class ProductService {
       'comment': comment
     };
     return this.http.post<boolean>(`${this.apiUrl}/comment/`, data)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // get list reply by comment
+  getReply(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/reply/${id}/retrieve_by_comment/`)
       .pipe(
         map(response => {
           return response;

@@ -4,11 +4,11 @@
       <thead>
           <tr>
               <th>STT</th>
-              <th>Tên người mua</th>
-              <th>Tên sản phẩm</th>
-              <th>Nhà cung cấp</th>
-              <th>Tổng tiền</th>
-              <th>Trạng thái</th>
+              <th>Customer</th>
+              <th>Name of product</th>
+              <th>Supplier</th>
+              <th>Total price</th>
+              <th>Status</th>
               <th>Action</th>
           </tr>
       </thead>
@@ -20,12 +20,12 @@
               <td><div *ngFor="let prod of sale.products">{{ prod.provider }}</div></td>
               <td>{{ sale.totals }}đ</td>
               <td>{{ sale.status }}</td>
-              <td *ngIf="sale.status === 'Đang chờ'"><a
+              <td *ngIf="sale.status === 'Pending'"><a
                 (click)="changeStatus(sale.id)"
                 class="btn-action text-primary" style="cursor: pointer;"
                 ><span class="fa fa-truck" aria-hidden="true"></span>
               </a></td>
-              <td *ngIf="sale.status === 'Giao hàng thành công'">
+              <td *ngIf="sale.status === 'Successful delivery'">
               <span class="fa fa-check text-success"></span>
               </td>
           </tr>

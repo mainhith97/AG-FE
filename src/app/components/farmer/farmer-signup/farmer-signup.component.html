@@ -3,7 +3,7 @@
     <div class="container">
       <div class="signup-content">
         <form [formGroup]="registerForm" (ngSubmit) = "submit(registerForm)" id="signup-form" class="signup-form">
-          <h2 class="form-title">ĐĂNG KÝ CUNG CẤP NÔNG SẢN</h2>
+          <h2 class="form-title">REGISTER AS A AGRICULTURAL SUPPLIER</h2>
           <div class="form-group">
             <input
               type="text"
@@ -12,6 +12,7 @@
               id="username"
               placeholder="Username"
               formControlName="username"
+              required
             />
           </div>
           <label
@@ -27,6 +28,7 @@
               id="password"
               placeholder="Password"
               formControlName="password"
+              required
             />
             <span
               toggle="#password"
@@ -44,7 +46,7 @@
               class="form-input"
               name="name"
               id="name"
-              placeholder="Họ Tên"
+              placeholder="Full name"
               formControlName="name"
             />
           </div>
@@ -53,10 +55,15 @@
               type="text"
               class="form-input"
               name="company_name"
-              placeholder="Tên nông trại/trang trại"
+              placeholder="Name of the farm"
               formControlName="company_name"
+              required
             />
           </div>
+          <label
+          *ngIf="registerForm.controls['company_name'].invalid && registerForm.controls['company_name'].touched" class="text-danger">
+          Workplace is required
+          </label>
           <div class="form-group">
             <input
               type="email"
@@ -65,6 +72,7 @@
               id="email"
               placeholder="Email"
               formControlName="email"
+              required
             />
           </div>
           <label
@@ -78,7 +86,7 @@
               class="form-input"
               name="address"
               id="address"
-              placeholder="Địa chỉ"
+              placeholder="Address"
               formControlName="address"
             />
           </div>
@@ -98,13 +106,14 @@
               name="submit"
               id="submit"
               class="form-submit"
-              value="ĐĂNG KÝ NGAY"
+              value="REGISTER NOW"
+              [disabled]="registerForm.invalid"
             />
           </div>
         </form>
         <p class="loginhere">
-          Đã có tài khoản ?
-          <a href="#" class="loginhere-link" [routerLink]="['/login']">Đăng nhập</a>
+          Have a account ?
+          <a href="#" class="loginhere-link" [routerLink]="['/login']">Log in</a>
         </p>
       </div>
     </div>

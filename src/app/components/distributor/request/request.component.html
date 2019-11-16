@@ -41,6 +41,7 @@
         name="quantity"
         placeholder="Quantity"
         formControlName="quantity"
+        required
       />
     </div>
     <div class="form-group">
@@ -51,15 +52,37 @@
         name="price"
         placeholder="Price"
         formControlName="proposed_price"
+        required
       />
     </div>
     <div class="form-group">
       <label>When do you want to receive your order?</label><br>
       <!-- <input class="form-input" placeholder="YYYY-MM-DD" formControlName="datetime"> -->
-      <input [owlDateTime]="dt" [owlDateTimeTrigger]="dt" class="form-input" placeholder="Date of receipt of goods" formControlName="datetime">
+      <input [owlDateTime]="dt" [owlDateTimeTrigger]="dt" class="form-input" placeholder="Date of receipt of goods" formControlName="datetime" required />
       <owl-date-time #dt></owl-date-time>
     </div>
-
+    <div class="form-group">
+      <label>Address</label><br>
+      <input
+        type="text"
+        class="form-input"
+        name="address"
+        placeholder="Delivery address"
+        formControlName="address"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Telephone</label><br>
+      <input
+        type="text"
+        class="form-input"
+        name="telephone"
+        placeholder="Telephone"
+        formControlName="telephone"
+        required
+      />
+    </div>
     <div class="form-group">
       <input
         type="submit"
@@ -68,6 +91,7 @@
         class="form-submit"
         (click)=addOrder()
         value="SEND ORDER"
+        [disabled]="requestForm.invalid"
       />
     </div>
   </form>

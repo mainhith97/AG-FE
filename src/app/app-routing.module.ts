@@ -45,6 +45,19 @@ import { EnterEmailPageComponent } from './pages/utils/enter-email-page/enter-em
 import { ByTypeLastestComponent } from './pages/utils/by-type-lastest/by-type-lastest.component';
 import { ByTypePriceHighComponent } from './pages/utils/by-type-price-high/by-type-price-high.component';
 import { ByTypePriceLowComponent } from './pages/utils/by-type-price-low/by-type-price-low.component';
+import { AdminSearchUserComponent } from './pages/admin/admin-search-user/admin-search-user.component';
+import { SupplierPageComponent } from './pages/utils/supplier-page/supplier-page.component';
+import { FarmerInfoComponent } from './pages/farmer/farmer-info/farmer-info.component';
+import { AdminTypePageComponent } from './pages/admin/admin-type-page/admin-type-page.component';
+import { AdminCreateTypeComponent } from './pages/admin/admin-create-type/admin-create-type.component';
+import { AdminEditTypeComponent } from './pages/admin/admin-edit-type/admin-edit-type.component';
+import { ProductByTypeComponent } from './pages/admin/product-by-type/product-by-type.component';
+import { NewPasswordPageComponent } from './pages/utils/new-password-page/new-password-page.component';
+import { CheckemailPageComponent } from './pages/utils/checkemail-page/checkemail-page.component';
+import { AdminGuard } from './services/admin.guard';
+import { ReplyFeedbackComponent } from './pages/farmer/reply-feedback/reply-feedback.component';
+import { AdminListReplyComponent } from './pages/admin/admin-list-reply/admin-list-reply.component';
+import { FarmerListReplyComponent } from './pages/farmer/farmer-list-reply/farmer-list-reply.component';
 
 const routes: Routes = [
 
@@ -58,7 +71,10 @@ const routes: Routes = [
   { path: 'type/:id/price_low', component: ByTypePriceLowComponent },
   { path: 'type/:id/price_high', component: ByTypePriceHighComponent },
   { path: 'search', component: SearchLayoutComponent },
+  { path: 'supplier/:id', component: SupplierPageComponent },
   { path: 'forgot-password', component: EnterEmailPageComponent },
+  { path: 'change_password', component: NewPasswordPageComponent },
+  { path: 'check-email', component: CheckemailPageComponent },
   {
     path: '',
     component: MainLayoutComponent,
@@ -82,12 +98,18 @@ const routes: Routes = [
       { path: 'main', component: AdminlayoutComponent },
       { path: 'get-list-user', component: ListUserComponent },
       { path: 'get-list-product', component: ListProductComponent },
+      { path: 'get-list-type', component: AdminTypePageComponent },
       { path: 'get-history', component: ListHistoryComponent },
       { path: 'get-list-order', component: AdminListorderComponent },
       { path: 'get-list-comment', component: AdminListcommentComponent },
       { path: 'edit-product/:id', component: AdminEditProductComponent },
       { path: 'create-product', component: AdminCreateProductComponent },
-      { path: 'searchpage', component: AdminSearchPageComponent }
+      { path: 'searchpage', component: AdminSearchPageComponent },
+      { path: 'user', component: AdminSearchUserComponent },
+      { path: 'edit-type/:id', component: AdminEditTypeComponent },
+      { path: 'create-type', component: AdminCreateTypeComponent },
+      { path: 'product-by-type/:id', component: ProductByTypeComponent },
+      { path: 'get-list-reply', component: AdminListReplyComponent }
 
     ]
   },
@@ -104,7 +126,9 @@ const routes: Routes = [
       { path: 'get-listcomment', component: FarmerListcommentComponent },
       { path: 'post-product', component: FarmerCreateProductComponent },
       { path: 'update-product/:id', component: FarmerEditProductComponent },
-
+      { path: 'info', component: FarmerInfoComponent },
+      { path: 'reply-feedback/:id', component: ReplyFeedbackComponent },
+      { path: 'get-listreply', component: FarmerListReplyComponent }
     ]
   },
   {
@@ -119,10 +143,14 @@ const routes: Routes = [
 
     ]
   },
-  // { path: 'login', component: LoginComponent },
-  // { path: 'register',  component: RegisterComponent },
-  // { path: 'farmer_register',  component: FarmerRegisterComponent },
-  { path: 'admin', component: AdminloginComponent },
+  {
+    path: '',
+    component: MainLayoutComponent,
+    canActivate: [AdminGuard],
+    children: [
+      { path: 'admin', component: AdminloginComponent },
+    ]
+  },
   { path: '**', component: NotFoundComponent }
 ];
 

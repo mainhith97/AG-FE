@@ -39,6 +39,12 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link" href="" [routerLink]="['/get-list-type']">
+        <span>Product categories</span></a
+      >
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link" href="" [routerLink]="['/get-history']">
         <span>Sales</span></a
       >
@@ -54,6 +60,9 @@
         <span>Comment</span></a
       >
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="" [routerLink]="['/get-list-reply']"> <span>Reply feedback</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
   </ul>
@@ -67,28 +76,6 @@
       <nav
         class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
       >
-      <!-- Topbar Search -->
-      <form
-      [formGroup]="searchForm"
-      (ngSubmit)="submit(searchForm)"
-      class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-    >
-      <div class="input-group">
-        <input
-          type="text"
-          formControlName="keyword"
-          class="form-control bg-light border-0 small"
-          placeholder="Search for..."
-          aria-label="Search"
-          aria-describedby="basic-addon2"
-        />
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="submit">
-            <i class="fas fa-search fa-sm"></i>
-          </button>
-        </div>
-      </div>
-    </form>
         <!-- Topbar Navbar -->
         <ul class="navbar-nav ml-auto">
           <div class="topbar-divider d-none d-sm-block"></div>
@@ -132,18 +119,39 @@
       <!-- End of Topbar -->
       <div class="container-fluid">
         <div class="header row justify-content-between mb-3">
-          <h4 class="title">Danh sách nông sản</h4>
+          <h4 class="title">Products</h4>
+          <form
+          [formGroup]="searchForm"
+          (ngSubmit)="submit(searchForm)"
+          class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+        >
+          <div class="input-group">
+            <input
+              type="text"
+              formControlName="keyword"
+              class="form-control bg-light border-0 small"
+              placeholder="Search for..."
+              aria-label="Search"
+              aria-describedby="basic-addon2"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="submit">
+                <i class="fas fa-search fa-sm"></i>
+              </button>
+            </div>
+          </div>
+        </form>
           <button
-            routerLink='/create-product'
+            routerLink="/create-product"
             class="btn btn-primary"
             style="margin-right: 14px;"
           >
             Create Product
           </button>
         </div>
+
         <app-get-listproduct></app-get-listproduct>
       </div>
     </div>
   </div>
 </div>
-

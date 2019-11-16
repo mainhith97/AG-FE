@@ -1,7 +1,7 @@
 <div class="limiter">
   <div class="container-login100" style="background-color: #666666;">
     <div class="wrap-login100">
-      <form class="login100-form validate-form">
+      <form [formGroup]="emailForm" (ngSubmit) = "submit(emailForm)" class="login100-form validate-form">
         <span class="login100-form-title p-b-43">
           FORGOT YOUR PASSWORD?
         </span>
@@ -15,13 +15,18 @@
             name="email"
             placeholder="Enter email"
             formControlName="email"
+            required
           />
           <span class="focus-input100"></span>
         </div>
+        <label
+        *ngIf="emailForm.controls['email'].invalid && emailForm.controls['email'].touched" class="text-danger">
+        Email is required
+        </label>
 
         <div class="container-login100-form-btn">
-          <button class="login100-form-btn" type="submit">
-            Reset Password
+          <button class="login100-form-btn" type="submit" [disabled]="emailForm.invalid">
+            Send to email
           </button>
         </div>
 

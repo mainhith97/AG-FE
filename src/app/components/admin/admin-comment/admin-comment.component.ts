@@ -10,6 +10,7 @@ import { ConfirmationDialogService } from 'src/app/confirmation-dialog/confirmat
 export class AdminCommentComponent implements OnInit {
 
   res: any;
+  res2: any;
   data: any;
   constructor(private dataService: DataService,
               private confirmationDialogService: ConfirmationDialogService) { }
@@ -28,11 +29,11 @@ export class AdminCommentComponent implements OnInit {
   }
   // xoá cmt
   remove(id: any) {
-    this.confirmationDialogService.confirm('Vui lòng xác nhận', 'Bạn muốn xoá bình luận này ?')
+    this.confirmationDialogService.confirm('Please confirm', 'Do you want to delete this comment?')
     .then(() =>
-      this.dataService.remove(id).subscribe(res => {
-        this.res = res;
-        if (this.res.success) {
+      this.dataService.removeCmt(id).subscribe(res2 => {
+        this.res2 = res2;
+        if (this.res2.success) {
           this.getComment();
         }
       }));

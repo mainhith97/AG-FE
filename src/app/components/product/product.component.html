@@ -7,7 +7,10 @@
       <div class="col-lg-6 product-details pl-md-5">
         <h2>{{ data?.name }}</h2>
         <p class="provider">
-          Provided by: <span>{{ user?.company_name }}</span>
+          Provided by:
+          <span routerLink="/supplier/{{ user?.id }}">{{
+            user?.company_name
+          }}</span>
         </p>
         <p class="price font-weight-bold">
           <span>{{ data?.price_per_unit }}đ/{{ data?.unit }}</span>
@@ -66,34 +69,60 @@
           rows="5"
           formControlName="comment"
           class="form-control"
+          required
         ></textarea>
       </div>
       <div class="form-group">
-        <input type="submit" value="Post" class="btn py-3 px-4 btn-primary" />
+        <input
+          type="submit"
+          value="Post"
+          class="btn py-3 px-4 btn-primary"
+          [disabled]="commentForm.invalid"
+        />
       </div>
     </form>
 
-    <div
-      *ngFor="let cmt of data2"
-      class="mt-3 p-3"
-      style="background: rgb(243, 245, 250);"
-    >
-      <div class="row">
+    <div *ngFor="let cmt of data2; let i = index" class="mt-3 p-3">
+      <div class="row p-3" style="background: rgb(243, 245, 250);">
         <div class="col-md-3 usercmt">
           <i class="fa fa-user-circle"></i><br />
           <b>{{ cmt?.user_cmt.name }}</b>
           <p>{{ cmt?.created_at }}</p>
-          <div *ngIf="readLocalStorageValue('id') == cmt.user_id">
+          <div *ngIf="readLocalStorageValue('id') == cmt?.user_id">
             <a
-              (click)="remove(cmt.id)"
+              (click)="remove(cmt?.id)"
               class="text-primary"
               style="cursor: pointer;"
               >Xoá</a
             >
           </div>
+          <div>
+            <a
+              (click)="getReply(cmt?.id)"
+              class="text-primary"
+              style="cursor: pointer;"
+              >Show reply ({{cmt.replies}})</a
+            >
+          </div>
         </div>
         <div class="col-md-3">
           <p style="white-space: pre-line;">{{ cmt?.comment }}</p>
+        </div>
+      </div>
+      <div *ngFor="let reply of data5">
+        <div
+          *ngIf="cmt.id === reply.cmt_id"
+          class="row mt-3 ml-5 p-3"
+          style="background: rgb(243, 245, 250);"
+        >
+          <div class="col-md-3 usercmt">
+            <i class="fa fa-user-circle"></i><br />
+            <b>{{ reply?.provider_reply.company_name }}</b>
+            <p>{{ reply?.created_at }}</p>
+          </div>
+          <div class="col-md-3">
+            <p style="white-space: pre-line;">{{ reply?.reply }}</p>
+          </div>
         </div>
       </div>
     </div>

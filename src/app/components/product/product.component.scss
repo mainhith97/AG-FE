@@ -27,12 +27,14 @@
   font-weight: 400;
   color: #000000;
   margin-bottom: 2rem;
+
 }
 .product-details .provider span {
   font-size: 15px;
   font-weight: 400;
   color: #2a2dcf;
   margin-bottom: 2rem;
+  cursor: pointer;
 }
 .product-details .price span {
   font-size: 25px;
@@ -40,7 +42,7 @@
 }
 
 .btn {
-  cursor: pointer;
+  // cursor: pointer;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
@@ -86,11 +88,11 @@
   background-color: #82ae46;
   border-color: #82ae46;
 }
-.btn-primary:hover {
-  color: #fff;
-  background: #82ae46;
-  border: #82ae46;
-}
+// .btn-primary:hover {
+//   color: #fff;
+//   background: #82ae46;
+//   border: #82ae46;
+// }
 .usercmt i{
   font-size: 30px;
 }

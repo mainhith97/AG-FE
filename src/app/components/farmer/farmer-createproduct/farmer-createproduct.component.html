@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <label>Tên</label>
+        <label>Name of product</label>
         <input
           type="text"
           formControlName="name"
@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <label>Loại</label><br>
+        <label>Category</label><br>
         <select class="form-control border-input" formControlName="type">
           <option *ngFor="let type of data3" :value="{{type.id}}">{{type?.product_type}}</option>
         </select>
@@ -31,7 +31,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <label>Đơn vị</label>
+        <label>Unit</label>
         <input
           type="text"
           formControlName="unit"
@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <label>Giá 1 đơn vị</label>
+        <label>Price per unit</label>
         <input
           type="text"
           formControlName="price_per_unit"
@@ -57,7 +57,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <label>Trong kho</label>
+        <label>In stock</label>
         <input
           type="text"
           formControlName="in_stock"
@@ -70,7 +70,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <label>Kiểm định</label>
+        <label>Verify</label>
         <input
           type="text"
           formControlName="verify"
@@ -83,7 +83,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <label>Mô tả</label>
+        <label>Description</label>
         <input
           type="text"
           formControlName="description"
@@ -96,7 +96,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <label>Chi tiết</label>
+        <label>Detail</label>
         <input
           type="text"
           formControlName="detail"
@@ -109,7 +109,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
-        <label>Hình ảnh</label>
+        <label>Image</label>
         <input
           id="image"
           type="file"
@@ -123,7 +123,7 @@
     </div>
   </div>
     <div class="text-center mb-5">
-      <button type="submit" class="btn btn-success btn-fill btn-wd">CREATE</button>
+      <button type="submit" class="btn btn-success btn-fill btn-wd" [disabled]="productForm.invalid">CREATE</button>
     </div>
     <div class="clearfix"></div>
   </form>

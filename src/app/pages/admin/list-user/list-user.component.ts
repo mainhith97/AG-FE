@@ -38,7 +38,7 @@ export class ListUserComponent implements OnInit {
       this.res = res;
       if (this.res.success) {
         this.data = this.res.result;
-        this.router.navigate(['searchpage'], { queryParams: { keyword: this.data } });
+        this.router.navigate(['user'], { queryParams: { keyword: this.data } });
         console.log(this.data);
       }
     });

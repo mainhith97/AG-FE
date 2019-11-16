@@ -28,7 +28,7 @@ export class GetHistoryComponent implements OnInit {
   }
   // thay đổi status
   changeStatus(id) {
-    this.confirmationDialogService.confirm('Vui lòng xác nhận', 'Bạn muốn thay đổi trạng thái đơn hàng này ?')
+    this.confirmationDialogService.confirm('Please confirm', 'Do you want to change status this order?')
     .then(() =>
     this.dataService.changeStatus(id).subscribe(res => {
           this.res = res;

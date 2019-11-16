@@ -32,7 +32,7 @@ export class GetListorderComponent implements OnInit {
   }
   // chap nhan don hang
   acceptOrder(id) {
-    this.confirmationDialogService.confirm('Vui lòng xác nhận', 'Bạn muốn chấp nhận đơn hàng này ?')
+    this.confirmationDialogService.confirm('Please confirm', 'Do you want to accept this order?')
     .then(() =>
     this.dataService.acceptOrder(id).subscribe(res => {
           this.res = res;
@@ -44,7 +44,7 @@ export class GetListorderComponent implements OnInit {
   }
   // tu choi don hang
   declineOrder(id) {
-    this.confirmationDialogService.confirm('Vui lòng xác nhận', 'Bạn muốn từ chối đơn hàng này ?')
+    this.confirmationDialogService.confirm('Please confirm', 'Do you want to decline this order?')
     .then(() =>
     this.dataService.declineOrder(id).subscribe(res => {
           this.res = res;

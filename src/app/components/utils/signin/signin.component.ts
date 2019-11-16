@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
 import { ILogin } from 'src/app/shared/interface';
-import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signin',
@@ -17,7 +17,8 @@ export class SigninComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private loginService: DataService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -31,25 +32,28 @@ export class SigninComponent implements OnInit {
   }
   submit({ value }: { value: ILogin }) {
     return this.loginService.postLogin2(value).subscribe(res => {
-      this.res = res;
-      if (this.res.success && this.res.role === 'distributor') {
+        this.res = res;
+        if (this.res.success && this.res.role === 'distributor') {
 
-        localStorage.setItem('userToken', this.res.result);
-        localStorage.setItem('id', this.res.id);
-        localStorage.setItem('username', this.res.username);
-        // tslint:disable-next-line: radix
-        localStorage.setItem('giohang', this.res.cart);
-        this.router.navigate(['home']);
+          localStorage.setItem('userToken', this.res.result);
+          localStorage.setItem('id', this.res.id);
+          localStorage.setItem('username', this.res.username);
+          // tslint:disable-next-line: radix
+          localStorage.setItem('giohang', this.res.cart);
+          this.router.navigate(['home']);
 
-      } else if (this.res.success && this.res.role === 'farmer') {
+        } else if (this.res.success && this.res.role === 'farmer') {
 
-        localStorage.setItem('farmerToken', this.res.result);
-        localStorage.setItem('id', this.res.id);
-        this.router.navigate(['myaccount']);
-      } else {
-        console.log(res);
+          localStorage.setItem('farmerToken', this.res.result);
+          localStorage.setItem('id', this.res.id);
+          localStorage.setItem('username', this.res.username);
+          this.router.navigate(['myaccount']);
       }
-    });
+      }, error => {
+        console.log(error);
+        this.toastr.error(error);
+      });
+    }
   }
 
-}
+

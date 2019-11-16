@@ -1,0 +1,54 @@
+<div class="content">
+  <div *ngIf="data != null" class="table-responsive-sm">
+  <table class="table table-striped table-bordered">
+      <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Feedback content</th>
+            <th>Date</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{ data.user_cmt.name }}</td>
+              <td>{{ data.product_cmt.name }}</td>
+              <td>{{ data.comment }}</td>
+              <td>{{ data.created_at }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+</div>
+
+<div class="content">
+  <form
+    [formGroup]="replyForm"
+    (ngSubmit)="submit(replyForm)"
+    novalidate
+  >
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Reply</label>
+        <input
+          type="text"
+          formControlName="reply"
+          class="form-control border-input"
+          placeholder=""
+        />
+      </div>
+    </div>
+  </div>
+
+    <div class="mb-5">
+      <button type="submit" class="btn btn-fill btn-wd" [disabled]="replyForm.invalid">POST</button>
+    </div>
+    <div class="clearfix"></div>
+  </form>
+</div>
+
+
+
+
+

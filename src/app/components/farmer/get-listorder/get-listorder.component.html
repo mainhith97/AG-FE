@@ -3,26 +3,28 @@
   <table class="table table-striped table-bordered">
       <thead>
           <tr>
-              <th>STT</th>
-              <th>Người đặt hàng</th>
-              <th>Tên sản phẩm</th>
-              <th>Số lượng</th>
-              <th>Giá yêu cầu</th>
-              <th>Ngày nhận hàng mong muốn</th>
-              <th>Trạng thái</th>
+              <th>ID</th>
+              <th>Customer</th>
+              <th>Name of product</th>
+              <th>Quantity</th>
+              <th>Proposed price</th>
+              <th>Received date</th>
+              <th>Contact info</th>
+              <th>Status</th>
               <th>Action</th>
           </tr>
       </thead>
       <tbody>
           <tr *ngFor="let order of data ; let i = index">
               <td>{{ i + 1 }}</td>
-              <td>{{ order.user_order.name }}<br>{{order.user_order.address}}<br>{{order.user_order.telephone}}</td>
+              <td>{{ order.user_order.name }}</td>
               <td >{{ order.product_order.name }}</td>
               <td>{{ order.quantity }}</td>
               <td>{{ order.proposed_price }}đ</td>
               <td>{{ order.datetime }}</td>
+              <td>{{ order.address }} <br>{{ order.telephone }}</td>
               <td>{{ order.status }}</td>
-              <td *ngIf="order.status === 'Đã xem'"><a
+              <td *ngIf="order.status === 'Seen'"><a
                 (click)="acceptOrder(order.id)"
                 class="btn-action text-primary" style="cursor: pointer;"
                 ><span class="fa fa-check-square" ></span>
@@ -32,7 +34,7 @@
                 class="btn-action text-danger" style="cursor: pointer;"
                 ><span class="fa fa-times" ></span>
               </a></td>
-              <td *ngIf="order.status === 'Chấp nhận' || order.status === 'Từ chối'">
+              <td *ngIf="order.status === 'Accept' || order.status === 'Decline'">
                 <span class="fa fa-check-circle text-success"></span>
               </td>
           </tr>

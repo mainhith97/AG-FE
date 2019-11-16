@@ -1,3 +1,4 @@
+import { Category, Email, Password } from './../shared/interface';
 
 import { Injectable } from '@angular/core';
 import { ILogin, IRegister, User, Profile, Product } from '../shared/interface';
@@ -71,6 +72,16 @@ export class DataService {
         catchError(this.handleError)
       );
   }
+  // lấy hồ sơ supplier
+  getSupplier(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${this.userPrefix}/${id}/retrieve_supplier/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
   // edit Profile
   updateProfile(value: Profile): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${this.userPrefix}/${localStorage.getItem('id')}/`, value)
@@ -84,6 +95,26 @@ export class DataService {
   // admin lấy danh sách user
   getListUser(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/user/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // admin xoa user
+  removeUser(id): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.apiUrl}/user/${id}/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // lấy dữ liệu tìm kiếm user
+  getSearchUser(keyword: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/action/get_search_user/?keyword=${keyword}`)
       .pipe(
         map(response => {
           return response;
@@ -115,7 +146,7 @@ export class DataService {
   // admin change status giao hàng
   changeStatus(id: number): Observable<boolean> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const data = { 'status': 'Giao hàng thành công' };
+    const data = { 'status': 'Successful delivery' };
     return this.http.put<boolean>(`${this.apiUrl}/history/${id}/`, data)
       .pipe(
         map(response => {
@@ -138,7 +169,7 @@ export class DataService {
   // farmer accept order
   acceptOrder(id: number): Observable<boolean> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const data = { 'status': 'Chấp nhận' };
+    const data = { 'status': 'Accept' };
     return this.http.put<boolean>(`${this.apiUrl}/order/${id}/`, data)
       .pipe(
         map(response => {
@@ -150,7 +181,7 @@ export class DataService {
   // farmer decline order
   declineOrder(id: number): Observable<boolean> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const data = { 'status': 'Từ chối' };
+    const data = { 'status': 'Decline' };
     return this.http.put<boolean>(`${this.apiUrl}/order/${id}/`, data)
       .pipe(
         map(response => {
@@ -212,7 +243,7 @@ export class DataService {
       );
   }
   // admin xoa cmt
-  remove(id): Observable<boolean> {
+  removeCmt(id): Observable<boolean> {
     return this.http.delete<boolean>(`${this.apiUrl}/comment/${id}/`)
       .pipe(
         map(response => {
@@ -224,6 +255,65 @@ export class DataService {
   // farmer lấy danh sách comment
   getListComment(id: number): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/comment/${id}/retrieve_by_farmer/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // farmer lấy detail comment
+  getDetailComment(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/comment/${id}/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // farmer post reply comment
+  postReply(user, comment, reply): Observable<boolean> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const data = {
+      // tslint:disable-next-line: object-literal-key-quotes
+      'provider_id': user,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'cmt_id': comment,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'reply': reply
+    };
+    return this.http.post<boolean>(`${this.apiUrl}/reply/`, data)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // farmer lấy danh sách reply
+  getListReply(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/reply/${id}/retrieve_by_farmer/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // admin lấy danh sách reply
+  getReply(): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/reply/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // admin xoa cmt
+  removeReply(id): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.apiUrl}/reply/${id}/`)
       .pipe(
         map(response => {
           return response;
@@ -257,13 +347,13 @@ export class DataService {
     formdt.append('detail', value.detail);
 
     return this.http.post<boolean>(`${this.apiUrl}/product/`, formdt
-      );
-      // .pipe(
-      //   map(response => {
-      //     return response;
-      //   }),
-      //   catchError(this.handleError)
-      // );
+    );
+    // .pipe(
+    //   map(response => {
+    //     return response;
+    //   }),
+    //   catchError(this.handleError)
+    // );
   }
   // edit product
   editProduct(id, product: Product): Observable<boolean> {
@@ -301,7 +391,7 @@ export class DataService {
     formdt.append('detail', value.detail);
 
     return this.http.post<boolean>(`${this.apiUrl}/product/`, formdt
-      );
+    );
   }
   // thong ke cua admin
   getStatistic(): Observable<boolean> {
@@ -316,6 +406,67 @@ export class DataService {
   // thong ke cua farmer
   getStatisticbyFarmer(id): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/action/${id}/get_statistic_by_farmer/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  // them type
+  postType(value: Category): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/type/`, value)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // chi tiet type
+  getType(id): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/type/${id}/retrieve_type/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // edit type
+  editType(id, value: Category): Observable<boolean> {
+    return this.http.put<boolean>(`${this.apiUrl}/type/${id}/`, value)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // xoa type
+  removeType(id): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.apiUrl}/type/${id}/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // enter email
+  postEmail(value: Email): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/action/forgot_password/`, value)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // change_password
+  changePassword(value: Password): Observable<boolean> {
+    return this.http.post<boolean>(`${this.apiUrl}/action/change_password/`, value)
       .pipe(
         map(response => {
           return response;

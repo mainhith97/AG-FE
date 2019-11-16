@@ -57,9 +57,9 @@ button {
 	background: transparent;
 }
 
-button:hover {
-	cursor: pointer;
-}
+// button:hover {
+// 	cursor: pointer;
+// }
 
 iframe {
 	border: none !important;
@@ -257,36 +257,36 @@ iframe {
   z-index: 1;
 }
 
-.login100-form-btn::before {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  border-radius: 25px;
-  top: 0;
-  left: 0;
-  background: rgb(189, 101, 43);
-  background: -webkit-linear-gradient(to left, rgb(189, 101, 43), #00fb7d);
-  background: -o-linear-gradient(to left, rgb(189, 101, 43), #00fb7d);
-  background: -moz-linear-gradient(to left, rgb(189, 101, 43), #00fb7d);
-  background: linear-gradient(to left, rgb(189, 101, 43), #00fb7d);
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-  opacity: 0;
-}
+// .login100-form-btn::before {
+//   content: "";
+//   display: block;
+//   position: absolute;
+//   z-index: -1;
+//   width: 100%;
+//   height: 100%;
+//   border-radius: 25px;
+//   top: 0;
+//   left: 0;
+//   background: rgb(189, 101, 43);
+//   background: -webkit-linear-gradient(to left, rgb(189, 101, 43), #00fb7d);
+//   background: -o-linear-gradient(to left, rgb(189, 101, 43), #00fb7d);
+//   background: -moz-linear-gradient(to left, rgb(189, 101, 43), #00fb7d);
+//   background: linear-gradient(to left, rgb(189, 101, 43), #00fb7d);
+//   -webkit-transition: all 0.4s;
+//   -o-transition: all 0.4s;
+//   -moz-transition: all 0.4s;
+//   transition: all 0.4s;
+//   opacity: 0;
+// }
 
-.login100-form-btn:hover {
-  background: transparent;
-  color: #fff;
-}
+// .login100-form-btn:hover {
+//   background: transparent;
+//   color: #fff;
+// }
 
-.login100-form-btn:hover:before {
-  opacity: 1;
-}
+// .login100-form-btn:hover:before {
+//   opacity: 1;
+// }
 .login100-form-title {
   font-size: 28px;
   color: #fff;

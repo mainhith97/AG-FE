@@ -3,11 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { NgDatepickerModule } from 'ng2-datepicker';
-
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/utils/home/home.component';
@@ -49,7 +49,6 @@ import { ContactComponent } from './components/utils/contact/contact.component';
 
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { ProductComponent } from './components/product/product.component';
-
 
 import { SafeHtmlPipe } from './shared/safe-html.pipe';
 
@@ -115,6 +114,28 @@ import { ByTypePricelowComponent } from './components/utils/by-type-pricelow/by-
 import { ByTypePricehighComponent } from './components/utils/by-type-pricehigh/by-type-pricehigh.component';
 import { ByTypePriceLowComponent } from './pages/utils/by-type-price-low/by-type-price-low.component';
 import { ByTypePriceHighComponent } from './pages/utils/by-type-price-high/by-type-price-high.component';
+import { SupplierPageComponent } from './pages/utils/supplier-page/supplier-page.component';
+import { SupplierpageComponent } from './components/utils/supplierpage/supplierpage.component';
+import { AdminSearchUserComponent } from './pages/admin/admin-search-user/admin-search-user.component';
+import { AdminSearchuserComponent } from './components/admin/admin-searchuser/admin-searchuser.component';
+import { FarmerInfoComponent } from './pages/farmer/farmer-info/farmer-info.component';
+import { FarmerinfoComponent } from './components/farmer/farmerinfo/farmerinfo.component';
+import { AdminTypeComponent } from './components/admin/admin-type/admin-type.component';
+import { AdminTypePageComponent } from './pages/admin/admin-type-page/admin-type-page.component';
+import { AdminCreatetypeComponent } from './components/admin/admin-createtype/admin-createtype.component';
+import { AdminEdittypeComponent } from './components/admin/admin-edittype/admin-edittype.component';
+import { AdminCreateTypeComponent } from './pages/admin/admin-create-type/admin-create-type.component';
+import { AdminEditTypeComponent } from './pages/admin/admin-edit-type/admin-edit-type.component';
+import { ProductBytypeComponent } from './components/admin/product-bytype/product-bytype.component';
+import { ProductByTypeComponent } from './pages/admin/product-by-type/product-by-type.component';
+import { CheckemailComponent } from './components/utils/checkemail/checkemail.component';
+import { CheckemailPageComponent } from './pages/utils/checkemail-page/checkemail-page.component';
+import { FarmerReplyComponent } from './components/farmer/farmer-reply/farmer-reply.component';
+import { ReplyFeedbackComponent } from './pages/farmer/reply-feedback/reply-feedback.component';
+import { FarmerListreplyComponent } from './components/farmer/farmer-listreply/farmer-listreply.component';
+import { FarmerListReplyComponent } from './pages/farmer/farmer-list-reply/farmer-list-reply.component';
+import { AdminListreplyComponent } from './components/admin/admin-listreply/admin-listreply.component';
+import { AdminListReplyComponent } from './pages/admin/admin-list-reply/admin-list-reply.component';
 
 
 @NgModule({
@@ -212,7 +233,29 @@ import { ByTypePriceHighComponent } from './pages/utils/by-type-price-high/by-ty
     ByTypePricelowComponent,
     ByTypePricehighComponent,
     ByTypePriceLowComponent,
-    ByTypePriceHighComponent
+    ByTypePriceHighComponent,
+    SupplierPageComponent,
+    SupplierpageComponent,
+    AdminSearchUserComponent,
+    AdminSearchuserComponent,
+    FarmerInfoComponent,
+    FarmerinfoComponent,
+    AdminTypeComponent,
+    AdminTypePageComponent,
+    AdminCreatetypeComponent,
+    AdminEdittypeComponent,
+    AdminCreateTypeComponent,
+    AdminEditTypeComponent,
+    ProductBytypeComponent,
+    ProductByTypeComponent,
+    CheckemailComponent,
+    CheckemailPageComponent,
+    FarmerReplyComponent,
+    ReplyFeedbackComponent,
+    FarmerListreplyComponent,
+    FarmerListReplyComponent,
+    AdminListreplyComponent,
+    AdminListReplyComponent
   ],
   imports: [
     BrowserModule,
@@ -225,14 +268,12 @@ import { ByTypePriceHighComponent } from './pages/utils/by-type-price-high/by-ty
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     NgDatepickerModule,
-    NgbModule
+    NgbModule,
+    ToastrModule.forRoot(),
 
   ],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: AdmintokenInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: BlobHttpInterceptor, multi: true },
-      DataService, ProductService, AuthService, AdminService, ConfirmationDialogService],
+  DataService, ProductService, AuthService, AdminService, ConfirmationDialogService],
   entryComponents: [ ConfirmationDialogComponent ],
   bootstrap: [AppComponent]
 })

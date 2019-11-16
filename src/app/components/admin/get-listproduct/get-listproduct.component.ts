@@ -28,7 +28,7 @@ export class GetListproductComponent implements OnInit {
   }
   // xoá sp
   remove(id: any) {
-    this.confirmationDialogService.confirm('Vui lòng xác nhận', 'Bạn muốn xoá sản phẩm này ?')
+    this.confirmationDialogService.confirm('Please confirm', 'Do you want to delete this product?')
       .then(() =>
         this.dataService.removeProduct(id).subscribe(res2 => {
           this.res2 = res2;

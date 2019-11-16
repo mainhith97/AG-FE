@@ -47,8 +47,8 @@
 
         <div class="col-xl-6 col-lg-5">
           <form [formGroup]="searchForm" (ngSubmit) = "submit(searchForm)" class="header-search-form">
-            <input type="text" formControlName="keyword" placeholder="Search for..." />
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <input type="text" formControlName="keyword" placeholder="Search for..." required />
+            <button type="submit" [disabled]="searchForm.invalid"><i class="fa fa-search"></i></button>
           </form>
         </div>
 

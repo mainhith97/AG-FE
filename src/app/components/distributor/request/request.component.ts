@@ -41,17 +41,21 @@ export class RequestComponent implements OnInit {
     this.requestForm = this.formBuilder.group({
       quantity: ['', Validators.required],
       proposed_price: ['', Validators.required],
-      datetime: ['', Validators.required]
+      datetime: ['', Validators.required],
+      address: ['', Validators.required],
+      telephone: ['', Validators.required]
     });
   }
   // them yeu cau dat hang
-  addOrder(user, product, quantity, price, datetime ) {
+  addOrder(user, product, quantity, price, datetime, address, telephone ) {
     user = localStorage.getItem('id');
     product = this.data.id;
     quantity  = this.requestForm.get('quantity').value;
     price = this.requestForm.get('proposed_price').value;
     datetime = this.requestForm.get('datetime').value;
-    this.productService.postRequest(user, product, quantity, price, datetime).subscribe(res => {
+    address = this.requestForm.get('address').value;
+    telephone = this.requestForm.get('telephone').value;
+    this.productService.postRequest(user, product, quantity, price, datetime, address, telephone).subscribe(res => {
       this.res = res;
       if (this.res.success) {
         this.router.navigate(['list-order']);
