@@ -1,0 +1,118 @@
+<div id="wrapper">
+    <!-- Sidebar -->
+    <ul
+      class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+      id="accordionSidebar"
+    >
+      <!-- Sidebar - Brand -->
+      <a
+        class="sidebar-brand d-flex align-items-center justify-content-center"
+        href=""
+        [routerLink]="['/myaccount']"
+      >
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-seedling"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">AGRIGARDEN</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0" />
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+          <a class="nav-link" href="" [routerLink]="['/myaccount']"> <span>Dashboard</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="" [routerLink]="['/get-listproduct']"><span>Product</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="" [routerLink]="['/get-listorder']"> <span>Request</span>
+            <span *ngIf="count !== '0'" class="count">{{count}}</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="" [routerLink]="['/get-listhistory']" > <span>Sales</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="" [routerLink]="['/get-listcomment']"> <span>Comment</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="" [routerLink]="['/get-listreply']"> <span>Reply feedback</span></a>
+        </li>
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block" />
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <!-- Main Content -->
+      <div id="content">
+        <!-- Topbar -->
+        <nav
+          class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+        >
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                  >Hello {{data?.username}}</span
+                >
+              </a>
+              <!-- Dropdown - User Information -->
+              <div
+                class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="userDropdown"
+              >
+              <a
+              class="dropdown-item"
+              href="#"
+              data-toggle="modal"
+              [routerLink]="['/info']"
+            >
+              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Profile
+            </a>
+                <a
+                  class="dropdown-item"
+                  href="#"
+                  data-toggle="modal"
+                  data-target="#logoutModal"
+                  (click)="logout()"
+                >
+                  <i
+                    class="fa fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
+                  ></i>
+                  Log out
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- End of Topbar -->
+        <div class="container-fluid">
+          <app-farmer-refusalreason></app-farmer-refusalreason>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+

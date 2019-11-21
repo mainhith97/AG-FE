@@ -1,180 +1,27 @@
 <section class="product-filter-section">
   <div class="container">
     <div class="section-title">
-      <h2>SẢN PHẨM NỔI BẬT</h2>
+      <h2>POPULAR PRODUCTS</h2>
     </div>
     <div class="row">
-      <div class="col-lg-3 col-sm-6">
+      <div *ngFor="let prod of sortFunction(data)" class="col-lg-3 col-sm-6">
         <div class="product-item">
           <div class="pi-pic">
-            <a href="#" class="img-prod"
-              ><img
-                src="./../../../assets/images/product-1.jpg"
-                class="img-fluid"
-                alt=""
-            /></a>
+            <div class="tag-sale">Hot</div>
+            <a class="img-prod" routerLink="/product/{{ prod.id }}"
+              ><img src="{{ prod?.image }}" class="img-fluid" alt=""></a>
             <div class="pi-links">
-              <a href="#" class="add-card"
-                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
+              <button type= "button" class="add-card" (click)="Cart(prod)"
+                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></button
               >
             </div>
           </div>
           <div class="pi-text">
-            <h6>55.000đ/kg</h6>
-            <p>Ớt chuông Đà Lạt</p>
+            <h6>{{ prod?.price_per_unit }}đ/{{ prod?.unit }}</h6>
+            <a routerLink="/product/{{ prod.id }}">{{prod?.name}}</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <a href="#" class="img-prod"
-              ><img
-                src="./../../../assets/images/product-2.jpg"
-                class="img-fluid"
-                alt=""
-            /></a>
-            <div class="pi-links">
-              <a href="#" class="add-card"
-                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
-              >
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>200.000đ/kg</h6>
-            <p>Dâu tây</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <a href="#" class="img-prod"
-              ><img
-                src="./../../../assets/images/product-3.jpg"
-                class="img-fluid"
-                alt=""
-            /></a>
-            <div class="pi-links">
-              <a href="#" class="add-card"
-                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
-              >
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>30.000đ/kg</h6>
-            <p>Đậu Hà Lan</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <a href="#" class="img-prod"
-              ><img
-                src="./../../../assets/images/product-4.jpg"
-                class="img-fluid"
-                alt=""
-            /></a>
-            <div class="pi-links">
-              <a href="#" class="add-card"
-                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
-              >
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>200.000đ/kg</h6>
-            <p>Xà lách tím</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <a href="#" class="img-prod"
-              ><img
-                src="./../../../assets/images/product-5.jpg"
-                class="img-fluid"
-                alt=""
-            /></a>
-            <div class="pi-links">
-              <a href="#" class="add-card"
-                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
-              >
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>40.000đ/kg</h6>
-            <p>Cà chua</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <a href="#" class="img-prod"
-              ><img
-                src="./../../../assets/images/product-6.jpg"
-                class="img-fluid"
-                alt=""
-            /></a>
-            <div class="pi-links">
-              <a href="#" class="add-card"
-                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
-              >
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>65.000đ/kg</h6>
-            <p>Bông cải xanh</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <a href="#" class="img-prod"
-              ><img
-                src="./../../../assets/images/product-7.jpg"
-                class="img-fluid"
-                alt=""
-            /></a>
-            <div class="pi-links">
-              <a href="#" class="add-card"
-                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
-              >
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>35.000đ/kg</h6>
-            <p>Cà rốt</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6">
-        <div class="product-item">
-          <div class="pi-pic">
-            <a href="#" class="img-prod"
-              ><img
-                src="./../../../assets/images/product-9.jpg"
-                class="img-fluid"
-                alt=""
-            /></a>
-            <div class="pi-links">
-              <a href="#" class="add-card"
-                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
-              >
-            </div>
-          </div>
-          <div class="pi-text">
-            <h6>30.000đ/kg</h6>
-            <p>Hành tím</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="d-flex justify-content-center">
-      <p><a href="#" class="btn btn-primary">Xem toàn bộ</a></p>
     </div>
   </div>
 </section>

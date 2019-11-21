@@ -7,7 +7,7 @@
         <p>Hotline 1: <span>0919010542</span></p>
         <p>Hotline 2: <span>0783557654</span></p>
         <p>Representative: <span>Trương Huỳnh Mai Nhi</span></p>
-        <p>Email 1: <span>agrigarden@gmail.com</span></p>
+        <p>Email 1: <span>agrigardenteam@gmail.com</span></p>
         <p>Email 2: <span>mainhith97@gmail.com</span></p>
       </div>
       <div class="map">
@@ -25,24 +25,9 @@
   <div class="container list-farmer">
     <h5 class="text-center text-uppercase">Some agricultural suppliers cooperate with us</h5>
     <ol class="pt-3">
-      <li>
-        <p class="font-weight-bold">Trại Mát – Nông Trại Đà Lạt</p>
-        <p>Address: Trại Mát, Phường 11, Tp. Đà Lạt, Lâm Đồng</p>
-      </li>
-
-      <li>
-        <p class="font-weight-bold">Vựa Trái Cây Sạch Đức Trọng</p>
-        <p>Address: 137 Lạc Long Quân, Liên Nghĩa, Đức Trọng, Lâm Đồng</p>
-      </li>
-      <li>
-        <p class="font-weight-bold">Vườn trái cây sinh thái Đăng Quang</p>
-        <p>Address: Lâm Sơn, Ninh Sơn, Ninh Thuận</p>
-      </li>
-      <li>
-        <p class="font-weight-bold">Vườn rau thuỷ canh An Nông Farm</p>
-        <p>
-          Address: 59/1A, QL1A, An Phú Đông, Quận 12, Hồ Chí Minh
-        </p>
+      <li *ngFor="let data of data">
+        <p class="font-weight-bold">{{data.company_name}}</p>
+        <p>Address: {{data.address}}</p>
       </li>
     </ol>
     <div class="map">

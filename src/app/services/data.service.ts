@@ -82,6 +82,26 @@ export class DataService {
         catchError(this.handleError)
       );
   }
+  // lấy danh sach supplier
+  getListSupplier(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${this.userPrefix}/list_supplier/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // lấy danh sach distributor
+  getListDistributor(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${this.userPrefix}/list_distributor/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
   // edit Profile
   updateProfile(value: Profile): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${this.userPrefix}/${localStorage.getItem('id')}/`, value)
@@ -467,6 +487,35 @@ export class DataService {
   // change_password
   changePassword(value: Password): Observable<boolean> {
     return this.http.post<boolean>(`${this.apiUrl}/action/change_password/`, value)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // farmer lấy detail order
+  getDetailOrder(id: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/order/${id}/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // post reason
+  postReason(user, order, reason): Observable<boolean> {
+    // tslint:disable-next-line: object-literal-key-quotes
+    const data = {
+      // tslint:disable-next-line: object-literal-key-quotes
+      'supplier_id': user,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'order_id': order,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'reason': reason
+    };
+    return this.http.post<boolean>(`${this.apiUrl}/reason/`, data)
       .pipe(
         map(response => {
           return response;

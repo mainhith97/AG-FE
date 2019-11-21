@@ -5,10 +5,11 @@
       <thead>
           <tr>
               <th>ID</th>
-              <th>Supplier</th>
+              <th>User</th>
               <th>Workplace</th>
               <th>Email</th>
               <th>Address</th>
+              <th>Telephone</th>
               <th>Role</th>
               <th>Action</th>
           </tr>
@@ -20,9 +21,10 @@
               <td>{{ data.company_name }}</td>
               <td>{{ data.email }}</td>
               <td>{{ data.address }}</td>
-              <td>
-                  <span *ngIf="data.role == 'farmer'" class="text-success">Supplier</span>
-                  <span *ngIf="data.role == 'distributor'" class="text-primary" >Distributor</span>
+              <td>{{ data.telephone}}</td>
+              <td class="role">
+                  <span *ngIf="data.role == 'farmer'" class="text-success" [routerLink]="['/get-list-supplier']">Supplier</span>
+                  <span *ngIf="data.role == 'distributor'" class="text-primary" [routerLink]="['/get-list-distributor']">Distributor</span>
               </td>
               <td>
                 <a

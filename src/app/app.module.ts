@@ -136,6 +136,18 @@ import { FarmerListreplyComponent } from './components/farmer/farmer-listreply/f
 import { FarmerListReplyComponent } from './pages/farmer/farmer-list-reply/farmer-list-reply.component';
 import { AdminListreplyComponent } from './components/admin/admin-listreply/admin-listreply.component';
 import { AdminListReplyComponent } from './pages/admin/admin-list-reply/admin-list-reply.component';
+import { ShipInfoComponent } from './components/utils/ship-info/ship-info.component';
+import { ExchangeComponent } from './components/utils/exchange/exchange.component';
+import { PrivacyComponent } from './components/utils/privacy/privacy.component';
+import { ShipInfoPageComponent } from './pages/utils/ship-info-page/ship-info-page.component';
+import { ExchangePageComponent } from './pages/utils/exchange-page/exchange-page.component';
+import { PrivacyPageComponent } from './pages/utils/privacy-page/privacy-page.component';
+import { AdminListsupplierComponent } from './components/admin/admin-listsupplier/admin-listsupplier.component';
+import { AdminListdistributorComponent } from './components/admin/admin-listdistributor/admin-listdistributor.component';
+import { AdminListSupplierComponent } from './pages/admin/admin-list-supplier/admin-list-supplier.component';
+import { AdminListDistributorComponent } from './pages/admin/admin-list-distributor/admin-list-distributor.component';
+import { FarmerRefusalreasonComponent } from './components/farmer/farmer-refusalreason/farmer-refusalreason.component';
+import { FarmerRefusalReasonComponent } from './pages/farmer/farmer-refusal-reason/farmer-refusal-reason.component';
 
 
 @NgModule({
@@ -255,7 +267,19 @@ import { AdminListReplyComponent } from './pages/admin/admin-list-reply/admin-li
     FarmerListreplyComponent,
     FarmerListReplyComponent,
     AdminListreplyComponent,
-    AdminListReplyComponent
+    AdminListReplyComponent,
+    ShipInfoComponent,
+    ExchangeComponent,
+    PrivacyComponent,
+    ShipInfoPageComponent,
+    ExchangePageComponent,
+    PrivacyPageComponent,
+    AdminListsupplierComponent,
+    AdminListdistributorComponent,
+    AdminListSupplierComponent,
+    AdminListDistributorComponent,
+    FarmerRefusalreasonComponent,
+    FarmerRefusalReasonComponent
   ],
   imports: [
     BrowserModule,

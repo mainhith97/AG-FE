@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  res: any;
+  data: any;
+  constructor(
+    private dataService: DataService
+  ) { }
 
   ngOnInit() {
+    this.getListSupplier();
+  }
+
+  getListSupplier() {
+
+    this.dataService.getListSupplier().subscribe(res => {
+      this.res = res;
+      if (this.res.success) {
+                this.data = this.res.result;
+      }
+    });
   }
 
 }

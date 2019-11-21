@@ -31,16 +31,18 @@
               </a>  |
               <a
                 (click)="declineOrder(order.id)"
+                routerLink='/refusal-reason/{{order.id}}'
                 class="btn-action text-danger" style="cursor: pointer;"
                 ><span class="fa fa-times" ></span>
               </a></td>
-              <td *ngIf="order.status === 'Accept' || order.status === 'Decline'">
+              <td *ngIf="order.status === 'Accept'">
                 <span class="fa fa-check-circle text-success"></span>
+              </td>
+              <td *ngIf="order.status === 'Decline'">
+                <span class="fa fa-check-circle text-danger"></span>
               </td>
           </tr>
       </tbody>
   </table>
 </div>
 </div>
-
-

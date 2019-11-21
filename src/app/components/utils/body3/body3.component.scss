@@ -22,7 +22,30 @@
 .product-item .pi-pic {
   position: relative;
   display: block;
-  height: 50%;
+  // height: 50%;
+}
+.product-item .tag-new,
+.product-item .tag-sale {
+	position: absolute;
+	right: 5px;
+	top: 14px;
+	font-size: 12px;
+	font-weight: 700;
+	color: #fff;
+	background: #50e550;
+	line-height: 1;
+	text-transform: uppercase;
+	padding: 5px 9px 1px;
+	border-radius: 15px;
+  width: 50px;
+  z-index: 1;
+}
+
+.product-item .tag-sale {
+	text-align: center;
+	padding: 5px 0px 1px;
+	min-width: 65px;
+	background: #f51167;
 }
 .product-item .pi-links {
   width: 100%;
@@ -131,8 +154,7 @@
   height: 500px;
 }
 .img-fluid {
-  max-width: 100%;
-  height: auto;
+  height: 250px;
 }
 .btn {
   cursor: pointer;

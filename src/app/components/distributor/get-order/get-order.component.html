@@ -16,6 +16,7 @@
             <th>Proposed price</th>
             <th>Date of receipt</th>
             <th>Status</th>
+            <th>Refusal Reason</th>
           </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
             <td>{{prod.proposed_price}}đ</td>
             <td>{{prod.datetime}}</td>
             <td>{{prod.status}}</td>
+            <td>{{prod.refusal_reason?.reason}}</td>
           </tr>
         </tbody>
       </table>

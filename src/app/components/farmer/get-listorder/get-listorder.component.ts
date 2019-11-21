@@ -33,25 +33,22 @@ export class GetListorderComponent implements OnInit {
   // chap nhan don hang
   acceptOrder(id) {
     this.confirmationDialogService.confirm('Please confirm', 'Do you want to accept this order?')
-    .then(() =>
-    this.dataService.acceptOrder(id).subscribe(res => {
+      .then(() =>
+        this.dataService.acceptOrder(id).subscribe(res => {
           this.res = res;
           if (this.res.success) {
             this.getListOrder(id);
           }
         }))
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
   // tu choi don hang
   declineOrder(id) {
-    this.confirmationDialogService.confirm('Please confirm', 'Do you want to decline this order?')
-    .then(() =>
     this.dataService.declineOrder(id).subscribe(res => {
-          this.res = res;
-          if (this.res.success) {
-            this.getListOrder(id);
-          }
-        }))
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+      this.res = res;
+      // if (this.res.success) {
+      //   this.getListOrder(id);
+      // }
+    });
   }
 }

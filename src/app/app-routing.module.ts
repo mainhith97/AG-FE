@@ -58,6 +58,12 @@ import { AdminGuard } from './services/admin.guard';
 import { ReplyFeedbackComponent } from './pages/farmer/reply-feedback/reply-feedback.component';
 import { AdminListReplyComponent } from './pages/admin/admin-list-reply/admin-list-reply.component';
 import { FarmerListReplyComponent } from './pages/farmer/farmer-list-reply/farmer-list-reply.component';
+import { ShipInfoPageComponent } from './pages/utils/ship-info-page/ship-info-page.component';
+import { ExchangePageComponent } from './pages/utils/exchange-page/exchange-page.component';
+import { PrivacyPageComponent } from './pages/utils/privacy-page/privacy-page.component';
+import { AdminListDistributorComponent } from './pages/admin/admin-list-distributor/admin-list-distributor.component';
+import { AdminListSupplierComponent } from './pages/admin/admin-list-supplier/admin-list-supplier.component';
+import { FarmerRefusalReasonComponent } from './pages/farmer/farmer-refusal-reason/farmer-refusal-reason.component';
 
 const routes: Routes = [
 
@@ -75,6 +81,9 @@ const routes: Routes = [
   { path: 'forgot-password', component: EnterEmailPageComponent },
   { path: 'change_password', component: NewPasswordPageComponent },
   { path: 'check-email', component: CheckemailPageComponent },
+  { path: 'shipping-information', component: ShipInfoPageComponent },
+  { path: 'return-exchange', component: ExchangePageComponent },
+  { path: 'privacy-policy', component: PrivacyPageComponent },
   {
     path: '',
     component: MainLayoutComponent,
@@ -109,7 +118,9 @@ const routes: Routes = [
       { path: 'edit-type/:id', component: AdminEditTypeComponent },
       { path: 'create-type', component: AdminCreateTypeComponent },
       { path: 'product-by-type/:id', component: ProductByTypeComponent },
-      { path: 'get-list-reply', component: AdminListReplyComponent }
+      { path: 'get-list-reply', component: AdminListReplyComponent },
+      { path: 'get-list-supplier', component: AdminListSupplierComponent },
+      { path: 'get-list-distributor', component: AdminListDistributorComponent }
 
     ]
   },
@@ -128,7 +139,8 @@ const routes: Routes = [
       { path: 'update-product/:id', component: FarmerEditProductComponent },
       { path: 'info', component: FarmerInfoComponent },
       { path: 'reply-feedback/:id', component: ReplyFeedbackComponent },
-      { path: 'get-listreply', component: FarmerListReplyComponent }
+      { path: 'get-listreply', component: FarmerListReplyComponent },
+      { path: 'refusal-reason/:id', component: FarmerRefusalReasonComponent }
     ]
   },
   {

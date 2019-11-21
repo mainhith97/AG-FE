@@ -53,16 +53,21 @@
         </div>
 
 
-        <!-- <div class="wrap-input100 validate-input" data-validate="">
+        <div class="wrap-input100 validate-input" data-validate="">
           <input
             class="input100"
             type="text"
             name="company_name"
-            placeholder="Công ty"
+            placeholder="Workplace"
             formControlName="company_name"
+            required
           />
           <span class="focus-input100"></span>
-        </div> -->
+        </div>
+        <label
+        *ngIf="registerForm.controls['company_name'].invalid && registerForm.controls['company_name'].touched" class="text-danger">
+        Workplace is required
+        </label>
 
         <div class="wrap-input100 validate-input" data-validate="">
           <input

@@ -12,6 +12,7 @@
             <th>STT</th>
             <th style="width: 30%">Name</th>
             <th>Total price</th>
+            <th>Order date</th>
             <th>Delivery address</th>
             <th>Status</th>
           </tr>
@@ -21,6 +22,7 @@
             <td>{{i+1}}</td>
             <td style="white-space: pre-line">{{prod.products}}</td>
             <td>{{prod.totals}}đ</td>
+            <td>{{prod.created_at}}</td>
             <td>{{prod.address}}</td>
             <td>{{prod.status}}</td>
           </tr>

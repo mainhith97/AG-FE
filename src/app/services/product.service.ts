@@ -118,6 +118,16 @@ export class ProductService {
         catchError(this.handleError)
       );
   }
+  // lấy sản phâm nổi bật nhất
+  getListPopular(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/action/get_list_popular/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
   // thêm vào giỏ hàng
   Cart(product: Product) {
 
@@ -175,13 +185,13 @@ export class ProductService {
       );
   }
   // dat hang
-  addToHistory(id, username, totals, product, address): Observable<boolean> {
+  addToHistory(id, companyname, totals, product, address): Observable<boolean> {
     // tslint:disable-next-line: object-literal-key-quotes
     const data = {
       // tslint:disable-next-line: object-literal-key-quotes
       'user_id': id,
       // tslint:disable-next-line: object-literal-key-quotes
-      'name': username,
+      'name': companyname,
       // tslint:disable-next-line: object-literal-key-quotes
       'totals': totals,
       // tslint:disable-next-line: object-literal-key-quotes

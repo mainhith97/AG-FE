@@ -1,0 +1,59 @@
+<div class="content">
+  <div *ngIf="data != null" class="table-responsive-sm">
+  <table class="table table-striped table-bordered">
+      <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Proposed_price</th>
+            <th>Contact info</th>
+            <th>Received date</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>{{ data.user_order.company_name }}</td>
+              <td>{{ data.product_order.name }}</td>
+              <td>{{ data.quantity }}</td>
+              <td>{{ data.proposed_price }}</td>
+              <td>{{ data.address }} <br>{{ data.telephone }}</td>
+              <td>{{ data.datetime }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+</div>
+
+<div class="content">
+  <form
+    [formGroup]="reasonForm"
+    (ngSubmit)="submit(reasonForm)"
+    novalidate
+  >
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Refusal Reason</label>
+        <input
+          type="text"
+          formControlName="reason"
+          class="form-control border-input"
+          placeholder=""
+        />
+      </div>
+    </div>
+  </div>
+
+    <div class="mb-5">
+      <button type="submit" class="btn btn-fill btn-wd" [disabled]="reasonForm.invalid">POST</button>
+    </div>
+    <div class="clearfix"></div>
+  </form>
+</div>
+
+
+
+
+
+
