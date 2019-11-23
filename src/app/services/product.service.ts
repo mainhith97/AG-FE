@@ -185,7 +185,7 @@ export class ProductService {
       );
   }
   // dat hang
-  addToHistory(id, companyname, totals, product, address): Observable<boolean> {
+  addToHistory(id, companyname, totals, product, address, telephone): Observable<boolean> {
     // tslint:disable-next-line: object-literal-key-quotes
     const data = {
       // tslint:disable-next-line: object-literal-key-quotes
@@ -197,7 +197,9 @@ export class ProductService {
       // tslint:disable-next-line: object-literal-key-quotes
       'products': product,
       // tslint:disable-next-line: object-literal-key-quotes
-      'address': address
+      'address': address,
+      // tslint:disable-next-line: object-literal-key-quotes
+      'telephone': telephone
     };
     return this.http.post<boolean>(`${this.apiUrl}/history/`, data)
       .pipe(

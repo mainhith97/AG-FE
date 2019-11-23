@@ -148,6 +148,8 @@ import { AdminListSupplierComponent } from './pages/admin/admin-list-supplier/ad
 import { AdminListDistributorComponent } from './pages/admin/admin-list-distributor/admin-list-distributor.component';
 import { FarmerRefusalreasonComponent } from './components/farmer/farmer-refusalreason/farmer-refusalreason.component';
 import { FarmerRefusalReasonComponent } from './pages/farmer/farmer-refusal-reason/farmer-refusal-reason.component';
+import { ActivateUserComponent } from './components/admin/activate-user/activate-user.component';
+import { ActivateUserPageComponent } from './pages/admin/activate-user-page/activate-user-page.component';
 
 
 @NgModule({
@@ -279,7 +281,9 @@ import { FarmerRefusalReasonComponent } from './pages/farmer/farmer-refusal-reas
     AdminListSupplierComponent,
     AdminListDistributorComponent,
     FarmerRefusalreasonComponent,
-    FarmerRefusalReasonComponent
+    FarmerRefusalReasonComponent,
+    ActivateUserComponent,
+    ActivateUserPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,9 @@
 import { DataService } from './../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Profile } from 'src/app/shared/interface';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,8 @@ export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private dataService: DataService,
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getProfile();
@@ -27,8 +29,8 @@ export class ProfileComponent implements OnInit {
   buildForm() {
     this.profileForm = this.formBuilder.group({
       name: [''],
-      email: [''],
-      company_name: [''],
+      email: ['', Validators.required],
+      company_name: ['', Validators.required],
       address: [''],
       telephone: ['']
     });
@@ -52,6 +54,7 @@ export class ProfileComponent implements OnInit {
     this.dataService.updateProfile(value).subscribe(res => {
       this.res = res;
       if (this.res.success) {
+        this.toastr.success('Edit successfully!');
         this.router.navigate(['profile']);
       } else {
         console.log(res);

@@ -63,7 +63,7 @@ export class AdminCreateproductComponent implements OnInit {
   }
   // get list farmer
   getListFarmer() {
-    this.dataService.getListFarmer().subscribe(res2 => {
+    this.dataService.getListSupplier().subscribe(res2 => {
       this.res2 = res2;
       if (this.res2.success) {
         this.data2 = this.res2.result;

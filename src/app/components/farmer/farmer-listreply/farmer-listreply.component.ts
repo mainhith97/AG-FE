@@ -12,6 +12,7 @@ export class FarmerListreplyComponent implements OnInit {
   res: any;
   data: any;
   id: any;
+  check: boolean;
   constructor(private dataService: DataService,
               private confirmationDialogService: ConfirmationDialogService) { }
 
@@ -23,7 +24,11 @@ export class FarmerListreplyComponent implements OnInit {
     id = localStorage.getItem('id');
     this.dataService.getListReply(id).subscribe(res => {
       this.res = res;
+      this.check = false;
       if (this.res.success) {
+        if (this.res.result.length !== 0) {
+          this.check = true;
+        }
         this.data = this.res.result;
       }
     });

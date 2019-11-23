@@ -11,8 +11,8 @@
             <a class="img-prod" routerLink="/product/{{ prod.id }}"
               ><img src="{{ prod?.image }}" class="img-fluid" alt=""></a>
             <div class="pi-links">
-              <button type= "button" class="add-card" (click)="Cart(prod)"
-                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></button
+              <a class="add-card" (click)="Cart(prod)" style="cursor: pointer;"
+                ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
               >
             </div>
           </div>

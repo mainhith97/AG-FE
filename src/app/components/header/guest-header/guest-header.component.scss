@@ -276,11 +276,11 @@ button.bg-primary:focus {
 .main-menu .sub-menu li {
 	display: block;
 }
-.main-menu .sub-menu li::before {
-  content: "•"; color: #82ae46;
-  position: absolute;
-  padding-left: 5px;
-}
+// .main-menu .sub-menu li::before {
+//   content: "•"; color: #82ae46;
+//   position: absolute;
+//   padding-left: 5px;
+// }
 .main-menu .sub-menu li a {
 	display: block;
 	color: #000;

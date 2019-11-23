@@ -1,48 +1,58 @@
 <div class="content">
-  <div class="table-responsive-sm">
-  <table class="table table-striped table-bordered">
+  <div *ngIf="!check">
+    <h4 style="text-align: center" class="title">
+      <strong>NO INFORMATION</strong>
+    </h4>
+  </div>
+  <div *ngIf="check">
+    <table class="table table-responsive-sm table-striped table-bordered">
       <thead>
-          <tr>
-              <th>ID</th>
-              <th>Customer</th>
-              <th>Name of product</th>
-              <th>Quantity</th>
-              <th>Proposed price</th>
-              <th>Received date</th>
-              <th>Contact info</th>
-              <th>Status</th>
-              <th>Action</th>
-          </tr>
+        <tr>
+          <th>ID</th>
+          <th>Customer</th>
+          <th>Name of product</th>
+          <th>Quantity</th>
+          <th>Proposed price</th>
+          <th>Received date</th>
+          <th>Contact info</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let order of data ; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td>{{ order.user_order.name }}</td>
-              <td >{{ order.product_order.name }}</td>
-              <td>{{ order.quantity }}</td>
-              <td>{{ order.proposed_price }}đ</td>
-              <td>{{ order.datetime }}</td>
-              <td>{{ order.address }} <br>{{ order.telephone }}</td>
-              <td>{{ order.status }}</td>
-              <td *ngIf="order.status === 'Seen'"><a
-                (click)="acceptOrder(order.id)"
-                class="btn-action text-primary" style="cursor: pointer;"
-                ><span class="fa fa-check-square" ></span>
-              </a>  |
-              <a
-                (click)="declineOrder(order.id)"
-                routerLink='/refusal-reason/{{order.id}}'
-                class="btn-action text-danger" style="cursor: pointer;"
-                ><span class="fa fa-times" ></span>
-              </a></td>
-              <td *ngIf="order.status === 'Accept'">
-                <span class="fa fa-check-circle text-success"></span>
-              </td>
-              <td *ngIf="order.status === 'Decline'">
-                <span class="fa fa-check-circle text-danger"></span>
-              </td>
-          </tr>
+        <tr *ngFor="let order of data; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ order.user_order.name }}</td>
+          <td>{{ order.product_order.name }}</td>
+          <td>{{ order.quantity }} {{order.product_order.unit}}</td>
+          <td>{{ order.proposed_price }}đ</td>
+          <td>{{ order.datetime }}</td>
+          <td>{{ order.address }} <br />{{ order.telephone }}</td>
+          <td>{{ order.status }}</td>
+          <td *ngIf="order.status === 'Seen'">
+            <a
+              (click)="acceptOrder(order.id)"
+              class="btn-action text-primary"
+              style="cursor: pointer;"
+              ><span class="fa fa-check-square"></span>
+            </a>
+            |
+            <a
+              (click)="declineOrder(order.id)"
+              routerLink="/refusal-reason/{{ order.id }}"
+              class="btn-action text-danger"
+              style="cursor: pointer;"
+              ><span class="fa fa-times"></span>
+            </a>
+          </td>
+          <td *ngIf="order.status === 'Accept'">
+            <span class="fa fa-check-circle text-success"></span>
+          </td>
+          <td *ngIf="order.status === 'Decline'">
+            <span class="fa fa-check-circle text-danger"></span>
+          </td>
+        </tr>
       </tbody>
-  </table>
-</div>
+    </table>
+  </div>
 </div>

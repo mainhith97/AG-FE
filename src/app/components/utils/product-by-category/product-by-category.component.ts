@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -17,7 +18,8 @@ export class ProductByCategoryComponent implements OnInit {
   data1: any;
   id: number;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -25,10 +27,10 @@ export class ProductByCategoryComponent implements OnInit {
       this.getListProductByType(this.id);
     });
   }
-    // check localstorage
-    readLocalStorageValue(key: string) {
-      return localStorage.getItem(key);
-    }
+  // check localstorage
+  readLocalStorageValue(key: string) {
+    return localStorage.getItem(key);
+  }
   getListProductByType(id: number) {
     this.productService.getListProductByType(id).subscribe(res => {
       this.res = res;
@@ -46,6 +48,7 @@ export class ProductByCategoryComponent implements OnInit {
           // tslint:disable-next-line: radix
           const newCart = parseInt(localStorage.getItem('giohang')) + 1;
           localStorage.setItem('giohang', newCart.toString());
+          this.toastr.success('The product has been added to cart!');
         }
       });
     } else {

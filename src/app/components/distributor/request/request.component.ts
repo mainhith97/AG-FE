@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Request } from 'src/app/shared/interface';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-request',
@@ -13,10 +14,13 @@ export class RequestComponent implements OnInit {
   model;
   res: any;
   data: any;
+  res2: any;
+  data2: any;
   id: number;
   requestForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private productService: ProductService,
+              private dataService: DataService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -25,6 +29,7 @@ export class RequestComponent implements OnInit {
       this.id = params.id;
       this.getDetailProduct(this.id);
     });
+    this.getProfile();
     this.buildForm();
   }
   // lấy chi tiết sản phẩm
@@ -46,6 +51,18 @@ export class RequestComponent implements OnInit {
       telephone: ['', Validators.required]
     });
   }
+    // lấy thông tin user
+    getProfile() {
+
+      this.dataService.getProfile().subscribe(res2 => {
+        this.res2 = res2;
+        if (this.res2.success) {
+          this.data2 = this.res2.result;
+          this.requestForm.controls.address.setValue(this.data2.address);
+          this.requestForm.controls.telephone.setValue(this.data2.telephone);
+        }
+      });
+    }
   // them yeu cau dat hang
   addOrder(user, product, quantity, price, datetime, address, telephone ) {
     user = localStorage.getItem('id');

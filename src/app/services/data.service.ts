@@ -122,9 +122,29 @@ export class DataService {
         catchError(this.handleError)
       );
   }
-  // admin xoa user
+  // admin ban user
   removeUser(id): Observable<boolean> {
     return this.http.delete<boolean>(`${this.apiUrl}/user/${id}/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // admin lấy danh sách user bi ban
+  getBannedUser(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/user/get_banned_users/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // admin khoi phuc user
+  activateUser(id): Observable<boolean> {
+    return this.http.put<boolean>(`${this.apiUrl}/user/${id}/activate/`, '')
       .pipe(
         map(response => {
           return response;
@@ -334,16 +354,6 @@ export class DataService {
   // admin xoa cmt
   removeReply(id): Observable<boolean> {
     return this.http.delete<boolean>(`${this.apiUrl}/reply/${id}/`)
-      .pipe(
-        map(response => {
-          return response;
-        }),
-        catchError(this.handleError)
-      );
-  }
-  // list farmer
-  getListFarmer(): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/user/list_farmer/`)
       .pipe(
         map(response => {
           return response;

@@ -19,10 +19,11 @@
               <td>{{ order.user_order.company_name }}</td>
               <td>{{ order.product_order.name }}</td>
               <td>{{ order.provider }}</td>
-              <td>{{ order.quantity }}</td>
+              <td>{{ order.quantity }} {{order.product_order.unit}}</td>
               <td>{{ order.proposed_price }}đ</td>
               <td>{{ order.datetime }}</td>
               <td>
+                  <span *ngIf="order.status == 'Pending'">Pending</span>
                 <span *ngIf="order.status == 'Accept'" class="text-success">Accept</span>
                 <span *ngIf="order.status == 'Decline'" class="text-danger" >Decline</span>
                 <span *ngIf="order.status == 'Seen'" class="text-primary">Seen</span>

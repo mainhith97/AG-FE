@@ -20,7 +20,7 @@
       <hr class="sidebar-divider my-0" />
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
+      <li class="nav-item">
           <a class="nav-link" href="" [routerLink]="['/myaccount']"> <span>Dashboard</span></a>
         </li>
 
@@ -33,7 +33,7 @@
             <span *ngIf="count !== '0'" class="count">{{count}}</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="" [routerLink]="['/get-listhistory']" > <span>Sales</span></a>
+          <a class="nav-link font-weight-bold" href="" [routerLink]="['/get-listhistory']" > <span>Sales</span></a>
         </li>
 
         <li class="nav-item">
@@ -71,7 +71,7 @@
                 aria-expanded="false"
               >
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                  >Hello {{data?.username}}</span
+                  >Hello, {{data?.username}}</span
                 >
               </a>
               <!-- Dropdown - User Information -->

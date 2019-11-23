@@ -13,6 +13,7 @@ export class GetListorderComponent implements OnInit {
   res: any;
   data: any;
   id: number;
+  check: boolean;
   constructor(private dataService: DataService, private confirmationDialogService: ConfirmationDialogService) { }
 
   ngOnInit() {
@@ -23,7 +24,11 @@ export class GetListorderComponent implements OnInit {
     id = localStorage.getItem('id');
     this.dataService.getListOrder(id).subscribe(res => {
       this.res = res;
+      this.check = false;
       if (this.res.success) {
+        if (this.res.result.length !== 0) {
+          this.check = true;
+        }
         this.data = this.res.result;
         // tslint:disable-next-line: no-unused-expression
         localStorage.setItem('count', '0');

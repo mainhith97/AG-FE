@@ -1,106 +1,101 @@
 <div class="content container mt-5">
-  <div *ngIf="!check">
-    <h4 style="text-align: center" class="title">
-      <strong>NO PRODUCT</strong>
-    </h4>
+    <div *ngIf="!check">
+      <h4 style="text-align: center" class="title">
+        <strong>NO PRODUCT</strong>
+      </h4>
 
-    <div class="row">
-      <div class="col align-self-start"></div>
-      <div class="col align-self-center">
-        <img style="width:75%" src="../../../assets/images/cart.jpg" />
+      <div class="row">
+        <div class="col align-self-start"></div>
+        <div class="col align-self-center">
+          <img style="width:75%" src="../../../assets/images/cart.jpg" />
+        </div>
+        <div class="col align-self-end"></div>
       </div>
-      <div class="col align-self-end"></div>
-    </div>
-    <div class="row confirm mb-5">
-      <div class="col align-self-start"></div>
-      <div class="col align-self-center">
-        <a class="btn" [routerLink]="['/home']"><b>Continue shopping</b></a>
+      <div class="row confirm mb-5">
+        <div class="col align-self-start"></div>
+        <div class="col align-self-center">
+          <a class="btn" [routerLink]="['/home']"><b>Continue shopping</b></a>
+        </div>
+        <div class="col align-self-end"></div>
       </div>
-      <div class="col align-self-end"></div>
     </div>
-  </div>
 
-  <div *ngIf="check">
-    <div class="cart-table">
-      <table class="table table-bordered table-hover">
-        <thead class="thead">
-          <tr>
-            <th>STT</th>
-            <th style="width: 30%">Product name</th>
-            <th style="width: 30%">Image</th>
-            <th>Price</th>
-            <th style="width: 10%">Quantity</th>
-            <th>Total price</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let prod of data; let i = index" >
-            <td>{{ i + 1 }}</td>
-            <td >{{ prod.product_value.name }}</td>
-            <td class="d-flex justify-content-center align-content-center">
-              <img src="{{ prod.product_value.image }}" class="img-fluid" />
-            </td>
-            <td>
-              {{ prod.product_value.price_per_unit }}đ/{{
-                prod.product_value.unit
-              }}
-            </td>
-            <td class="quy-col">
-              <div class="quantity">
-                <div class="pro-qty">
-                  <!-- <input
-                    type="number"
-                    value="{{ prod.quantity }}"
-                    min="1"
-                    max="10"
-                  /> -->
-                  <span
-                    (click)="onRemoveQuantity(prod)"
-                    class="qtybtn"
-                  >
-                    -
+    <div *ngIf="check">
+      <div class="cart-table">
+        <table class="table table-bordered table-hover">
+          <thead class="thead">
+            <tr>
+              <th>STT</th>
+              <th style="width: 30%">Product name</th>
+              <th style="width: 30%">Image</th>
+              <th>Price</th>
+              <th style="width: 10%">Quantity</th>
+              <th>Total price</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prod of data; let i = index" >
+              <td>{{ i + 1 }}</td>
+              <td >{{ prod.product_value.name }}</td>
+              <td class="d-flex justify-content-center align-content-center">
+                <img src="{{ prod.product_value.image }}" class="img-fluid" />
+              </td>
+              <td>
+                {{ prod.product_value.price_per_unit }}đ/{{
+                  prod.product_value.unit
+                }}
+              </td>
+              <td class="quy-col">
+                <div class="quantity">
+                  <div class="pro-qty">
+                    <span
+                      (click)="onRemoveQuantity(prod)"
+                      class="qtybtn"
+                    >
+                      -
+                    </span>
+                    <input
+                      type="text"
+                      value="{{prod.quantity}}"
+                      min="1"
+                      max="10"
+                      readonly
+                    />
+                    <span
+                      (click)="onAddQuantity(prod)"
+                      class="qtybtn"
+                    >
+                      +
                   </span>
-                  <input
-                    type="text"
-                    value="{{prod.quantity}}"
-                    min="1"
-                    max="10"
-                  />
-                  <span
-                    (click)="onAddQuantity(prod)"
-                    class="qtybtn"
-                  >
-                    +
-                </span>
+                  </div>
                 </div>
-              </div>
-            </td>
-            <td>{{ prod.total }}đ</td>
-            <td>
-              <a
-                (click)="remove(prod.id, prod.quantity)"
-                class="btn-action btn-del"
-                ><span class="fa fa-trash" aria-hidden="true"></span>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="total-cost mb-5">
-      <h6>
-        Price <span>{{ totals }}đ</span>
-      </h6>
-    </div>
-
-    <div class="row confirm mb-5">
-      <div class="col align-self-start"></div>
-      <div class="col align-self-center">
-        <button class="btn" [routerLink]="['/checkout']"><b>Confirm</b></button>
+              </td>
+              <td>{{ prod.total }}đ</td>
+              <td>
+                <a
+                  (click)="remove(prod.id, prod.quantity)"
+                  class="btn-action btn-del"
+                  ><span class="fa fa-trash" aria-hidden="true" style="font-size: 20px;"></span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="col align-self-end"></div>
+
+      <div class="total-cost mb-5">
+        <h6>
+          Price <span>{{ totals }}đ</span>
+        </h6>
+      </div>
+
+      <div class="row confirm mb-5">
+        <div class="col align-self-start"></div>
+        <div class="col align-self-center">
+          <button class="btn" [routerLink]="['/checkout']"><b>Confirm</b></button>
+        </div>
+        <div class="col align-self-end"></div>
+      </div>
     </div>
   </div>
-</div>

@@ -57,7 +57,7 @@
   text-align: right;
 }
 
-.product-item .pi-links button {
+.product-item .pi-links a {
   display: inline-table;
   width: 36px;
   height: 36px;
@@ -77,16 +77,16 @@
   text-align: center;
 }
 
-.product-item .pi-links button i {
+.product-item .pi-links a i {
   display: inline-block;
   color: #000;
 }
 
-.product-item .pi-links button.add-card {
+.product-item .pi-links a.add-card {
   padding-top: 8px;
 }
 
-.product-item .pi-links button.add-card span {
+.product-item .pi-links a.add-card span {
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
@@ -96,13 +96,13 @@
   opacity: 0;
 }
 
-.product-item .pi-links button.add-card:hover {
+.product-item .pi-links a.add-card:hover {
   width: 148px;
   padding: 8px 18px 0;
   text-align: left;
 }
 
-.product-item .pi-links button.add-card:hover span {
+.product-item .pi-links a.add-card:hover span {
   opacity: 1;
   top: 10px;
   -webkit-transition: all 0.4s ease 0.3s;

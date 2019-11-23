@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/interface';
 import { Params, ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +17,8 @@ export class ByTypePricehighComponent implements OnInit {
   data1: any;
   id: number;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -32,16 +34,26 @@ export class ByTypePricehighComponent implements OnInit {
       }
     });
   }
+  // check localstorage
+  readLocalStorageValue(key: string) {
+    return localStorage.getItem(key);
+  }
   Cart(product: Product) {
-    this.productService.Cart(product).subscribe(res1 => {
-      this.res1 = res1;
-      if (this.res1.success) {
-        this.data1 = this.res1.response;
-        // tslint:disable-next-line: radix
-        const newCart = parseInt(localStorage.getItem('giohang')) + 1;
-        localStorage.setItem('giohang', newCart.toString());
-      }
-    });
+    if (this.readLocalStorageValue('id')) {
+      this.productService.Cart(product).subscribe(res1 => {
+        this.res1 = res1;
+        if (this.res1.success) {
+          this.data1 = this.res1.response;
+          // tslint:disable-next-line: radix
+          const newCart = parseInt(localStorage.getItem('giohang')) + 1;
+          localStorage.setItem('giohang', newCart.toString());
+          this.toastr.success('The product has been added to cart!');
+        }
+      });
+    } else {
+      this.router.navigate(['login']);
+    }
+
   }
   navigateTo(value) {
     if (value) {

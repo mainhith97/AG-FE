@@ -1,44 +1,51 @@
 <div class="content">
-  <div class="table-responsive-sm">
-  <table class="table table-striped table-bordered">
+  <div *ngIf="!check">
+    <h4 style="text-align: center" class="title">
+      <strong>NO INFORMATION</strong>
+    </h4>
+  </div>
+  <div *ngIf="check">
+    <table class="table table-responsive-sm table-striped table-bordered">
       <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name of product</th>
-            <th>Category</th>
-            <th>Unit</th>
-            <th>Price per unit</th>
-            <th>In stock</th>
-            <th>Verify</th>
-            <th>Description</th>
-            <th>Action</th>
-          </tr>
+        <tr>
+          <th>ID</th>
+          <th>Name of product</th>
+          <th>Category</th>
+          <th>Unit</th>
+          <th>Price per unit</th>
+          <th>In stock</th>
+          <th>Verify</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let prod of data ; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td>{{ prod.name }}</td>
-              <td >{{ prod.typetype.product_type }}</td>
-              <td>{{ prod.unit }}</td>
-              <td>{{ prod.price_per_unit }}đ</td>
-              <td>{{ prod.in_stock }}</td>
-              <td>{{ prod.verify }}</td>
-              <td>{{ prod.description }}</td>
-              <td><a
-                routerLink='/update-product/{{prod.id}}'
-                class="btn-action text-primary" style="cursor: pointer;"
-                ><span class="fa fa-edit" ></span>
-              </a>  |
-              <a
+        <tr *ngFor="let prod of data; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ prod.name }}</td>
+          <td>{{ prod.typetype.product_type }}</td>
+          <td>{{ prod.unit }}</td>
+          <td>{{ prod.price_per_unit }}đ</td>
+          <td>{{ prod.in_stock }}</td>
+          <td>{{ prod.verify }}</td>
+          <td>{{ prod.description }}</td>
+          <td>
+            <a
+              routerLink="/update-product/{{ prod.id }}"
+              class="btn-action text-primary"
+              style="cursor: pointer;"
+              ><span class="fa fa-edit"></span>
+            </a>
+            |
+            <a
               (click)="remove(prod.id)"
-                class="btn-action text-danger" style="cursor: pointer;"
-                ><span class="fa fa-trash" ></span>
-              </a></td>
-          </tr>
+              class="btn-action text-danger"
+              style="cursor: pointer;"
+              ><span class="fa fa-trash"></span>
+            </a>
+          </td>
+        </tr>
       </tbody>
-  </table>
+    </table>
+  </div>
 </div>
-</div>
-
-
-

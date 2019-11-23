@@ -1,5 +1,8 @@
 <div class="main signup-design">
   <section class="signup">
+      <a class="back text-white" style="cursor: pointer; text-decoration: none;" [routerLink]="['/home']"
+      >Back to home</a
+    >
     <div class="container">
       <div class="signup-content">
         <form [formGroup]="registerForm" (ngSubmit) = "submit(registerForm)" id="signup-form" class="signup-form">

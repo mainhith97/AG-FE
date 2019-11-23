@@ -12,6 +12,7 @@ export class FarmerHistoryComponent implements OnInit {
   data: any;
   sumTotal: any;
   id: number;
+  check: boolean;
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
@@ -22,9 +23,13 @@ export class FarmerHistoryComponent implements OnInit {
     id = localStorage.getItem('id');
     this.dataService.getListHistorybyFarmer(id).subscribe(res => {
       this.res = res;
+      this.check = false;
       if (this.res.success) {
-                this.data = this.res.result;
-                this.sumTotal = this.res.sum_total;
+        if (this.res.result.length !== 0) {
+          this.check = true;
+        }
+        this.data = this.res.result;
+        this.sumTotal = this.res.sum_total;
       }
     });
   }

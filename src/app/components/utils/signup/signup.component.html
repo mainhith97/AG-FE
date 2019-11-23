@@ -1,132 +1,165 @@
 <div class="limiter">
   <div class="container-login100" style="background-color: #666666;">
     <div class="wrap-login100">
-      <form [formGroup]="registerForm" (ngSubmit) = "submit(registerForm)" class="login100-form validate-form">
-        <span class="login100-form-title p-b-43">
-          Sign up
-        </span>
-
-        <div class="wrap-input100 validate-input" data-validate="">
-          <input
-            class="input100"
-            type="text"
-            name="username"
-            placeholder="Username"
-            formControlName="username"
-            required
-          />
-          <span class="focus-input100"></span>
-        </div>
-        <label
-        *ngIf="registerForm.controls['username'].invalid && registerForm.controls['username'].touched" class="text-danger">
-        Username is required
-        </label>
-
-        <div
-          class="wrap-input100 validate-input"
-          data-validate="Password is required"
+      <form [formGroup]="registerForm" (ngSubmit)="submit(registerForm)">
+        <a
+          class="back d-flex justify-content-end"
+          style="cursor: pointer;"
+          [routerLink]="['/home']"
+          >Back to home</a
         >
-          <input
-            class="input100"
-            type="password"
-            name="pass"
-            placeholder="Password"
-            formControlName="password"
-            required
-          />
-          <span class="focus-input100"></span>
+        <div class="login100-form validate-form">
+          <span class="login100-form-title p-b-43">
+            Sign up
+          </span>
+
+          <div class="wrap-input100 validate-input" data-validate="">
+            <input
+              class="input100"
+              type="text"
+              name="username"
+              placeholder="Username"
+              formControlName="username"
+              required
+            />
+            <span class="focus-input100"></span>
+          </div>
+          <label
+            *ngIf="
+              registerForm.controls['username'].invalid &&
+              registerForm.controls['username'].touched
+            "
+            class="text-danger"
+          >
+            Username is required
+          </label>
+
+          <div
+            class="wrap-input100 validate-input"
+            data-validate="Password is required"
+          >
+            <input
+              class="input100"
+              type="password"
+              name="pass"
+              placeholder="Password"
+              formControlName="password"
+              required
+            />
+            <span class="focus-input100"></span>
+          </div>
+          <label
+            *ngIf="
+              registerForm.controls['password'].invalid &&
+              registerForm.controls['password'].touched
+            "
+            class="text-danger"
+          >
+            Password is required
+          </label>
+
+          <div class="wrap-input100 validate-input" data-validate="">
+            <input
+              class="input100"
+              type="text"
+              name="name"
+              placeholder="Full name"
+              formControlName="name"
+            />
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="">
+            <input
+              class="input100"
+              type="text"
+              name="company_name"
+              placeholder="Workplace"
+              formControlName="company_name"
+              required
+            />
+            <span class="focus-input100"></span>
+          </div>
+          <label
+            *ngIf="
+              registerForm.controls['company_name'].invalid &&
+              registerForm.controls['company_name'].touched
+            "
+            class="text-danger"
+          >
+            Workplace is required
+          </label>
+
+          <div class="wrap-input100 validate-input" data-validate="">
+            <input
+              class="input100"
+              type="text"
+              name="email"
+              placeholder="Email"
+              formControlName="email"
+              required
+            />
+            <span class="focus-input100"></span>
+          </div>
+          <label
+            *ngIf="
+              registerForm.controls['email'].invalid &&
+              registerForm.controls['email'].touched
+            "
+            class="text-danger"
+          >
+            Email is required
+          </label>
+
+          <!-- <div class="wrap-input100 validate-input" data-validate="">
+                <input
+                  class="input100"
+                  type="text"
+                  name="address"
+                  placeholder="Địa chỉ"
+                  formControlName="address"
+                />
+                <span class="focus-input100"></span>
+              </div> -->
+
+          <!-- <div class="wrap-input100 validate-input" data-validate="">
+                <input
+                  class="input100"
+                  type="text"
+                  name="telephone"
+                  placeholder="Số điện thoại"
+                  formControlName="telephone"
+                />
+                <span class="focus-input100"></span>
+              </div> -->
+
+          <!-- <div class="wrap-input100 validate-input" data-validate="">
+                <input
+                  class="input100"
+                  type="text"
+                  name="description"
+                  placeholder="Mô tả"
+                  formControlName="description"
+                />
+                <span class="focus-input100"></span>
+              </div> -->
+
+          <div class="container-login100-form-btn">
+            <button
+              class="login100-form-btn"
+              type="submit"
+              [disabled]="registerForm.invalid"
+            >
+              REGISTER NOW
+            </button>
+          </div>
+          <p class="loginhere">
+            Have a account ?
+            <a href="#" class="loginhere-link" [routerLink]="['/login']"
+              >Log in</a
+            >
+          </p>
         </div>
-        <label
-        *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="text-danger">
-        Password is required
-        </label>
-
-        <div class="wrap-input100 validate-input" data-validate="">
-          <input
-            class="input100"
-            type="text"
-            name="name"
-            placeholder="Full name"
-            formControlName="name"
-          />
-          <span class="focus-input100"></span>
-        </div>
-
-
-        <div class="wrap-input100 validate-input" data-validate="">
-          <input
-            class="input100"
-            type="text"
-            name="company_name"
-            placeholder="Workplace"
-            formControlName="company_name"
-            required
-          />
-          <span class="focus-input100"></span>
-        </div>
-        <label
-        *ngIf="registerForm.controls['company_name'].invalid && registerForm.controls['company_name'].touched" class="text-danger">
-        Workplace is required
-        </label>
-
-        <div class="wrap-input100 validate-input" data-validate="">
-          <input
-            class="input100"
-            type="text"
-            name="email"
-            placeholder="Email"
-            formControlName="email"
-            required
-          />
-          <span class="focus-input100"></span>
-        </div>
-        <label
-        *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="text-danger">
-        Email is required
-        </label>
-
-        <!-- <div class="wrap-input100 validate-input" data-validate="">
-          <input
-            class="input100"
-            type="text"
-            name="address"
-            placeholder="Địa chỉ"
-            formControlName="address"
-          />
-          <span class="focus-input100"></span>
-        </div> -->
-
-        <!-- <div class="wrap-input100 validate-input" data-validate="">
-          <input
-            class="input100"
-            type="text"
-            name="telephone"
-            placeholder="Số điện thoại"
-            formControlName="telephone"
-          />
-          <span class="focus-input100"></span>
-        </div> -->
-
-        <!-- <div class="wrap-input100 validate-input" data-validate="">
-          <input
-            class="input100"
-            type="text"
-            name="description"
-            placeholder="Mô tả"
-            formControlName="description"
-          />
-          <span class="focus-input100"></span>
-        </div> -->
-
-        <div class="container-login100-form-btn">
-          <button class="login100-form-btn" type="submit" [disabled]="registerForm.invalid">
-            REGISTER NOW
-          </button>
-        </div>
-        <p class="loginhere">
-          Have a account ?
-          <a href="#" class="loginhere-link" [routerLink]="['/login']">Log in</a>
-        </p>
       </form>
 
       <div

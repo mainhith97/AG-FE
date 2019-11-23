@@ -1,3 +1,21 @@
-.error-template {padding: 40px 15px;text-align: center;}
-.error-actions {margin-top:15px;margin-bottom:15px;}
-.error-actions .btn { margin-right:10px; }
+
+.error {
+  color: #5a5c69;
+  font-size: 7rem;
+  position: relative;
+  line-height: 1;
+  width: 12.5rem;
+}
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+.text-gray-800 {
+  color: #5a5c69 !important;
+}
+.text-gray-500 {
+  color: #b7b9cc !important;
+}
+.text-center {
+  text-align: center !important;
+}

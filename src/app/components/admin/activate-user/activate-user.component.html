@@ -1,0 +1,42 @@
+<div class="content">
+    <!-- <div *ngIf="data == null"> <h4 style="text-align: center" class="title"><strong>KHÔNG CÓ NGƯỜI DÙNG</strong></h4></div> -->
+    <div *ngIf="data != null" class="table-responsive-sm">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>User</th>
+                <th>Workplace</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Telephone</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of data ; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ data.name }}</td>
+                <td>{{ data.company_name }}</td>
+                <td>{{ data.email }}</td>
+                <td>{{ data.address }}</td>
+                <td>{{ data.telephone}}</td>
+                <td class="role">
+                    <span *ngIf="data.role == 'farmer'" class="text-success" [routerLink]="['/get-list-supplier']">Supplier</span>
+                    <span *ngIf="data.role == 'distributor'" class="text-primary" [routerLink]="['/get-list-distributor']">Distributor</span>
+                </td>
+                <td>
+                  <a
+                  (click)="activate(data.id)"
+                    class="btn-action text-danger" style="cursor: pointer;"
+                    ><span class="fa fa-unlock" ></span>
+                  </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  </div>
+
+

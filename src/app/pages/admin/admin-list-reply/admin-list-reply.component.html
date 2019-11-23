@@ -20,7 +20,7 @@
     <hr class="sidebar-divider my-0" />
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item">
       <a class="nav-link" href="" [routerLink]="['/main']">
         <span>Dashboard</span></a
       >
@@ -61,8 +61,11 @@
       >
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="" [routerLink]="['/get-list-reply']"> <span>Reply feedback</span></a>
+      <a class="nav-link font-weight-bold" href="" [routerLink]="['/get-list-reply']"> <span>Reply feedback</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="" [routerLink]="['/banned-user']"> <span>Banned Users</span></a>
+      </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
   </ul>
@@ -92,7 +95,7 @@
               aria-expanded="false"
             >
               <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                >Hello Admin</span
+                >Hello, Admin</span
               >
             </a>
             <!-- Dropdown - User Information -->

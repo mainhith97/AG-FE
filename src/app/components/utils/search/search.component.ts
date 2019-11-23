@@ -1,4 +1,5 @@
-import { ActivatedRoute, Params } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnInit, Query } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ISearch, Product } from 'src/app/shared/interface';
@@ -19,10 +20,12 @@ export class SearchComponent implements OnInit {
   check: boolean;
   data1: any;
 
-  constructor( private productService: ProductService,
-               private formBuilder: FormBuilder,
-               private route: ActivatedRoute
-    ) { }
+  constructor(private productService: ProductService,
+              private formBuilder: FormBuilder,
+              private router: Router,
+              private route: ActivatedRoute,
+              private toastr: ToastrService
+  ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe((queryParams: Params) => {
@@ -49,15 +52,25 @@ export class SearchComponent implements OnInit {
       }
     });
   }
+  // check localstorage
+  readLocalStorageValue(key: string) {
+    return localStorage.getItem(key);
+  }
   Cart(product: Product) {
-    this.productService.Cart(product).subscribe(res1 => {
+    if (this.readLocalStorageValue('id')) {
+      this.productService.Cart(product).subscribe(res1 => {
         this.res1 = res1;
         if (this.res1.success) {
-            this.data1 = this.res1.response;
-            // tslint:disable-next-line: radix
-            const newCart = parseInt(localStorage.getItem('giohang')) + 1;
-            localStorage.setItem('giohang', newCart.toString());
+          this.data1 = this.res1.response;
+          // tslint:disable-next-line: radix
+          const newCart = parseInt(localStorage.getItem('giohang')) + 1;
+          localStorage.setItem('giohang', newCart.toString());
+          this.toastr.success('The product has been added to cart!');
         }
-    });
+      });
+    } else {
+      this.router.navigate(['login']);
+    }
+
   }
 }

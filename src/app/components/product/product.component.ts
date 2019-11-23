@@ -99,6 +99,7 @@ export class ProductComponent implements OnInit {
         this.res3 = res3;
         if (this.res3.success) {
           this.getComment(this.id);
+          this.commentForm.controls.comment.setValue('');
         }
       });
     } else {

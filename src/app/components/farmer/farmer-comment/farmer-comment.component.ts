@@ -11,6 +11,7 @@ export class FarmerCommentComponent implements OnInit {
   res: any;
   data: any;
   id: any;
+  check: boolean;
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
@@ -21,8 +22,12 @@ export class FarmerCommentComponent implements OnInit {
     id = localStorage.getItem('id');
     this.dataService.getListComment(id).subscribe(res => {
       this.res = res;
+      this.check = false;
       if (this.res.success) {
-                this.data = this.res.result;
+        if (this.res.result.length !== 0) {
+          this.check = true;
+        }
+        this.data = this.res.result;
       }
     });
   }

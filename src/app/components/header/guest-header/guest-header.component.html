@@ -71,7 +71,7 @@
             <div class="up-item">
               <div class="shopping-card">
                 <span>{{readLocalStorageValue('giohang')}}</span>
-                <i class="fa fa-shopping-cart"></i>
+                <i class="fa fa-shopping-cart" [routerLink]="['/my-cart']" style="cursor: pointer;"></i>
               </div>
               <a href="" [routerLink]="['/my-cart']">Cart</a>
             </div>

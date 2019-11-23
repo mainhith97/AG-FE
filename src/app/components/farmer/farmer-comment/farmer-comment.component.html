@@ -1,34 +1,38 @@
 <div class="content">
-  <div *ngIf="data != null" class="table-responsive-sm">
-  <table class="table table-striped table-bordered">
+  <div *ngIf="!check">
+    <h4 style="text-align: center" class="title">
+      <strong>NO INFORMATION</strong>
+    </h4>
+  </div>
+  <div *ngIf="check">
+    <table class="table table-responsive-sm table-striped table-bordered">
       <thead>
-          <tr>
-            <th>ID</th>
-            <th>Customer</th>
-            <th>Product</th>
-            <th>Feedback content</th>
-            <th>Date</th>
-            <th>Action</th>
-          </tr>
+        <tr>
+          <th>ID</th>
+          <th>Customer</th>
+          <th>Product</th>
+          <th>Feedback content</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let cmt of data ; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td>{{ cmt.user_cmt.company_name }}</td>
-              <td>{{ cmt.product_cmt.name }}</td>
-              <td>{{ cmt.comment }}</td>
-              <td>{{ cmt.created_at }}</td>
-              <td><a
-                routerLink='/reply-feedback/{{cmt.id}}'
-                class="btn-action text-primary" style="cursor: pointer;"
-                ><span class="fas fa-reply" ></span>
-              </a>
-              </td>
-          </tr>
+        <tr *ngFor="let cmt of data; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ cmt.user_cmt.company_name }}</td>
+          <td>{{ cmt.product_cmt.name }}</td>
+          <td>{{ cmt.comment }}</td>
+          <td>{{ cmt.created_at }}</td>
+          <td>
+            <a
+              routerLink="/reply-feedback/{{ cmt.id }}"
+              class="btn-action text-primary"
+              style="cursor: pointer;"
+              ><span class="fas fa-reply"></span>
+            </a>
+          </td>
+        </tr>
       </tbody>
-  </table>
+    </table>
+  </div>
 </div>
-</div>
-
-
-

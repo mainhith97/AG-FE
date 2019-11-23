@@ -16,7 +16,6 @@
             <th>Proposed price</th>
             <th>Date of receipt</th>
             <th>Status</th>
-            <th>Refusal Reason</th>
           </tr>
         </thead>
         <tbody>
@@ -24,11 +23,16 @@
             <td>{{i+1}}</td>
             <td style="white-space: pre-line">{{prod.product_order.name}}</td>
             <td>{{prod.provider}}</td>
-            <td>{{prod.quantity}}</td>
+            <td>{{prod.quantity}} {{prod.product_order.unit}}</td>
             <td>{{prod.proposed_price}}đ</td>
             <td>{{prod.datetime}}</td>
-            <td>{{prod.status}}</td>
-            <td>{{prod.refusal_reason?.reason}}</td>
+            <td>
+              <span *ngIf="prod.status == 'Pending'">Pending</span>
+              <span *ngIf="prod.status == 'Seen'" class="text-primary">Seen</span>
+              <span *ngIf="prod.status == 'Accept'" class="text-success">Accept</span>
+              <span *ngIf="prod.status == 'Decline'" class="text-danger" >Decline</span> <br> {{prod.refusal_reason?.reason}}
+
+            </td>
           </tr>
         </tbody>
       </table>

@@ -64,6 +64,7 @@ import { PrivacyPageComponent } from './pages/utils/privacy-page/privacy-page.co
 import { AdminListDistributorComponent } from './pages/admin/admin-list-distributor/admin-list-distributor.component';
 import { AdminListSupplierComponent } from './pages/admin/admin-list-supplier/admin-list-supplier.component';
 import { FarmerRefusalReasonComponent } from './pages/farmer/farmer-refusal-reason/farmer-refusal-reason.component';
+import { ActivateUserPageComponent } from './pages/admin/activate-user-page/activate-user-page.component';
 
 const routes: Routes = [
 
@@ -120,7 +121,8 @@ const routes: Routes = [
       { path: 'product-by-type/:id', component: ProductByTypeComponent },
       { path: 'get-list-reply', component: AdminListReplyComponent },
       { path: 'get-list-supplier', component: AdminListSupplierComponent },
-      { path: 'get-list-distributor', component: AdminListDistributorComponent }
+      { path: 'get-list-distributor', component: AdminListDistributorComponent },
+      { path: 'banned-user', component: ActivateUserPageComponent }
 
     ]
   },

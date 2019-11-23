@@ -13,6 +13,7 @@ export class FarmerProductComponent implements OnInit {
   data: any;
   res2: any;
   id: number;
+  check: boolean;
   constructor(private dataService: DataService, private confirmationDialogService: ConfirmationDialogService) { }
 
   ngOnInit() {
@@ -22,20 +23,24 @@ export class FarmerProductComponent implements OnInit {
     id = localStorage.getItem('id');
     this.dataService.getListProductbyFarmer(id).subscribe(res => {
       this.res = res;
+      this.check = false;
       if (this.res.success) {
-                this.data = this.res.result;
+        if (this.res.result.length !== 0) {
+          this.check = true;
+        }
+        this.data = this.res.result;
       }
     });
   }
-    // xoá sp
-    remove(id: any) {
-      this.confirmationDialogService.confirm('Please confirm', 'Do you want to delete this product?')
-        .then(() =>
-          this.dataService.removeProduct(id).subscribe(res2 => {
-            this.res2 = res2;
-            if (this.res2.success) {
-              this.getListProductbyFarmer(id);
-            }
-          }));
-    }
+  // xoá sp
+  remove(id: any) {
+    this.confirmationDialogService.confirm('Please confirm', 'Do you want to delete this product?')
+      .then(() =>
+        this.dataService.removeProduct(id).subscribe(res2 => {
+          this.res2 = res2;
+          if (this.res2.success) {
+            this.getListProductbyFarmer(id);
+          }
+        }));
+  }
 }

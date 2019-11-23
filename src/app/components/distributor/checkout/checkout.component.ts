@@ -33,9 +33,8 @@ export class CheckoutComponent implements OnInit {
 
   buildForm() {
     this.profileForm = this.formBuilder.group({
-      name: [''],
-      address: [''],
-      telephone: ['']
+      address: ['', Validators.required],
+      telephone: ['', Validators.required]
     });
   }
 
@@ -48,7 +47,6 @@ export class CheckoutComponent implements OnInit {
         this.data = this.res.result;
         this.username = this.data.name;
         this.companyname = this.data.company_name;
-        this.profileForm.controls.name.setValue(this.data.name);
         this.profileForm.controls.address.setValue(this.data.address);
         this.profileForm.controls.telephone.setValue(this.data.telephone);
       }
@@ -67,17 +65,19 @@ export class CheckoutComponent implements OnInit {
   }
 
   // thêm vào lịch sử mua hàng
-  submit(id, companyname, totals, product, address) {
+  submit(id, companyname, totals, product, address, telephone) {
     id = localStorage.getItem('id');
     companyname = this.companyname;
     totals = this.totals;
     // tslint:disable-next-line: no-string-literal
     address = this.profileForm.controls['address'].value;
+    // tslint:disable-next-line: no-string-literal
+    telephone = this.profileForm.controls['telephone'].value;
     product = '';
     for (const i of this.data2) {
       product += i.quantity + ' ' + i.product_value.unit + ' ' + i.product_value.name + '\n';
     }
-    this.productService.addToHistory(id, companyname, totals, product, address).subscribe(res3 => {
+    this.productService.addToHistory(id, companyname, totals, product, address, telephone).subscribe(res3 => {
       this.res3 = res3;
       if (this.res3.success) {
         this.router.navigate(['history']);
