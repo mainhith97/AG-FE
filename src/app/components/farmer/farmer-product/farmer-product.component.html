@@ -25,7 +25,7 @@
           <td>{{ prod.name }}</td>
           <td>{{ prod.typetype.product_type }}</td>
           <td>{{ prod.unit }}</td>
-          <td>{{ prod.price_per_unit }}đ</td>
+          <td>{{ prod.price_per_unit | number:''}}đ</td>
           <td>{{ prod.in_stock }}</td>
           <td>{{ prod.verify }}</td>
           <td>{{ prod.description }}</td>

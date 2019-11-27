@@ -50,7 +50,13 @@
       >
     </li>
     <li class="nav-item">
-      <a class="nav-link font-weight-bold" href="" [routerLink]="['/get-listreply']"> <span>Reply feedback</span></a>
+      <a
+        class="nav-link font-weight-bold"
+        href=""
+        [routerLink]="['/get-listreply']"
+      >
+        <span>Reply feedback</span></a
+      >
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
@@ -95,8 +101,17 @@
                 data-toggle="modal"
                 [routerLink]="['/info']"
               >
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
                 Profile
+              </a>
+              <a
+                class="dropdown-item"
+                href="#"
+                data-toggle="modal"
+                [routerLink]="['/updatepass']"
+              >
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Change Password
               </a>
               <a
                 class="dropdown-item"
@@ -124,4 +139,3 @@
     </div>
   </div>
 </div>
-

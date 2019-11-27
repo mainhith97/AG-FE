@@ -19,10 +19,10 @@
             <tr *ngFor="let data of data ; let i = index">
                 <td>{{ i + 1 }}</td>
                 <td>{{ data.name }}</td>
-                <td>{{ data.provider?.company_name }}</td>
-                <td>{{ data.typetype?.product_type }}</td>
+                <td class="link" routerLink='/product-by-supplier/{{data.provider.id}}'>{{ data.provider?.company_name }}</td>
+                <td class="link" routerLink='/product-by-type/{{data.typetype.id}}'>{{ data.typetype?.product_type }}</td>
                 <td>{{ data.unit }}</td>
-                <td>{{ data.price_per_unit }}đ</td>
+                <td>{{ data.price_per_unit | number:''}}đ</td>
                 <td>{{ data.in_stock }}</td>
                 <td>{{ data.verify }}</td>
                 <td>{{ data.description }}</td>

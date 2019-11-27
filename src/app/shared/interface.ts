@@ -77,3 +77,8 @@ export interface Password {
   password: string;
   token: string;
 }
+export interface UpdatePass {
+  oldpassword: string;
+  newpassword: string;
+  confirmpassword: string;
+}

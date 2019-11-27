@@ -42,7 +42,7 @@
                 <img src="{{ prod.product_value.image }}" class="img-fluid" />
               </td>
               <td>
-                {{ prod.product_value.price_per_unit }}đ/{{
+                {{ prod.product_value.price_per_unit | number:''}}đ/{{
                   prod.product_value.unit
                 }}
               </td>
@@ -71,7 +71,7 @@
                   </div>
                 </div>
               </td>
-              <td>{{ prod.total }}đ</td>
+              <td>{{ prod.total | number:''}}đ</td>
               <td>
                 <a
                   (click)="remove(prod.id, prod.quantity)"

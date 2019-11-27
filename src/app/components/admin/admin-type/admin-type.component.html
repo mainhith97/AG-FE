@@ -12,7 +12,7 @@
       <tbody>
           <tr *ngFor="let data of data ; let i = index">
               <td>{{ i + 1 }}</td>
-              <td style="cursor: pointer; color: blue" routerLink='/product-by-type/{{data.id}}'>{{ data.product_type }}</td>
+              <td class="link" routerLink='/product-by-type/{{data.id}}'>{{ data.product_type }}</td>
               <td><a
                 routerLink='/edit-type/{{data.id}}'
                 class="btn-action text-primary" style="cursor: pointer;"

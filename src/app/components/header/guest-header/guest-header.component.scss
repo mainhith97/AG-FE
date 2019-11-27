@@ -358,7 +358,8 @@ button.bg-primary:focus {
 .header-user-dropdown .dropdown-menu ul li a {
   display: block;
   width: 100%;
-  padding: 0.5rem 1.5rem;
+  padding-top: 10px;
+  padding-bottom: 5px;
   clear: both;
   font-weight: 400;
   color: #8b8fa1;
@@ -374,4 +375,7 @@ button.bg-primary:focus {
 }
 .header-user-dropdown .dropdown-menu ul li:last-child a {
   border: none;
+}
+.header-user-dropdown .dropdown-menu ul li i{
+  font-size: 10px;
 }

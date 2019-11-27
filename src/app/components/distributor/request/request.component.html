@@ -17,7 +17,7 @@
                     <img src="{{ data?.image }}" alt="" />
                     <div class="pc-title">
                       <h4>{{ data?.name }}</h4>
-                      <p>{{ data?.price_per_unit }}đ/{{ data?.unit }}</p>
+                      <p>{{ data?.price_per_unit | number:''}}đ/{{ data?.unit }}</p>
                     </div>
                   </td>
                 </tr>

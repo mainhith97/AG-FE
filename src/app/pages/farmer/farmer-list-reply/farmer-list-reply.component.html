@@ -21,27 +21,43 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="" [routerLink]="['/myaccount']"> <span>Dashboard</span></a>
-      </li>
+      <a class="nav-link" href="" [routerLink]="['/myaccount']">
+        <span>Dashboard</span></a
+      >
+    </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="" [routerLink]="['/get-listproduct']"><span>Product</span></a>
-      </li>
+    <li class="nav-item">
+      <a class="nav-link" href="" [routerLink]="['/get-listproduct']"
+        ><span>Product</span></a
+      >
+    </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="" [routerLink]="['/get-listorder']"> <span>Request</span>
-          <span *ngIf="count !== '0'" class="count">{{count}}</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="" [routerLink]="['/get-listhistory']" > <span>Sales</span></a>
-      </li>
+    <li class="nav-item">
+      <a class="nav-link" href="" [routerLink]="['/get-listorder']">
+        <span>Request</span>
+        <span *ngIf="count !== '0'" class="count">{{ count }}</span></a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="" [routerLink]="['/get-listhistory']">
+        <span>Sales</span></a
+      >
+    </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="" [routerLink]="['/get-listcomment']"> <span>Comment</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link font-weight-bold" href="" [routerLink]="['/get-listreply']"> <span>Reply feedback</span></a>
-      </li>
+    <li class="nav-item">
+      <a class="nav-link" href="" [routerLink]="['/get-listcomment']">
+        <span>Comment</span></a
+      >
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link font-weight-bold"
+        href=""
+        [routerLink]="['/get-listreply']"
+      >
+        <span>Reply feedback</span></a
+      >
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
   </ul>
@@ -71,7 +87,7 @@
               aria-expanded="false"
             >
               <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                >Hello, {{data?.username}}</span
+                >Hello, {{ data?.username }}</span
               >
             </a>
             <!-- Dropdown - User Information -->
@@ -79,15 +95,24 @@
               class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
               aria-labelledby="userDropdown"
             >
-            <a
-            class="dropdown-item"
-            href="#"
-            data-toggle="modal"
-            [routerLink]="['/info']"
-          >
-            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-            Profile
-          </a>
+              <a
+                class="dropdown-item"
+                href="#"
+                data-toggle="modal"
+                [routerLink]="['/info']"
+              >
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                Profile
+              </a>
+              <a
+                class="dropdown-item"
+                href="#"
+                data-toggle="modal"
+                [routerLink]="['/updatepass']"
+              >
+                <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                Change Password
+              </a>
               <a
                 class="dropdown-item"
                 href="#"
@@ -114,7 +139,3 @@
     </div>
   </div>
 </div>
-
-
-
-

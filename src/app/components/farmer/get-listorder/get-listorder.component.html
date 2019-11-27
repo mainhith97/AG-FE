@@ -22,10 +22,10 @@
       <tbody>
         <tr *ngFor="let order of data; let i = index">
           <td>{{ i + 1 }}</td>
-          <td>{{ order.user_order.name }}</td>
+          <td>{{ order.user_order.company_name }}</td>
           <td>{{ order.product_order.name }}</td>
           <td>{{ order.quantity }} {{order.product_order.unit}}</td>
-          <td>{{ order.proposed_price }}đ</td>
+          <td>{{ order.proposed_price | number:''}}đ</td>
           <td>{{ order.datetime }}</td>
           <td>{{ order.address }} <br />{{ order.telephone }}</td>
           <td>{{ order.status }}</td>

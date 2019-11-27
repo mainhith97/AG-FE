@@ -21,7 +21,7 @@
               </div>
             </div>
             <div class="pi-text">
-              <h6>{{ prod?.price_per_unit }}đ/{{ prod?.unit }}</h6>
+              <h6>{{ prod?.price_per_unit | number:''}}đ/{{ prod?.unit }}</h6>
               <a routerLink="/product/{{ prod.id }}">{{prod?.name}}</a>
             </div>
           </div>

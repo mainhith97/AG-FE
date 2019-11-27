@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
 import { Profile } from 'src/app/shared/interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-farmerinfo',
@@ -17,7 +18,8 @@ export class FarmerinfoComponent implements OnInit {
   profileForm: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private dataService: DataService,
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getProfile();
@@ -27,8 +29,8 @@ export class FarmerinfoComponent implements OnInit {
   buildForm() {
     this.profileForm = this.formBuilder.group({
       name: [''],
-      email: [''],
-      company_name: [''],
+      email: ['', Validators.required],
+      company_name: ['', Validators.required],
       address: [''],
       telephone: [''],
       description: ['']
@@ -54,9 +56,16 @@ export class FarmerinfoComponent implements OnInit {
     this.dataService.updateProfile(value).subscribe(res => {
       this.res = res;
       if (this.res.success) {
+        this.toastr.success('Edit successfully!');
         this.router.navigate(['info']);
-      } else {
-        console.log(res);
+      }
+    }, error => {
+      console.log(error);
+      if (error.email) {
+        this.toastr.error(error.email);
+      }
+      if (error.telephone) {
+        this.toastr.error(error.telephone);
       }
     });
   }

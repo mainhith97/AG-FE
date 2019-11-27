@@ -14,7 +14,7 @@
           }}</span>
         </p>
         <p class="price font-weight-bold">
-          <span>{{ data?.price_per_unit }}đ/{{ data?.unit }}</span>
+          <span>{{ data?.price_per_unit | number:''}}đ/{{ data?.unit }}</span>
         </p>
         <p>{{ data?.description }}</p>
         <p class="verify">

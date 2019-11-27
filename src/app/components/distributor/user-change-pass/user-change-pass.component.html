@@ -1,0 +1,69 @@
+<div class="container d-flex justify-content-center mt-5">
+  <form [formGroup]="passForm" (ngSubmit)="submit(passForm)">
+    <h2 class="form-title">CHANGE PASSWORD</h2>
+    <div class="form-group">
+      <label class="pt-3">Current Password</label><br>
+      <input
+        type="password"
+        class="form-input"
+        name="oldpassword"
+        formControlName="oldpassword"
+      />
+    </div>
+    <label
+    *ngIf="
+      passForm.controls['oldpassword'].invalid &&
+      passForm.controls['oldpassword'].touched
+    "
+    class="text-danger"
+  >
+    This fiels is required
+  </label>
+    <div class="form-group">
+      <label>New Password</label><br>
+      <input
+        type="password"
+        class="form-input"
+        name="newpassword"
+        formControlName="newpassword"
+      />
+    </div>
+    <label
+    *ngIf="
+      passForm.controls['newpassword'].invalid &&
+      passForm.controls['newpassword'].touched
+    "
+    class="text-danger"
+  >
+    This fiels is required
+  </label>
+    <div class="form-group">
+      <label class="pt-3">Confirm New Password</label><br>
+      <input
+        type="password"
+        class="form-input"
+        name="confirmpassword"
+        formControlName="confirmpassword"
+      />
+    </div>
+    <label
+    *ngIf="
+      passForm.controls['confirmpassword'].invalid &&
+      passForm.controls['confirmpassword'].touched
+    "
+    class="text-danger"
+  >
+    This fiels is required
+  </label>
+    <div class="form-group">
+      <input
+        type="submit"
+        name="submit"
+        id="submit"
+        class="form-submit"
+        value="UPDATE"
+        [disabled]="passForm.invalid"
+      />
+    </div>
+  </form>
+</div>

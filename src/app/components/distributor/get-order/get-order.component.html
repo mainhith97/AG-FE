@@ -24,13 +24,13 @@
             <td style="white-space: pre-line">{{prod.product_order.name}}</td>
             <td>{{prod.provider}}</td>
             <td>{{prod.quantity}} {{prod.product_order.unit}}</td>
-            <td>{{prod.proposed_price}}đ</td>
+            <td>{{prod.proposed_price | number:''}}đ</td>
             <td>{{prod.datetime}}</td>
             <td>
               <span *ngIf="prod.status == 'Pending'">Pending</span>
               <span *ngIf="prod.status == 'Seen'" class="text-primary">Seen</span>
               <span *ngIf="prod.status == 'Accept'" class="text-success">Accept</span>
-              <span *ngIf="prod.status == 'Decline'" class="text-danger" >Decline</span> <br> {{prod.refusal_reason?.reason}}
+              <div *ngIf="prod.status == 'Decline'" class="text-danger" >Decline <br> <span style="color: black;">{{prod.refusal_reason?.reason}}</span></div>
 
             </td>
           </tr>

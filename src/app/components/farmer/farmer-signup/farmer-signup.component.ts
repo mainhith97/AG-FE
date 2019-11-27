@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
 import { IRegister } from 'src/app/shared/interface';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-farmer-signup',
@@ -16,7 +17,8 @@ export class FarmerSignupComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private registerService: DataService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -44,8 +46,14 @@ export class FarmerSignupComponent implements OnInit {
         localStorage.setItem('id', this.res.id);
         this.router.navigate(['myaccount']);
 
-      } else {
-        console.log(res);
+      }
+    }, error => {
+      console.log(error);
+      if (error.email) {
+        this.toastr.error(error.email);
+      }
+      if (error.username) {
+        this.toastr.error(error.username);
       }
     });
   }

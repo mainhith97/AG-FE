@@ -150,6 +150,12 @@ import { FarmerRefusalreasonComponent } from './components/farmer/farmer-refusal
 import { FarmerRefusalReasonComponent } from './pages/farmer/farmer-refusal-reason/farmer-refusal-reason.component';
 import { ActivateUserComponent } from './components/admin/activate-user/activate-user.component';
 import { ActivateUserPageComponent } from './pages/admin/activate-user-page/activate-user-page.component';
+import { ProductBySupplierComponent } from './components/admin/product-by-supplier/product-by-supplier.component';
+import { ProductBySupplierPageComponent } from './pages/admin/product-by-supplier-page/product-by-supplier-page.component';
+import { UserChangePassComponent } from './components/distributor/user-change-pass/user-change-pass.component';
+import { UserChangePassPageComponent } from './pages/distributor/user-change-pass-page/user-change-pass-page.component';
+import { SupplierChangePassComponent } from './components/farmer/supplier-change-pass/supplier-change-pass.component';
+import { SupplierChangePassPageComponent } from './pages/farmer/supplier-change-pass-page/supplier-change-pass-page.component';
 
 
 @NgModule({
@@ -283,7 +289,13 @@ import { ActivateUserPageComponent } from './pages/admin/activate-user-page/acti
     FarmerRefusalreasonComponent,
     FarmerRefusalReasonComponent,
     ActivateUserComponent,
-    ActivateUserPageComponent
+    ActivateUserPageComponent,
+    ProductBySupplierComponent,
+    ProductBySupplierPageComponent,
+    UserChangePassComponent,
+    UserChangePassPageComponent,
+    SupplierChangePassComponent,
+    SupplierChangePassPageComponent
   ],
   imports: [
     BrowserModule,

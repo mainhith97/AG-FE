@@ -45,7 +45,7 @@ export class AdminCreateproductComponent implements OnInit {
       unit: ['', Validators.required],
       price_per_unit: ['', Validators.required],
       in_stock: ['', Validators.required],
-      verify: [''],
+      verify: ['', Validators.required],
       description: [''],
       detail: [''],
       image: []

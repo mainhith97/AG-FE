@@ -65,6 +65,9 @@ import { AdminListDistributorComponent } from './pages/admin/admin-list-distribu
 import { AdminListSupplierComponent } from './pages/admin/admin-list-supplier/admin-list-supplier.component';
 import { FarmerRefusalReasonComponent } from './pages/farmer/farmer-refusal-reason/farmer-refusal-reason.component';
 import { ActivateUserPageComponent } from './pages/admin/activate-user-page/activate-user-page.component';
+import { ProductBySupplierPageComponent } from './pages/admin/product-by-supplier-page/product-by-supplier-page.component';
+import { UserChangePassPageComponent } from './pages/distributor/user-change-pass-page/user-change-pass-page.component';
+import { SupplierChangePassPageComponent } from './pages/farmer/supplier-change-pass-page/supplier-change-pass-page.component';
 
 const routes: Routes = [
 
@@ -96,7 +99,8 @@ const routes: Routes = [
       { path: 'history', component: HistoryPageComponent },
       { path: 'order/:id', component: RequestPageComponent },
       { path: 'list-order', component: OrderPageComponent },
-      { path: 'profile', component: ProfilePageComponent }
+      { path: 'profile', component: ProfilePageComponent },
+      { path: 'update-password', component: UserChangePassPageComponent }
     ]
   },
   {
@@ -122,7 +126,8 @@ const routes: Routes = [
       { path: 'get-list-reply', component: AdminListReplyComponent },
       { path: 'get-list-supplier', component: AdminListSupplierComponent },
       { path: 'get-list-distributor', component: AdminListDistributorComponent },
-      { path: 'banned-user', component: ActivateUserPageComponent }
+      { path: 'banned-user', component: ActivateUserPageComponent },
+      { path: 'product-by-supplier/:id', component: ProductBySupplierPageComponent }
 
     ]
   },
@@ -142,7 +147,8 @@ const routes: Routes = [
       { path: 'info', component: FarmerInfoComponent },
       { path: 'reply-feedback/:id', component: ReplyFeedbackComponent },
       { path: 'get-listreply', component: FarmerListReplyComponent },
-      { path: 'refusal-reason/:id', component: FarmerRefusalReasonComponent }
+      { path: 'refusal-reason/:id', component: FarmerRefusalReasonComponent },
+      { path: 'updatepass', component: SupplierChangePassPageComponent }
     ]
   },
   {
@@ -170,7 +176,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)],
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled'
+    })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

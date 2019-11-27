@@ -56,8 +56,14 @@ export class ProfileComponent implements OnInit {
       if (this.res.success) {
         this.toastr.success('Edit successfully!');
         this.router.navigate(['profile']);
-      } else {
-        console.log(res);
+      }
+    }, error => {
+      console.log(error);
+      if (error.email) {
+        this.toastr.error(error.email);
+      }
+      if (error.telephone) {
+        this.toastr.error(error.telephone);
       }
     });
   }

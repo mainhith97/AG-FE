@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { ProductService } from 'src/app/services/product.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -22,6 +22,7 @@ export class FarmerEditproductComponent implements OnInit {
   data2: any;
   res3: any;
   data3: any;
+  image: any;
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService,
@@ -49,18 +50,21 @@ export class FarmerEditproductComponent implements OnInit {
   }
   buildForm() {
     this.editproductForm = this.formBuilder.group({
-      name: [''],
-      type: [''],
-      unit: [''],
-      price_per_unit: [''],
-      in_stock: [''],
-      verify: [''],
+      name: ['', Validators.required],
+      type: ['', Validators.required],
+      unit: ['', Validators.required],
+      price_per_unit: ['', Validators.required],
+      in_stock: ['', Validators.required],
+      verify: ['', Validators.required],
       description: [''],
       detail: [''],
+      image: [''],
       id: [this.id]
     });
   }
-
+  fileChange(event) {
+    this.image = event.target.files[0];
+  }
   getDetailProduct(id: number) {
     this.productService.getDetailProduct(id).subscribe(res => {
       this.res = res;
@@ -83,6 +87,8 @@ export class FarmerEditproductComponent implements OnInit {
 
   submit({ value }: { value: Product }) {
     const id = this.id;
+    value.provider_id = localStorage.getItem('id');
+    value.image = this.image;
     this.dataService.editProduct(id, value).subscribe(res2 => {
       this.res2 = res2;
       if (this.res2.success) {

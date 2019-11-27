@@ -108,7 +108,7 @@
             <div class="col-7 col-md-8">
               <div class="numbers text-white">
                 <p class="card-title">
-                  <span class="font-weight-bold"> {{ sales.revenue }}đ</span>
+                  <span class="font-weight-bold"> {{ sales.revenue | number:''}}đ</span>
                 </p>
               </div>
             </div>
@@ -160,7 +160,7 @@
             <div class="col-7 col-md-8">
               <div class="numbers text-white">
                 <p class="card-title">
-                  <span class="font-weight-bold"> {{ requests.revenue }}đ</span>
+                  <span class="font-weight-bold"> {{ requests.revenue | number:''}}đ</span>
                 </p>
               </div>
             </div>
@@ -187,7 +187,7 @@
             <div class="col-7 col-md-8">
               <div class="numbers text-white">
                 <p class="card-title">
-                  <span class="font-weight-bold"> {{ total }} VND</span>
+                  <span class="font-weight-bold"> {{ total | number:''}} VND</span>
                 </p>
               </div>
             </div>

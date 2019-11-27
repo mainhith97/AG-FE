@@ -31,7 +31,7 @@ export class AdminListsupplierComponent implements OnInit {
   }
   // xoá user
   remove(id: any) {
-    this.confirmationDialogService.confirm('Please confirm', 'Do you want to delete this user?')
+    this.confirmationDialogService.confirm('Please confirm', 'Do you want to ban this user?')
       .then(() =>
         this.dataService.removeUser(id).subscribe(res2 => {
           this.res2 = res2;

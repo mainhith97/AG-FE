@@ -1,6 +1,6 @@
 import { Category } from './../../../shared/interface';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { ProductService } from 'src/app/services/product.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -35,7 +35,7 @@ export class AdminEdittypeComponent implements OnInit {
 
   buildForm() {
       this.editcategoryForm = this.formBuilder.group({
-          product_type: ['']
+          product_type: ['', Validators.required]
       });
   }
 

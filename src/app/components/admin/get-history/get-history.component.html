@@ -18,7 +18,7 @@
               <td>{{ sale.name }}</td>
               <td><div *ngFor="let prod of sale.products">{{ prod.quantity }} {{prod.name}}</div></td>
               <td><div *ngFor="let prod of sale.products">{{ prod.provider }}</div></td>
-              <td>{{ sale.totals }}đ</td>
+              <td>{{ sale.totals | number:''}}đ</td>
               <td>{{ sale.status }}</td>
               <td *ngIf="sale.status === 'Pending'"><a
                 (click)="changeStatus(sale.id)"

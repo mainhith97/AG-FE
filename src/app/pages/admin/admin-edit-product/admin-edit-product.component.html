@@ -27,21 +27,67 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="" [routerLink]="['/get-list-user']"
-        ><span>User</span></a
+      <a
+        class="nav-link collapsed"
+        href="#"
+        data-toggle="collapse"
+        data-target="#collapsePages1"
+        aria-expanded="true"
+        aria-controls="collapsePages1"
       >
+        <i class="fas fa-fw fa-folder"></i>
+        <span>User</span>
+      </a>
+      <div
+        id="collapsePages1"
+        class="collapse"
+        aria-labelledby="headingPages1"
+        data-parent="#accordionSidebar"
+      >
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">User Screens:</h6>
+          <a class="collapse-item" [routerLink]="['/get-list-user']">Users</a>
+          <a class="collapse-item" [routerLink]="['/get-list-supplier']"
+            >Suppliers</a
+          >
+          <a class="collapse-item" [routerLink]="['/get-list-distributor']"
+            >Distributors</a
+          >
+          <a class="collapse-item" [routerLink]="['/banned-user']"
+            >Banned users</a
+          >
+        </div>
+      </div>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="" [routerLink]="['/get-list-product']">
-        <span>Product</span></a
+      <a
+        class="nav-link collapsed font-weight-bold"
+        href="#"
+        data-toggle="collapse"
+        data-target="#collapsePages2"
+        aria-expanded="true"
+        aria-controls="collapsePages2"
       >
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link font-weight-bold" href="" [routerLink]="['/get-list-type']">
-        <span>Product categories</span></a
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Products</span>
+      </a>
+      <div
+        id="collapsePages2"
+        class="collapse"
+        aria-labelledby="headingPages2"
+        data-parent="#accordionSidebar"
       >
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Product Screens:</h6>
+          <a class="collapse-item" [routerLink]="['/get-list-product']"
+            >Products</a
+          >
+          <a class="collapse-item" [routerLink]="['/get-list-type']"
+            >Product categories</a
+          >
+        </div>
+      </div>
     </li>
 
     <li class="nav-item">
@@ -56,16 +102,34 @@
       >
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="" [routerLink]="['/get-list-comment']">
-        <span>Comment</span></a
+      <a
+        class="nav-link collapsed"
+        href="#"
+        data-toggle="collapse"
+        data-target="#collapsePages3"
+        aria-expanded="true"
+        aria-controls="collapsePages3"
       >
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Feedback</span>
+      </a>
+      <div
+        id="collapsePages3"
+        class="collapse"
+        aria-labelledby="headingPages3"
+        data-parent="#accordionSidebar"
+      >
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Feedback Screens:</h6>
+          <a class="collapse-item" [routerLink]="['/get-list-comment']"
+            >Comments</a
+          >
+          <a class="collapse-item" [routerLink]="['/get-list-reply']"
+            >Reply feedback</a
+          >
+        </div>
+      </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="" [routerLink]="['/get-list-reply']"> <span>Reply feedback</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="" [routerLink]="['/banned-user']"> <span>Banned Users</span></a>
-      </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block" />
   </ul>

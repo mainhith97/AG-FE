@@ -20,7 +20,7 @@
               <td>{{ order.product_order.name }}</td>
               <td>{{ order.provider }}</td>
               <td>{{ order.quantity }} {{order.product_order.unit}}</td>
-              <td>{{ order.proposed_price }}đ</td>
+              <td>{{ order.proposed_price | number:''}}đ</td>
               <td>{{ order.datetime }}</td>
               <td>
                   <span *ngIf="order.status == 'Pending'">Pending</span>

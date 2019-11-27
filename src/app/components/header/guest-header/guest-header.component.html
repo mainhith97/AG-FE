@@ -91,10 +91,11 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuUser">
                   <ul class="list-unstyled">
-                    <li><a class="c-orange" [routerLink]="['/profile']">Profile</a></li>
-                    <li><a class="c-orange" [routerLink]="['/history']">Purchase history</a></li>
-                    <li><a class="c-orange" [routerLink]="['/list-order']">Orders</a></li>
-                    <li><a class="c-orange" (click) = "logout()">Log out</a></li>
+                    <li><a class="c-orange" [routerLink]="['/profile']"><i class="fa fa-user fa-sm"></i>Profile</a></li>
+                    <li><a class="c-orange" [routerLink]="['/update-password']"><i class="fa fa-key fa-sm"></i>Change Password</a></li>
+                    <li><a class="c-orange" [routerLink]="['/history']"><i class="fas fa-money-bill-wave-alt"></i>Purchase history</a></li>
+                    <li><a class="c-orange" [routerLink]="['/list-order']"><i class="fa fa-handshake fa-sm"></i>Orders</a></li>
+                    <li><a class="c-orange" (click) = "logout()"><i class="fa fa-sign-out-alt fa-sm"></i>Log out</a></li>
                   </ul>
                 </div>
               </div>

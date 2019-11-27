@@ -1,4 +1,4 @@
-import { Category, Email, Password } from './../shared/interface';
+import { Category, Email, Password, UpdatePass } from './../shared/interface';
 
 import { Injectable } from '@angular/core';
 import { ILogin, IRegister, User, Profile, Product } from '../shared/interface';
@@ -105,6 +105,26 @@ export class DataService {
   // edit Profile
   updateProfile(value: Profile): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${this.userPrefix}/${localStorage.getItem('id')}/`, value)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // distributor update pass
+  updatePass(value: UpdatePass): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${this.userPrefix}/${localStorage.getItem('id')}/change_password/`, value)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // supplier update pass
+  supplierUpdatePass(value: UpdatePass): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${this.userPrefix}/${localStorage.getItem('id')}/change_password/`, value)
       .pipe(
         map(response => {
           return response;
@@ -386,8 +406,19 @@ export class DataService {
     // );
   }
   // edit product
-  editProduct(id, product: Product): Observable<boolean> {
-    return this.http.put<boolean>(`${this.apiUrl}/product/${id}/`, product)
+  editProduct(id, value): Observable<boolean> {
+    const formdt = new FormData();
+    formdt.append('image', value.image);
+    formdt.append('name', value.name);
+    formdt.append('type', value.type);
+    formdt.append('provider_id', value.provider_id);
+    formdt.append('in_stock', value.in_stock);
+    formdt.append('unit', value.unit);
+    formdt.append('price_per_unit', value.price_per_unit);
+    formdt.append('verify', value.verify);
+    formdt.append('description', value.description);
+    formdt.append('detail', value.detail);
+    return this.http.put<boolean>(`${this.apiUrl}/product/${id}/`, formdt)
       .pipe(
         map(response => {
           return response;

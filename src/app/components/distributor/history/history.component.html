@@ -21,7 +21,7 @@
           <tr *ngFor="let prod of data; let i=index">
             <td>{{i+1}}</td>
             <td style="white-space: pre-line">{{prod.products}}</td>
-            <td>{{prod.totals}}đ</td>
+            <td>{{prod.totals | number:''}}đ</td>
             <td>{{prod.created_at}}</td>
             <td>{{prod.address}}<br>{{prod.telephone}}</td>
             <td>{{prod.status}}</td>
