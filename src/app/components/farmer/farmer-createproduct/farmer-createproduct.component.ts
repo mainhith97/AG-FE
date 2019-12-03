@@ -47,7 +47,7 @@ export class FarmerCreateproductComponent implements OnInit {
       verify: ['', Validators.required],
       description: [''],
       detail: [''],
-      image: ['']
+      image: ['', Validators.required]
     });
   }
   // get list category

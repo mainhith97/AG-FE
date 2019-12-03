@@ -48,7 +48,7 @@ export class AdminCreateproductComponent implements OnInit {
       verify: ['', Validators.required],
       description: [''],
       detail: [''],
-      image: []
+      image: ['', Validators.required]
     });
   }
 

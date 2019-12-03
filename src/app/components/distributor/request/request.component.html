@@ -34,12 +34,12 @@
   <form [formGroup]="requestForm">
     <h2 class="form-title">ORDER INFORMATION</h2>
     <div class="form-group">
-      <label class="pt-3">Quantity</label><br />
+      <label class="pt-3">Quantity</label>
       <input
         type="text"
         class="form-input"
         name="quantity"
-        placeholder="Quantity"
+        placeholder="Quantity ({{data.unit}})"
         formControlName="quantity"
 
       />
@@ -62,7 +62,7 @@
         [owlDateTime]="dt"
         [owlDateTimeTrigger]="dt"
         class="form-input"
-        placeholder="Date of receipt of goods"
+        placeholder="Date"
         formControlName="datetime"
 
       />

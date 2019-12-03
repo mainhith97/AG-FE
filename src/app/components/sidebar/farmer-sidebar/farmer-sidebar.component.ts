@@ -14,8 +14,8 @@ export class FarmerSidebarComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.getUnseenOrder(this.id);
     this.readLocalStorageValue('count');
+    this.getUnseenOrder(this.id);
   }
   getUnseenOrder(id) {
     id = localStorage.getItem('id');

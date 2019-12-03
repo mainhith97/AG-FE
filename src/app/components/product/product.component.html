@@ -36,10 +36,13 @@
                 class="btn btn-black py-3 px-5"
                 routerLink="/order/{{ data?.id }}"
               >
-                Wholesale purchase
+                Negotiate with supplier
               </button>
             </p>
           </div>
+        </div>
+        <div>
+          <p><i>If you want to buy this product in bulk, please select the "Negotiate with supplier" button to fill out the order form.</i></p>
         </div>
       </div>
     </div>
@@ -98,12 +101,9 @@
             >
           </div>
           <div>
-            <a
-              (click)="getReply(cmt?.id)"
-              class="text-primary"
-              style="cursor: pointer;"
-              >Show reply ({{cmt.replies}})</a
-            >
+            <a (click)="getReply(cmt?.id)" class="text-primary" style="cursor: pointer;">
+              Replies ({{cmt.replies}})
+            </a>
           </div>
         </div>
         <div class="col-md-3">

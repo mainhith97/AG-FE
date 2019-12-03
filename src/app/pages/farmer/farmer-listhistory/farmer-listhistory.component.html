@@ -35,8 +35,7 @@
     <li class="nav-item">
       <a class="nav-link" href="" [routerLink]="['/get-listorder']">
         <span>Request</span>
-        <span *ngIf="count !== '0'" class="count">{{ count }}</span></a
-      >
+        <span *ngIf="count !== '0' && count !== 'undefined'" class="count">{{count}}</span></a>
     </li>
     <li class="nav-item">
       <a

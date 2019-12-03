@@ -43,6 +43,7 @@ export interface Product {
     quantity: number;
     total: number;
     product_value: any;
+    active: boolean;
 }
 export interface ProductDisplay {
     Products: Product[];

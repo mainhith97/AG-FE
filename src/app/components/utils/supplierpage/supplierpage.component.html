@@ -25,10 +25,10 @@
             /></a>
 
             <div class="pi-links">
-              <button type="button" class="add-card" (click)="Cart(prod)">
-                <i class="fa fa-shopping-bag"></i><span>ADD TO CART</span>
-              </button>
-            </div>
+              <a class="add-card" (click)="Cart(prod)" style="cursor: pointer;"
+              ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
+            >
+          </div>
           </div>
           <div class="pi-text">
             <h6>{{ prod?.price_per_unit }}đ/{{ prod?.unit }}</h6>

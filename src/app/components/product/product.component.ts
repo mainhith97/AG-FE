@@ -120,11 +120,11 @@ export class ProductComponent implements OnInit {
 
   // list reply
   getReply(id) {
-    this.productService.getReply(id).subscribe(res5 => {
-      this.res5 = res5;
-      if (this.res5.success) {
-        this.data5 = this.res5.result;
-      }
-    });
+      this.productService.getReply(id).subscribe(res5 => {
+        this.res5 = res5;
+        if (this.res5.success) {
+          this.data5 = this.res5.result;
+        }
+      });
   }
 }

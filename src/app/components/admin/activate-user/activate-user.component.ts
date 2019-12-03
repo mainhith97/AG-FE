@@ -12,6 +12,7 @@ export class ActivateUserComponent implements OnInit {
   res: any;
   data: any;
   res2: any;
+  check: boolean;
   constructor(
     private dataService: DataService,
     private confirmationDialogService: ConfirmationDialogService
@@ -24,7 +25,11 @@ export class ActivateUserComponent implements OnInit {
 
     this.dataService.getBannedUser().subscribe(res => {
       this.res = res;
+      this.check = false;
       if (this.res.success) {
+        if (this.res.result.length !== 0) {
+          this.check = true;
+        }
         this.data = this.res.result;
       }
     });

@@ -30,6 +30,10 @@ export class SigninComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
+  // check localstorage
+  readLocalStorageValue(key: string) {
+    return localStorage.getItem(key);
+  }
   submit({ value }: { value: ILogin }) {
     return this.loginService.postLogin2(value).subscribe(res => {
       this.res = res;
@@ -40,7 +44,8 @@ export class SigninComponent implements OnInit {
         localStorage.setItem('username', this.res.username);
         // tslint:disable-next-line: radix
         localStorage.setItem('giohang', this.res.cart);
-        this.router.navigate(['home']);
+        this.router.navigate([this.readLocalStorageValue('link')]);
+        // this.router.navigate(['home']);
 
       } else if (this.res.success && this.res.role === 'farmer') {
 
