@@ -80,6 +80,7 @@ export class FarmerEditproductComponent implements OnInit {
         this.editproductForm.controls.verify.setValue(this.data.verify);
         this.editproductForm.controls.description.setValue(this.data.description);
         this.editproductForm.controls.detail.setValue(this.data.detail);
+        this.editproductForm.controls.detail.setValue(this.data.image);
         this.editproductForm.controls.id.setValue(this.id);
       }
     });
@@ -88,7 +89,9 @@ export class FarmerEditproductComponent implements OnInit {
   submit({ value }: { value: Product }) {
     const id = this.id;
     value.provider_id = localStorage.getItem('id');
-    value.image = this.image;
+    if (value.image) {
+      value.image = this.image;
+    }
     this.dataService.editProduct(id, value).subscribe(res2 => {
       this.res2 = res2;
       if (this.res2.success) {

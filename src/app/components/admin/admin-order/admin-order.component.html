@@ -24,8 +24,8 @@
               <td>{{ order.datetime }}</td>
               <td>
                   <span *ngIf="order.status == 'Pending'">Pending</span>
-                <span *ngIf="order.status == 'Accept'" class="text-success">Accept</span>
-                <span *ngIf="order.status == 'Decline'" class="text-danger" >Decline</span>
+                <span *ngIf="order.status == 'Accepted'" class="text-success">Accepted</span>
+                <span *ngIf="order.status == 'Declined'" class="text-danger" >Declined</span>
                 <span *ngIf="order.status == 'Seen'" class="text-primary">Seen</span>
               </td>
           </tr>

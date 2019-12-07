@@ -1,3 +1,4 @@
+import { DataService } from './../../../services/data.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
@@ -17,14 +18,18 @@ export class ProductByCategoryComponent implements OnInit {
   data: any;
   data1: any;
   id: number;
+  res2: any;
+  data2: any;
 
   constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private dataService: DataService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = params.id;
       this.getListProductByType(this.id);
+      this.getType(this.id);
     });
   }
   // check localstorage
@@ -36,6 +41,14 @@ export class ProductByCategoryComponent implements OnInit {
       this.res = res;
       if (this.res.success) {
         this.data = this.res.result;
+      }
+    });
+  }
+  getType(id: number) {
+    this.dataService.getType(id).subscribe(res2 => {
+      this.res2 = res2;
+      if (this.res2.success) {
+        this.data2 = this.res2.result;
       }
     });
   }

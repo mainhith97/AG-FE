@@ -28,7 +28,7 @@
           <td>{{ order.proposed_price | number:''}}đ</td>
           <td>{{ order.datetime }}</td>
           <td>{{ order.address }} <br />{{ order.telephone }}</td>
-          <td>{{ order.status }}</td>
+          <td>{{ order.status }}<br> <span style="color: black;">{{order.refusal_reason?.reason}}</span></td>
           <td *ngIf="order.status === 'Seen'">
             <a
               (click)="acceptOrder(order.id)"
@@ -45,10 +45,10 @@
               ><span class="fa fa-times"></span>
             </a>
           </td>
-          <td *ngIf="order.status === 'Accept'">
+          <td *ngIf="order.status === 'Accepted'">
             <span class="fa fa-check-circle text-success"></span>
           </td>
-          <td *ngIf="order.status === 'Decline'">
+          <td *ngIf="order.status === 'Declined'">
             <span class="fa fa-check-circle text-danger"></span>
           </td>
         </tr>

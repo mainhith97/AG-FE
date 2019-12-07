@@ -3,12 +3,17 @@
     <div class="section-title">
       <div class="row">
         <div class="col-md-6">
+          <p>{{ data2.product_type }}</p>
+        </div>
+        <div class="col-md-6">
           <p class="pr-3">Sort by</p>
           <select class="pl-3" (change)="navigateTo($event.target.value)">
-            <option value="type/{{this.id}}">Oldest</option>
-            <option value="type/{{this.id}}/lastest">Lastest</option>
-            <option value=""  [selected]="true">Price: low to high</option>
-            <option value="type/{{this.id}}/price_high">Price: high to low</option>
+            <option value="type/{{ this.id }}">Oldest</option>
+            <option value="type/{{ this.id }}/lastest">Lastest</option>
+            <option value="" [selected]="true">Price: low to high</option>
+            <option value="type/{{ this.id }}/price_high"
+              >Price: high to low</option
+            >
           </select>
         </div>
       </div>
@@ -22,13 +27,16 @@
             /></a>
 
             <div class="pi-links">
-                <a class="add-card" (click)="Cart(prod)" style="cursor: pointer;"
+              <a class="add-card" (click)="Cart(prod)" style="cursor: pointer;"
                 ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
+              >
+              <a class="deal-card" routerLink="/order/{{ prod?.id }}" style="cursor: pointer;"
+                ><i class="fa fa-handshake-o"></i><span>DEAL WITH SUPPLIER</span></a
               >
             </div>
           </div>
           <div class="pi-text">
-            <h6>{{ prod?.price_per_unit | number:''}}đ/{{ prod?.unit }}</h6>
+            <h6>{{ prod?.price_per_unit | number: "" }}đ/{{ prod?.unit }}</h6>
             <a routerLink="/product/{{ prod.id }}">{{ prod?.name }}</a>
           </div>
         </div>
@@ -36,5 +44,3 @@
     </div>
   </div>
 </section>
-
-

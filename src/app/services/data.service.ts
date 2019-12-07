@@ -229,7 +229,7 @@ export class DataService {
   // farmer accept order
   acceptOrder(id: number): Observable<boolean> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const data = { 'status': 'Accept' };
+    const data = { 'status': 'Accepted' };
     return this.http.put<boolean>(`${this.apiUrl}/order/${id}/`, data)
       .pipe(
         map(response => {
@@ -241,7 +241,7 @@ export class DataService {
   // farmer decline order
   declineOrder(id: number): Observable<boolean> {
     // tslint:disable-next-line: object-literal-key-quotes
-    const data = { 'status': 'Decline' };
+    const data = { 'status': 'Declined' };
     return this.http.put<boolean>(`${this.apiUrl}/order/${id}/`, data)
       .pipe(
         map(response => {
@@ -408,7 +408,9 @@ export class DataService {
   // edit product
   editProduct(id, value): Observable<boolean> {
     const formdt = new FormData();
-    formdt.append('image', value.image);
+    if (value.image !== null) {
+      formdt.append('image', value.image);
+    }
     formdt.append('name', value.name);
     formdt.append('type', value.type);
     formdt.append('provider_id', value.provider_id);

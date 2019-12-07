@@ -5,7 +5,7 @@
     <div *ngIf="!check"> <h4 style="text-align: center" class="title"><strong>NO PRODUCT NEED TO FIND</strong></h4></div>
     <div *ngIf="check">
       <div class="section-title">
-        <p>Kết quả tìm kiếm:</p>
+        <p>Search Results:</p>
       </div>
       <div class="row">
         <div *ngFor="let prod of data" class="col-lg-3 col-sm-6">
@@ -17,6 +17,9 @@
               <div class="pi-links">
                   <a class="add-card" (click)="Cart(prod)" style="cursor: pointer;"
                 ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
+              >
+              <a class="deal-card" routerLink="/order/{{ prod?.id }}" style="cursor: pointer;"
+                ><i class="fa fa-handshake-o"></i><span>DEAL WITH SUPPLIER</span></a
               >
               </div>
             </div>

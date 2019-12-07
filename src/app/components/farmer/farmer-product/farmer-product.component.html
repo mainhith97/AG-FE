@@ -9,7 +9,8 @@
       <thead>
         <tr>
           <th>No.</th>
-          <th>Name of product</th>
+          <th style="width: 10%;">Product</th>
+          <th style="width: 10%;">Image</th>
           <th>Category</th>
           <th>Unit</th>
           <th>Price per unit</th>
@@ -23,6 +24,7 @@
         <tr *ngFor="let prod of data; let i = index">
           <td>{{ i + 1 }}</td>
           <td>{{ prod.name }}</td>
+          <td><img src="{{prod.image}}" class="img-fluid"/></td>
           <td>{{ prod.typetype.product_type }}</td>
           <td>{{ prod.unit }}</td>
           <td>{{ prod.price_per_unit | number:''}}đ</td>

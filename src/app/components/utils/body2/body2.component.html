@@ -14,6 +14,9 @@
               <a class="add-card" (click)="Cart(prod)" style="cursor: pointer;"
                 ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
               >
+              <a class="deal-card" routerLink="/order/{{ prod?.id }}" style="cursor: pointer;"
+                ><i class="fa fa-handshake-o"></i><span>DEAL WITH SUPPLIER</span></a
+              >
             </div>
           </div>
           <div class="pi-text">

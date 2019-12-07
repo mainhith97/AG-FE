@@ -90,7 +90,9 @@ export class AdminEditproductComponent implements OnInit {
 
   submit({ value }: { value: Product }) {
       const id = this.id;
-      value.image = this.image;
+      if (value.image) {
+        value.image = this.image;
+      }
       this.dataService.editProduct(id, value).subscribe(res2 => {
           this.res2 = res2;
           if (this.res2.success) {

@@ -29,8 +29,8 @@
             <td>
               <span *ngIf="prod.status == 'Pending'">Pending</span>
               <span *ngIf="prod.status == 'Seen'" class="text-primary">Seen</span>
-              <span *ngIf="prod.status == 'Accept'" class="text-success">Accept</span>
-              <div *ngIf="prod.status == 'Decline'" class="text-danger" >Decline <br> <span style="color: black;">{{prod.refusal_reason?.reason}}</span></div>
+              <span *ngIf="prod.status == 'Accepted'" class="text-success">Accepted</span>
+              <div *ngIf="prod.status == 'Declined'" class="text-danger" >Declined <br> <span style="color: black;">{{prod.refusal_reason?.reason}}</span></div>
 
             </td>
           </tr>

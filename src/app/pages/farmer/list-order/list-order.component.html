@@ -28,7 +28,7 @@
 
     <li class="nav-item">
       <a class="nav-link" href="" [routerLink]="['/get-listproduct']"
-        ><span>Product</span></a
+        ><span>Products</span></a
       >
     </li>
 
@@ -38,7 +38,7 @@
         href=""
         [routerLink]="['/get-listorder']"
       >
-        <span>Request</span>
+        <span>Orders</span>
         <span *ngIf="count !== '0' && count !== 'undefined'" class="count">{{count}}</span></a>
     </li>
     <li class="nav-item">
@@ -49,7 +49,7 @@
 
     <li class="nav-item">
       <a class="nav-link" href="" [routerLink]="['/get-listcomment']">
-        <span>Comment</span></a
+        <span>Comments</span></a
       >
     </li>
     <li class="nav-item">
@@ -131,7 +131,7 @@
       <!-- End of Topbar -->
       <div class="container-fluid">
         <div class="header">
-          <h4 class="title">Requests</h4>
+          <h4 class="title">Orders</h4>
         </div>
         <app-get-listorder></app-get-listorder>
       </div>

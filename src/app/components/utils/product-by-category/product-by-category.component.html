@@ -3,6 +3,9 @@
     <div class="section-title">
       <div class="row">
         <div class="col-md-6">
+          <p>{{data2.product_type}}</p>
+        </div>
+        <div class="col-md-6">
           <p class="pr-3">Sort by</p>
           <select class="pl-3" (change)="navigateTo($event.target.value)">
             <option value="" [selected]="true">Oldest</option>
@@ -24,6 +27,9 @@
             <div class="pi-links">
                 <a class="add-card" (click)="Cart(prod)" style="cursor: pointer;"
                 ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
+              >
+              <a class="deal-card" routerLink="/order/{{ prod?.id }}" style="cursor: pointer;"
+                ><i class="fa fa-handshake-o"></i><span>DEAL WITH SUPPLIER</span></a
               >
             </div>
           </div>

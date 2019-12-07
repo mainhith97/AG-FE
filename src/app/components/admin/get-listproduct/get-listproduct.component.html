@@ -4,7 +4,8 @@
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Product</th>
+                <th style="width: 10%;">Product</th>
+                <th style="width: 10%;">Image</th>
                 <th>Supplier</th>
                 <th>Category</th>
                 <th>Unit</th>
@@ -19,6 +20,7 @@
             <tr *ngFor="let data of data ; let i = index">
                 <td>{{ i + 1 }}</td>
                 <td>{{ data.name }}</td>
+                <td><img src="{{data.image}}" class="img-fluid"/></td>
                 <td class="link" routerLink='/product-by-supplier/{{data.provider.id}}'>{{ data.provider?.company_name }}</td>
                 <td class="link" routerLink='/product-by-type/{{data.typetype.id}}'>{{ data.typetype?.product_type }}</td>
                 <td>{{ data.unit }}</td>
