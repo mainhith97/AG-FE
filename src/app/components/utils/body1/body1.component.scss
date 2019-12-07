@@ -1,35 +1,32 @@
-.img {
+.hero-wrap {
   width: 100%;
+  position: relative;
+}
+.hero-wrap.hero-bread {
+  padding: 10em 0;
+}
+.hero-wrap,
+.img {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 650px;
-  position: relative;
-  z-index: 0;
+  height: 600px;
 }
-.a {
+.text{
   position: absolute;
-  top: 165px;
+  margin-left: 3rem;
 }
-.b {
+.text h3 {
   text-transform: uppercase;
   color: #fff;
   letter-spacing: 3px;
-  // font-family: "Amatic SC", cursive;
-}
-.b h1{
   font-size: 70px;
 }
-.row {
-  margin: 0 0 0 !important;
-}
-
-.b .subtext {
+.text .subtext {
   font-weight: 300;
-  font-size: 25px;
+  font-size: 30px;
   letter-spacing: 4px;
   text-transform: uppercase;
   display: inline-block;
   color: #fff;
 }
-
