@@ -14,9 +14,8 @@
           <th>Quantity</th>
           <th>Proposed price</th>
           <th>Received date</th>
-          <th>Contact info</th>
           <th>Status</th>
-          <th>Action</th>
+          <th>More info</th>
         </tr>
       </thead>
       <tbody>
@@ -27,8 +26,13 @@
           <td>{{ order.quantity }} {{order.product_order.unit}}</td>
           <td>{{ order.proposed_price | number:''}}đ</td>
           <td>{{ order.datetime }}</td>
-          <td>{{ order.address }} <br />{{ order.telephone }}</td>
-          <td>{{ order.status }}<br> <span style="color: black;">{{order.refusal_reason?.reason}}</span></td>
+          <td>
+            <span *ngIf="order.status == 'Pending'">Pending</span>
+            <span *ngIf="order.status == 'Seen'" class="text-primary">Seen</span>
+            <span *ngIf="order.status == 'Accepted'" class="text-success">Accepted</span>
+            <span *ngIf="order.status == 'Declined'" class="text-danger" >Declined </span>
+
+          </td>
           <td *ngIf="order.status === 'Seen'">
             <a
               (click)="acceptOrder(order.id)"
@@ -45,14 +49,11 @@
               ><span class="fa fa-times"></span>
             </a>
           </td>
-          <td *ngIf="order.status === 'Accepted'">
-            <span class="fa fa-check-circle text-success"></span>
-          </td>
+          <td *ngIf="order.status === 'Accepted'"><span class="text-primary">Contact info:</span> <br> {{ order.address }} <br />{{ order.telephone }}</td>
           <td *ngIf="order.status === 'Declined'">
-            <span class="fa fa-check-circle text-danger"></span>
+            <span class="text-primary">Refusal reason:</span> <br>{{order.refusal_reason?.reason}}
           </td>
         </tr>
       </tbody>
     </table>
-  </div>
 </div>
