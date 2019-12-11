@@ -389,7 +389,7 @@ export class DataService {
     formdt.append('name', value.name);
     formdt.append('type', value.type);
     formdt.append('provider_id', value.provider_id);
-    formdt.append('in_stock', value.in_stock);
+    // formdt.append('in_stock', value.in_stock);
     formdt.append('unit', value.unit);
     formdt.append('price_per_unit', value.price_per_unit);
     formdt.append('verify', value.verify);
@@ -446,7 +446,7 @@ export class DataService {
     formdt.append('name', value.name);
     formdt.append('type', value.type);
     formdt.append('provider_id', value.provider_id);
-    formdt.append('in_stock', value.in_stock);
+    // formdt.append('in_stock', value.in_stock);
     formdt.append('unit', value.unit);
     formdt.append('price_per_unit', value.price_per_unit);
     formdt.append('verify', value.verify);

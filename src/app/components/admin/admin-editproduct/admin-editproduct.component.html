@@ -21,15 +21,15 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>Category</label>
-          <input
+          <!-- <input
             type="text"
             formControlName="type"
             value="{{type?.product_type}}"
             class="form-control border-input"
-          />
-          <!-- <select class="form-control border-input" formControlName="type">
-            <option *ngFor="let type1 of data3" value="{{type?.product_type}}">{{type1.product_type}}</option>
-          </select> -->
+          /> -->
+          <select class="form-control border-input" formControlName="type" [(ngModel)]="type">
+            <option *ngFor="let type1 of data3" value="{{type1?.id}}">{{type1.product_type}}</option>
+          </select>
         </div>
       </div>
     </div>
@@ -37,12 +37,15 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>Supplier</label>
-          <input
+          <!-- <input
             type="text"
             formControlName="provider_id"
             value="{{provider?.company_name}}"
             class="form-control border-input"
-          />
+          /> -->
+          <select class="form-control border-input" formControlName="provider_id" [(ngModel)]="provider">
+            <option *ngFor="let supplier of data2" value="{{supplier?.id}}" >{{supplier.company_name}}</option>
+          </select>
         </div>
       </div>
     </div>
@@ -76,12 +79,15 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>In stock</label>
-          <input
+          <!-- <input
             type="text"
             formControlName="in_stock"
             value="{{data?.in_stock}}"
             class="form-control border-input"
-          />
+          /> -->
+          <select class="form-control border-input" formControlName="in_stock" [(ngModel)]="stock">
+            <option *ngFor="let choice of [{'choice': true, 'name': 'Còn hàng'}, {'choice': false, 'name': 'Hết hàng'}]" value="{{choice.choice}}" >{{choice.name}}</option>
+          </select>
         </div>
       </div>
     </div>

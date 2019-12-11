@@ -14,13 +14,14 @@
 }
 .text{
   position: absolute;
-  margin-left: 3rem;
+  margin-left: 12rem;
 }
-.text h3 {
+.text .maintext {
   text-transform: uppercase;
   color: #fff;
-  letter-spacing: 3px;
-  font-size: 70px;
+  letter-spacing: 2px;
+  font-weight: 300;
+  font-size: 80px;
 }
 .text .subtext {
   font-weight: 300;

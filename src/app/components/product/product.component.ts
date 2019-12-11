@@ -5,6 +5,7 @@ import { Product } from 'src/app/shared/interface';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConfirmationDialogService } from 'src/app/confirmation-dialog/confirmation-dialog.service';
 import { DataService } from 'src/app/services/data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product',
@@ -25,6 +26,10 @@ export class ProductComponent implements OnInit {
   res4: any;
   res5: any;
   data5: any;
+  res6: any;
+  data6: any;
+  res7: any;
+  data7: any;
   count: any;
   commentForm: FormGroup;
   constructor(
@@ -33,7 +38,8 @@ export class ProductComponent implements OnInit {
     private route: ActivatedRoute,
     private confirmationDialogService: ConfirmationDialogService,
     private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -73,6 +79,7 @@ export class ProductComponent implements OnInit {
           // tslint:disable-next-line: radix
           const newCart = parseInt(localStorage.getItem('giohang')) + 1;
           localStorage.setItem('giohang', newCart.toString());
+          this.toastr.success('The product has been added to cart!');
         }
       });
     } else {
@@ -120,11 +127,27 @@ export class ProductComponent implements OnInit {
 
   // list reply
   getReply(id) {
-      this.productService.getReply(id).subscribe(res5 => {
-        this.res5 = res5;
-        if (this.res5.success) {
-          this.data5 = this.res5.result;
+    this.productService.getReply(id).subscribe(res5 => {
+      this.res5 = res5;
+      if (this.res5.success) {
+        this.data5 = this.res5.result;
+      }
+    });
+  }
+  Waiting(product: Product) {
+    if (this.readLocalStorageValue('id')) {
+      this.productService.Waiting(product).subscribe(res6 => {
+        this.res6 = res6;
+        if (this.res6.success) {
+          this.data6 = this.res6.response;
+          this.router.navigate(['waiting-list']);
         }
+      }, error => {
+        console.log(error);
+        this.toastr.error(error);
       });
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 }

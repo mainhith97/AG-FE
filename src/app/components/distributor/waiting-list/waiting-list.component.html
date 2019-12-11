@@ -1,0 +1,48 @@
+<div class="content container mt-5">
+  <div *ngIf="!check">
+      <h4 style="text-align: center" class="title">
+        <strong>No product!</strong>
+      </h4>
+    </div>
+<div *ngIf="check">
+  <div class="cart-table">
+    <table class="table table-bordered table-hover">
+      <thead class="thead">
+        <tr>
+          <th>No.</th>
+          <th style="width: 30%">Product</th>
+          <th style="width: 30%">Image</th>
+          <th>Provider</th>
+          <th>Price per unit</th>
+          <th>Status</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prod of data; let i=index">
+          <td>{{i+1}}</td>
+          <td  routerLink="/product/{{ prod?.product_order.id }}" style="cursor: pointer;">{{prod.product_order.name}}</td>
+          <td class="d-flex justify-content-center align-content-center">
+            <img src="{{ prod.product_order.image }}" class="img-fluid" />
+          </td>
+          <td>{{prod.provider}}</td>
+          <td>{{prod.product_order.price_per_unit | number:''}}đ/{{prod.product_order.unit}}</td>
+          <td>
+            <span *ngIf="prod.product_order.in_stock == true" class="text-success">Available</span>
+            <span *ngIf="prod.product_order.in_stock == false" class="text-danger">Out of stock</span>
+          </td>
+          <td>
+            <a
+              (click)="remove(prod.id)"
+              class="btn-action btn-del"
+              ><span class="fa fa-trash" aria-hidden="true" style="font-size: 20px;"></span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+

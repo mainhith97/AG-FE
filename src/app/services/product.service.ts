@@ -296,6 +296,45 @@ export class ProductService {
         catchError(this.handleError)
       );
   }
+
+  // thêm vào danh sach cho
+  Waiting(product: Product) {
+
+    const option = {
+      // tslint:disable-next-line: radix
+      user: parseInt(localStorage.getItem('id')),
+      product: product.id
+    };
+    console.log(option);
+    return this.http.post<any>(`${this.apiUrl}/waiting_list/`, option)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // danh sach waiting
+  getListWaiting(): Observable<any> {
+    const user = localStorage.getItem('id');
+    return this.http.get<any>(`${this.apiUrl}/waiting_list/${user}/retrieve_by_distributor/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+  // xoa waiting list
+  removeWaiting(id): Observable<boolean> {
+    return this.http.delete<boolean>(`${this.apiUrl}/waiting_list/${id}/`)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
   handleError(error: HttpErrorResponse) {
     return throwError(error.error);
   }

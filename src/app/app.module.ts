@@ -156,6 +156,8 @@ import { UserChangePassComponent } from './components/distributor/user-change-pa
 import { UserChangePassPageComponent } from './pages/distributor/user-change-pass-page/user-change-pass-page.component';
 import { SupplierChangePassComponent } from './components/farmer/supplier-change-pass/supplier-change-pass.component';
 import { SupplierChangePassPageComponent } from './pages/farmer/supplier-change-pass-page/supplier-change-pass-page.component';
+import { WaitingListComponent } from './components/distributor/waiting-list/waiting-list.component';
+import { WaitingListPageComponent } from './pages/distributor/waiting-list-page/waiting-list-page.component';
 
 
 @NgModule({
@@ -295,7 +297,9 @@ import { SupplierChangePassPageComponent } from './pages/farmer/supplier-change-
     UserChangePassComponent,
     UserChangePassPageComponent,
     SupplierChangePassComponent,
-    SupplierChangePassPageComponent
+    SupplierChangePassPageComponent,
+    WaitingListComponent,
+    WaitingListPageComponent
   ],
   imports: [
     BrowserModule,
@@ -309,7 +313,9 @@ import { SupplierChangePassPageComponent } from './pages/farmer/supplier-change-
     OwlNativeDateTimeModule,
     NgDatepickerModule,
     NgbModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 2000
+    }),
 
   ],
   providers: [

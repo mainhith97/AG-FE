@@ -19,7 +19,8 @@ export class ByTypelastestComponent implements OnInit {
   id: number;
   res2: any;
   data2: any;
-
+  res6: any;
+  data6: any;
   constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router,
               private toastr: ToastrService,
               private dataService: DataService) { }
@@ -73,5 +74,21 @@ export class ByTypelastestComponent implements OnInit {
       this.router.navigate([value]);
     }
     return false;
+  }
+  Waiting(product: Product) {
+    if (this.readLocalStorageValue('id')) {
+      this.productService.Waiting(product).subscribe(res6 => {
+        this.res6 = res6;
+        if (this.res6.success) {
+          this.data6 = this.res6.response;
+          this.router.navigate(['waiting-list']);
+        }
+      }, error => {
+        console.log(error);
+        this.toastr.error(error);
+      });
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 }

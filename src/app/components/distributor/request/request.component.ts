@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Request } from 'src/app/shared/interface';
 import { DataService } from 'src/app/services/data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-request',
@@ -21,6 +22,7 @@ export class RequestComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private productService: ProductService,
               private dataService: DataService,
+              private toastr: ToastrService,
               private route: ActivatedRoute,
               private router: Router) { }
 
@@ -77,6 +79,9 @@ export class RequestComponent implements OnInit {
       if (this.res.success) {
         this.router.navigate(['list-order']);
       }
+    }, error => {
+      console.log(error);
+      this.toastr.error(error.quantity);
     });
   }
 }

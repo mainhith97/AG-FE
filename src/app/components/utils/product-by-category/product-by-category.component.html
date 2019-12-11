@@ -24,7 +24,7 @@
               ><img src="{{ prod?.image }}" class="img-fluid" alt=""
             /></a>
 
-            <div class="pi-links">
+            <div *ngIf="prod.in_stock === true" class="pi-links">
                 <a class="add-card" (click)="Cart(prod)" style="cursor: pointer;"
                 ><i class="fa fa-shopping-bag"></i><span>ADD TO CART</span></a
               >
@@ -32,10 +32,18 @@
                 ><i class="fa fa-handshake-o"></i><span>DEAL WITH SUPPLIER</span></a
               >
             </div>
+            <div *ngIf="prod.in_stock === false" class="pi-links">
+              <a class="deal-card" (click)="Waiting(prod)" style="cursor: pointer;"
+              ><i class="fa fa-clipboard-list"></i><span>ADD TO WAITING LIST</span></a
+            >
+          </div>
           </div>
           <div class="pi-text">
             <h6>{{ prod?.price_per_unit | number:''}}đ/{{ prod?.unit }}</h6>
             <a routerLink="/product/{{ prod.id }}">{{ prod?.name }}</a>
+            <p *ngIf="prod.in_stock === false" class="text-danger">
+              Out of stock!
+            </p>
           </div>
         </div>
       </div>

@@ -6,12 +6,12 @@
                 <th>No.</th>
                 <th style="width: 10%;">Product</th>
                 <th style="width: 10%;">Image</th>
-                <th>Supplier</th>
+                <th style="width: 10%;">Supplier</th>
                 <th>Category</th>
                 <th>Unit</th>
                 <th>Price per unit</th>
                 <th>In stock</th>
-                <th>Verify</th>
+                <th style="width: 20%;">Verify</th>
                 <th>Description</th>
                 <th>Action</th>
             </tr>
@@ -25,7 +25,10 @@
                 <td class="link" routerLink='/product-by-type/{{data.typetype.id}}'>{{ data.typetype?.product_type }}</td>
                 <td>{{ data.unit }}</td>
                 <td>{{ data.price_per_unit | number:''}}đ</td>
-                <td>{{ data.in_stock }}</td>
+                <td>
+                  <span *ngIf="data.in_stock === true" class="text-success">Còn hàng</span>
+                  <span *ngIf="data.in_stock === false" class="text-danger">Hết hàng</span>
+                </td>
                 <td>{{ data.verify }}</td>
                 <td>{{ data.description }}</td>
                 <td><a

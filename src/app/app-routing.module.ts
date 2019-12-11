@@ -68,6 +68,7 @@ import { ActivateUserPageComponent } from './pages/admin/activate-user-page/acti
 import { ProductBySupplierPageComponent } from './pages/admin/product-by-supplier-page/product-by-supplier-page.component';
 import { UserChangePassPageComponent } from './pages/distributor/user-change-pass-page/user-change-pass-page.component';
 import { SupplierChangePassPageComponent } from './pages/farmer/supplier-change-pass-page/supplier-change-pass-page.component';
+import { WaitingListPageComponent } from './pages/distributor/waiting-list-page/waiting-list-page.component';
 
 const routes: Routes = [
 
@@ -100,7 +101,8 @@ const routes: Routes = [
       { path: 'order/:id', component: RequestPageComponent },
       { path: 'list-order', component: OrderPageComponent },
       { path: 'profile', component: ProfilePageComponent },
-      { path: 'update-password', component: UserChangePassPageComponent }
+      { path: 'update-password', component: UserChangePassPageComponent },
+      { path: 'waiting-list', component: WaitingListPageComponent }
     ]
   },
   {

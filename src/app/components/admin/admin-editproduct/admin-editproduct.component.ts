@@ -17,6 +17,7 @@ export class AdminEditproductComponent implements OnInit {
   data: any;
   provider: any;
   type: any;
+  stock: any;
   id: any;
   res2: any;
   data2: any;
@@ -36,6 +37,7 @@ export class AdminEditproductComponent implements OnInit {
       this.getDetailProduct(this.id);
     });
     this.getListType();
+    this.getListFarmer();
     this.buildForm();
 
   }
@@ -48,6 +50,15 @@ export class AdminEditproductComponent implements OnInit {
       }
     });
   }
+    // get list farmer
+    getListFarmer() {
+      this.dataService.getListSupplier().subscribe(res2 => {
+        this.res2 = res2;
+        if (this.res2.success) {
+          this.data2 = this.res2.result;
+        }
+      });
+    }
   buildForm() {
       this.editproductForm = this.formBuilder.group({
           name: ['', Validators.required],
@@ -72,8 +83,13 @@ export class AdminEditproductComponent implements OnInit {
 
           if (this.res.success) {
               this.data = this.res.result;
-              this.provider = this.res.user;
-              this.type = this.res.type;
+              this.provider = this.res.user.company_name;
+              this.type = this.res.type.product_type;
+              if (this.res.result.in_stock === true) {
+                this.stock = 'Còn hàng';
+              } else {
+                this.stock = 'Hết hàng';
+              }
               this.editproductForm.controls.name.setValue(this.data.name);
               this.editproductForm.controls.type.setValue(this.data.type);
               this.editproductForm.controls.provider_id.setValue(this.data.provider_id);

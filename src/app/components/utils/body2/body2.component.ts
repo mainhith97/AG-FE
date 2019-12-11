@@ -17,6 +17,8 @@ export class Body2Component implements OnInit {
   data1: any;
   count: any;
   arr: any;
+  res6: any;
+  data6: any;
   // tslint:disable-next-line: variable-name
   constructor(
     private productService: ProductService,
@@ -64,5 +66,21 @@ export class Body2Component implements OnInit {
       this.router.navigate(['login']);
     }
 
+  }
+  Waiting(product: Product) {
+    if (this.readLocalStorageValue('id')) {
+      this.productService.Waiting(product).subscribe(res6 => {
+        this.res6 = res6;
+        if (this.res6.success) {
+          this.data6 = this.res6.response;
+          this.router.navigate(['waiting-list']);
+        }
+      }, error => {
+        console.log(error);
+        this.toastr.error(error);
+      });
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 }

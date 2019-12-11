@@ -21,7 +21,12 @@
           Đã qua kiểm định chất lượng của
           <span class="verify font-weight-bold">{{ data?.verify }}</span>
         </p>
-        <div class="row">
+        <div *ngIf="data?.in_stock=== false">
+          <p class="text-danger">
+            This product is currently out of stock
+          </p>
+        </div>
+        <div *ngIf="data?.in_stock=== true" class="row">
           <div class="mr-2 ml-2">
             <p>
               <button (click)="Cart(data)" class="btn btn-black py-3 px-5">
@@ -41,7 +46,16 @@
             </p>
           </div>
         </div>
-        <div>
+        <div *ngIf="data?.in_stock=== false" class="row">
+          <div class="mr-2 ml-2">
+            <p>
+              <button (click)="Waiting(data)" class="btn btn-black py-3 px-5">
+                Add to waiting list
+              </button>
+            </p>
+          </div>
+        </div>
+        <div *ngIf="data?.in_stock === true">
           <p><i>If you want to buy this product in bulk, please select the "Deal with supplier" button to fill out the order form.</i></p>
         </div>
       </div>

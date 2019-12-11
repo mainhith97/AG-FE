@@ -43,7 +43,7 @@ export class FarmerCreateproductComponent implements OnInit {
       type: ['', Validators.required],
       unit: ['', Validators.required],
       price_per_unit: ['', Validators.required],
-      in_stock: ['', Validators.required],
+      // in_stock: ['', Validators.required],
       verify: ['', Validators.required],
       description: [''],
       detail: [''],

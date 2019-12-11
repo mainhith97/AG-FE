@@ -17,6 +17,7 @@ export class FarmerEditproductComponent implements OnInit {
   data: any;
   provider: any;
   type: any;
+  stock: any;
   id: any;
   res2: any;
   data2: any;
@@ -71,7 +72,13 @@ export class FarmerEditproductComponent implements OnInit {
 
       if (this.res.success) {
         this.data = this.res.result;
-        this.type = this.res.type;
+        this.type = this.res.type.product_type;
+        if (this.res.result.in_stock === true) {
+          this.stock = 'Còn hàng';
+        }
+        if (this.res.result.in_stock === false) {
+          this.stock = 'Hết hàng';
+        }
         this.editproductForm.controls.name.setValue(this.data.name);
         this.editproductForm.controls.type.setValue(this.data.type);
         this.editproductForm.controls.unit.setValue(this.data.unit);
@@ -80,7 +87,6 @@ export class FarmerEditproductComponent implements OnInit {
         this.editproductForm.controls.verify.setValue(this.data.verify);
         this.editproductForm.controls.description.setValue(this.data.description);
         this.editproductForm.controls.detail.setValue(this.data.detail);
-        this.editproductForm.controls.detail.setValue(this.data.image);
         this.editproductForm.controls.id.setValue(this.id);
       }
     });

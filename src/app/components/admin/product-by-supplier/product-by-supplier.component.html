@@ -1,5 +1,5 @@
 <div class="content">
-  <h4>{{data.company_name}}</h4>
+  <h4>{{data?.company_name}}</h4>
   <div *ngIf="data != null" class="table-responsive-sm">
   <table class="table table-striped table-bordered">
       <thead>
@@ -24,7 +24,10 @@
               <td>{{ data.typetype?.product_type }}</td>
               <td>{{ data.unit }}</td>
               <td>{{ data.price_per_unit }}đ</td>
-              <td>{{ data.in_stock }}</td>
+              <td>
+                <span *ngIf="data.in_stock === true" class="text-success">Còn hàng</span>
+                <span *ngIf="data.in_stock === false" class="text-danger">Hết hàng</span>
+              </td>
               <td>{{ data.verify }}</td>
               <td>{{ data.description }}</td>
               <td><a

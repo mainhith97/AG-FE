@@ -28,7 +28,10 @@
           <td>{{ prod.typetype.product_type }}</td>
           <td>{{ prod.unit }}</td>
           <td>{{ prod.price_per_unit | number:''}}đ</td>
-          <td>{{ prod.in_stock }}</td>
+          <td>
+            <span *ngIf="prod.in_stock === true" class="text-success">Còn hàng</span>
+            <span *ngIf="prod.in_stock === false" class="text-danger">Hết hàng</span>
+          </td>
           <td>{{ prod.verify }}</td>
           <td>{{ prod.description }}</td>
           <td>
